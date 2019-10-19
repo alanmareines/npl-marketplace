@@ -1,6 +1,6 @@
 <div class="container">
   <% @npls.each do |npl| %>
-  <h1><%= npl.name %></h1>
+  <h1><%= link_to npl.name, npl_path(npl) %></h1>
   <p><%= npl.npl_type %></p>
   <p><%= npl.book_value %></p>
   <% end %>
