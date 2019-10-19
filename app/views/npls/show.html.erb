@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @npl.name %></h1>
+  <p> Tipo do ativo - <%= @npl.npl_type %></p>
+  <p> Valor de face - <%= @npl.book_value %></p>
+  <p> Devedor - <%= @npl.debtor %></p>
+  <p> Vencimento - <%= @npl.maturity_date %></p>
+  <p> Garantia - <%= @npl.collateral_description %></p>
+  <p> Valor mínimo - <%= @npl.min_value %></p>
+  <br>
+  <p>Cedido por <%= @npl.user.email %></p>
+</div>
