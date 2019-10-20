@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1>New Non-Performing Loan</h1>
+  <p>NPL offered by: <%= current_user.email %></p>
+  <%= simple_form_for @npl do |f| %>
+    <%= f.input :name, label: 'Stressed Credit Name' %>
+    <%= f.input :npl_type, label: 'Stressed Asset Type'  %>
+    <%= f.input :book_value, label: 'Book Value (BRL)' %>
+    <%= f.input :debtor, label: 'Debtor Name' %>
+    <%= f.input :maturity_date %>
+    <%= f.input :min_value, label: 'Minimum Bid Value' %>
+    <%= f.input :collateral_description %>
+    <%= f.submit "Add NPL", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
