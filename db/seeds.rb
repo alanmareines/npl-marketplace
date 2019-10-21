@@ -28,6 +28,7 @@ npl_attributes = [
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: marco,
+    document: "image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf"
   },
   {
     book_value: 90000,
@@ -38,6 +39,7 @@ npl_attributes = [
     name: 'CCB ODB 2',
     npl_type: 'CCB',
     user: alan,
+    document: "image/upload/v1571623608/vuy7pfkesk0qwp5rblem"
   }
 ]
 

@@ -32,6 +32,7 @@ class NplsController < ApplicationController
   def npl_params
     params.require(:npl).permit(:name, :book_value, :min_value,
                                 :collateral_description, :debtor,
-                                :maturity_date, :npl_type, :user_id)
+                                :maturity_date, :npl_type, :user_id,
+                                :document)
   end
 end
