@@ -6,16 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts 'cleaning seed'
-User.delete_all
+puts 'cleaning seed...'
 Npl.delete_all
+User.delete_all
 # Bid.delete_all
+puts 'seed cleaned!'
 
-puts 'starting seed (User)'
+puts 'starting seed (User)...'
 alan = User.create(email: 'alanmareines@gmail.com', password: '123123')
 marco = User.create(email: 'macpjesus@gmail.com', password: '123123')
 felipe = User.create(email: 'trocaesseemail@gmail.com', password: '123123')
-puts 'finished seed (User)'
+puts 'finished seed (User)!'
 
 puts 'starting seed (NPL)...'
 npl_attributes = [
@@ -28,6 +29,7 @@ npl_attributes = [
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: marco,
+    document: "image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf"
   },
   {
     book_value: 90000,
@@ -38,11 +40,12 @@ npl_attributes = [
     name: 'CCB ODB 2',
     npl_type: 'CCB',
     user: alan,
+    document: "image/upload/v1571623608/vuy7pfkesk0qwp5rblem"
   }
 ]
 
 Npl.create!(npl_attributes)
-puts 'finished seed (NPL)'
+puts 'finished seed (NPL)!'
 
 
 # puts 'starting seed (Bids)'
