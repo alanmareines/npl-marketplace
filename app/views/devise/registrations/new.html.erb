@@ -1,25 +1,41 @@
-<h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
+<!-- <div class="form-inputs"> -->
+  <div class="tab">
+    <h2>Contact Information</h2>
+    <%= f.input :name, label: 'Full Name or Company Name:',
+    placeholder: "Gavin Belson OR Hooli Inc.",
+    autofocus: true %>
+    <%= f.input :cpf_cnpj, label: "CPF/CNPJ" %>
+    <%= f.input :phone,
+    placeholder: '12345-1234'%>
+    <p id="step-btn" class="btn btn-primary btn-block">Next</p>
+  </div>
+
+  <div class="tab hidden">
+    <h2>Sign up Information</h2>
     <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
+    placeholder: "gavin.belson@hooli.com",
+    required: true,
+    input_html: { autocomplete: "email" }%>
     <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+    required: true,
+    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+    input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    required: true,
+    input_html: { autocomplete: "new-password" } %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+<!-- Passos do Form (current e next/prev): -->
+<div style="text-align:center;margin-top:40px;">
+  <a class="step active"></a>
+  <a class="step"></a>
+</div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

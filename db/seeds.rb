@@ -19,8 +19,7 @@ felipe = User.create(email: 'trocaesseemail@gmail.com', password: '123123')
 puts 'finished seed (User)!'
 
 puts 'starting seed (NPL)...'
-npl_attributes = [
-  {
+npl_attributes1 = {
     book_value: 100000,
     debtor: 'Odebrecht',
     maturity_date: Date.new(2018, 12, 20),
@@ -29,9 +28,8 @@ npl_attributes = [
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: marco,
-    document: "image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf"
-  },
-  {
+  }
+  npl_attributes2 = {
     book_value: 90000,
     debtor: 'Odebrecht',
     maturity_date: Date.new(2018, 11, 30),
@@ -40,11 +38,18 @@ npl_attributes = [
     name: 'CCB ODB 2',
     npl_type: 'CCB',
     user: alan,
-    document: "image/upload/v1571623608/vuy7pfkesk0qwp5rblem"
   }
-]
 
-Npl.create!(npl_attributes)
+url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
+npl1 = Npl.new(npl_attributes1)
+npl1.remote_document_url = url1
+npl1.save
+
+
+url2 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl2 = Npl.new(npl_attributes2)
+npl2.remote_document_url = url2
+npl2.save
 puts 'finished seed (NPL)!'
 
 
