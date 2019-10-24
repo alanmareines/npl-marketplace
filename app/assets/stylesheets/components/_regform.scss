@@ -1,0 +1,36 @@
+#new_user {
+  background-color: #ffffff;
+  margin: 100px auto;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+  p{
+    &:hover{
+    cursor: pointer;
+    };
+  };
+}
+
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+  &:hover{
+    cursor: pointer;
+  };
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+.hidden {
+ display:none;
+}
