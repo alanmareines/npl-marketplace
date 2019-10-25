@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'cleaning seed...'
-Npl.delete_all
-User.delete_all
+Npl.destroy_all
+User.destroy_all
 # Bid.delete_all
 puts 'seed cleaned!'
 
@@ -27,7 +27,7 @@ npl_attributes1 = {
     min_value: 15000,
     name: 'CCB ODB 1',
     npl_type: 'CCB',
-    user: marco,
+    user: marco
   }
   npl_attributes2 = {
     book_value: 90000,
@@ -37,7 +37,7 @@ npl_attributes1 = {
     min_value: 13000,
     name: 'CCB ODB 2',
     npl_type: 'CCB',
-    user: alan,
+    user: alan
   }
 
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'

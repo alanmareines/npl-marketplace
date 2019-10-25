@@ -1,7 +1,7 @@
 <div class="container">
 
   <h1>New Non-Performing Loan</h1>
-  <p>NPL offered by: <%= current_user.email %></p>
+  <p>NPL offered by: <%= current_user.name %></p>
   <%= simple_form_for @npl do |f| %>
     <%= f.input :name, label: 'Stressed Credit Name' %>
     <%= f.input :npl_type, label: 'Stressed Asset Type'  %>
