@@ -15,6 +15,7 @@
   end
 
   def edit
+    @bid = Bid.find(params[:id])
   end
 
   def create
@@ -31,7 +32,7 @@
 
   def update
     if @bid.update(bid_params)
-      redirect_to @bid
+      redirect_to npl_path(@npl)
     else
       render 'edit'
     end
