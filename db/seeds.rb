@@ -15,7 +15,7 @@ puts 'seed cleaned!'
 puts 'starting seed (User)...'
 alan = User.create(email: 'alanmareines@gmail.com', password: '123123')
 marco = User.create(email: 'macpjesus@gmail.com', password: '123123')
-felipe = User.create(email: 'trocaesseemail@gmail.com', password: '123123')
+felipe = User.create(email: 'felipegirocha@gmail.com', password: '123123')
 puts 'finished seed (User)!'
 
 puts 'starting seed (NPL)...'

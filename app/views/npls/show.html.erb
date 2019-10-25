@@ -12,9 +12,9 @@
   <% if @npl.document.present? %>
     <%= cl_image_tag @npl.document, :border=>"2px_solid_rgb:6f6b6b", :effect=>"grayscale", :quality=>47, :width=>200, :crop=>"scale" %>
   <% end %>
-  
+
   <p>Cedido por <%= @npl.user.email %></p>
   <%= link_to "Voltar às Ofertas em Aberto", npls_path, class: "btn btn-primary"%>
-  <%= link_to "Adicionar NPL", new_npl_path, class: "btn btn-primary"%>
-
+  <%= link_to "Fazer um Bid por este NPL", new_npl_bid_path(@npl), class: "btn btn-primary"%>
+  <%= link_to "Ver todos os Bids deste NPL", npl_bids_path(@npl), class: "btn btn-primary"%>
 </div>
