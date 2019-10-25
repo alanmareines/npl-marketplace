@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Bids pelo <%= @npl.name %> </h1>
+  <h3> Valor face: <%= @npl.book_value %> </h3>
+  <h3> Cedente: <%= @npl.user.email %> </h3>
+
+  <ol>
+    <% @bids.each do |bid| %>
+      <li> Bidder: <%= bid.user.email %> <br>
+       Valor do Bid: <%= bid.value %> </li>
+    <% end %>
+  </ol>
+
+  <%= link_to 'Voltar para todos NPLs', npls_path, class: "btn btn-primary" %>
+</div>
+
+
+
