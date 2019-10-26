@@ -1,8 +1,8 @@
 <div class="container">
-
-  <h1>New Non-Performing Loan</h1>
-  <p>NPL offered by: <%= current_user.name %></p>
-  <%= simple_form_for @npl do |f| %>
+  <div class="npl-new-content">
+    <h1>New Non-Performing Loan</h1>
+    <p>NPL offered by: <%= current_user.name %></p>
+    <%= simple_form_for @npl do |f| %>
     <%= f.input :name, label: 'Stressed Credit Name' %>
     <%= f.input :npl_type, label: 'Stressed Asset Type'  %>
     <%= f.input :book_value, label: 'Book Value (BRL)' %>
@@ -12,7 +12,8 @@
     <%= f.input :collateral_description %>
     <%= f.input :document %>
     <%= f.input :document_cache, as: :hidden %>
-    <%= f.submit "Add NPL", class: "btn btn-primary" %>
-  <% end %>
+    <%= f.submit "Add NPL", class: "btn btn-primary btn-block btn-lg" %>
+    <% end %>
+  </div>
 
 </div>
