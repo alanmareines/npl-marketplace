@@ -69,6 +69,83 @@ npl_attributes3 = {
     user: fibra
   }
 
+npl_attributes4 = {
+    book_value: 800000,
+    debtor: 'Bom Jesus',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'Imovel Rural',
+    min_value: 200000,
+    name: 'CCE Bom Jesus 1',
+    npl_type: 'CCE',
+    user: abc
+  }
+
+npl_attributes5 = {
+    book_value: 900000,
+    debtor: 'Santa Terezinha',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'AF de acoes',
+    min_value: 250000,
+    name: 'PPE Santa Terezinha 1',
+    npl_type: 'PPE',
+    user: votorantim
+  }
+
+npl_attributes6 = {
+    book_value: 950000,
+    debtor: 'Clealco',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'AF de equipamentos',
+    min_value: 200000,
+    name: 'Repasse BNDES Clealco 1',
+    npl_type: 'Repasse BNDES',
+    user: bradesco
+  }
+
+npl_attributes7 = {
+    book_value: 300000,
+    debtor: 'Renuka',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'penhor de cana',
+    min_value: 30000,
+    name: 'CDCA Renuka 1',
+    npl_type: 'CDCA',
+    user: santander
+  }
+
+npl_attributes8 = {
+    book_value: 350000,
+    debtor: 'Queiroz Galvao',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'AF de acoes',
+    min_value: 220000,
+    name: 'Debenture Queiroz Galvao 1',
+    npl_type: 'Debenture',
+    user: votorantim
+  }
+
+npl_attributes9 = {
+    book_value: 820000,
+    debtor: 'Galvao Engenharia',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'Fianca da holding',
+    min_value: 180000,
+    name: 'Debenture Galvao Engenharia 1',
+    npl_type: 'Debenture',
+    user: abc
+  }
+
+npl_attributes9 = {
+    book_value: 350000,
+    debtor: 'Usina Moreno',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'CF de recebiveis',
+    min_value: 180000,
+    name: 'CCB Usina Moreno 1',
+    npl_type: 'CCB',
+    user: itau
+  }
+
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
 npl1 = Npl.new(npl_attributes1)
 npl1.remote_document_url = url1
@@ -83,6 +160,37 @@ url3 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4
 npl3 = Npl.new(npl_attributes3)
 npl3.remote_document_url = url3
 npl3.save!
+
+url4 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl4 = Npl.new(npl_attributes4)
+npl4.remote_document_url = url4
+npl4.save!
+
+url5 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl5 = Npl.new(npl_attributes5)
+npl5.remote_document_url = url5
+npl5.save!
+
+url6 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl6 = Npl.new(npl_attributes6)
+npl6.remote_document_url = url6
+npl6.save!
+
+url7 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl7 = Npl.new(npl_attributes7)
+npl7.remote_document_url = url7
+npl7.save!
+
+url8 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl8 = Npl.new(npl_attributes8)
+npl8.remote_document_url = url8
+npl8.save!
+
+url9 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl9 = Npl.new(npl_attributes9)
+npl9.remote_document_url = url9
+npl9.save!
+
 puts 'finished seed (NPL)!'
 
 
@@ -129,6 +237,23 @@ bid7.user = mgc
 bid7.value = 250000
 bid7.save!
 
+bid8 = Bid.new
+bid8.npl = npl3
+bid8.user = jive
+bid8.value = 200000
+bid8.save!
+
+bid9 = Bid.new
+bid9.npl = npl3
+bid9.user = enforce
+bid9.value = 180000
+bid9.save!
+
+bid10 = Bid.new
+bid10.npl = npl3
+bid10.user = rcb
+bid10.value = 1000000
+bid10.save!
 
 puts 'finished seed (Bids)'
 
