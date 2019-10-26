@@ -18,10 +18,15 @@
 }
 
 .npl-index-btn{
+  margin-left: -288px;
+  border-radius: 16px;
   position:fixed;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
   text-align:center;
-  right:700px;
-  bottom: 30px;
-  width: calc(100%/3);
+  left:50%;
+  bottom: 20px;
+  width: calc(100%/2.5);
+  .btn{
+    border-radius:16px;
+  }
 }

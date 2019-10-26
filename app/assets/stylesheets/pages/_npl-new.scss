@@ -1,7 +1,8 @@
 .npl-new-content{
-  h1{
+  h2{
     color:white;
     text-align: center;
+    font-size:40px;
   }
   p{
     color: white;
@@ -9,6 +10,12 @@
     text-decoration: underline white;
     text-align: center;
   }
+  .user-offer{
+   color: $green;
+   font-size:24px;
+   text-decoration: none;
+   text-align: center;
+ }
 }
 
 
