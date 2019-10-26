@@ -14,7 +14,33 @@
   <% end %>
 
   <p>Cedido por <%= @npl.user.name %></p>
-  <%= link_to "Voltar às Ofertas em Aberto", npls_path, class: "btn btn-primary"%>
-  <%= link_to "Fazer um Bid por este NPL", new_npl_bid_path(@npl), class: "btn btn-primary"%>
-  <%= link_to "Ver todos os Bids deste NPL", npl_bids_path(@npl), class: "btn btn-primary"%>
+  <%= link_to "Back to NPLs offers", npls_path, class: "btn btn-primary"%>
+  <%= link_to "Bid this NPL", new_npl_bid_path(@npl), class: "btn btn-primary"%>
 </div>
+
+
+<div>
+  <% if current_user == @npl.user %>
+    <h3>Bids already received</h3>
+      <ul class="list-group">
+        <% @npl.bids.each do |bid| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= bid.user.name %>
+            <%= link_to bid.value, bid_path(bid) %>
+          </li>
+        <% end %>
+    </ul>
+  <% elsif @current_user_bids.present? %>
+    <h3> <%= @current_user.name %> bids on this NPL</h3>
+        <ul class="list-group">
+          <% @current_user_bids.each do |bid| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= bid.user.name %>
+              <%= link_to bid.value, bid_path(bid) %>
+            </li>
+          <% end %>
+      </ul>
+  <% end %>
+</div>
+
+

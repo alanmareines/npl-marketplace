@@ -8,14 +8,32 @@
 
 puts 'cleaning seed...'
 Npl.destroy_all
+Bid.destroy_all
 User.destroy_all
 # Bid.delete_all
 puts 'seed cleaned!'
 
 puts 'starting seed (User)...'
-alan = User.create(email: 'alanmareines@gmail.com', password: '123123')
-marco = User.create(email: 'macpjesus@gmail.com', password: '123123')
-felipe = User.create(email: 'felipegirocha@gmail.com', password: '123123')
+alan = User.create!(email: 'alanmareines@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Alan', phone: 99999999)
+marco = User.create!(email: 'macpjesus@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Marco', phone: 99999999)
+felipe = User.create!(email: 'felipegirocha@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Felipe', phone: 99999999)
+
+bradesco = User.create!(email: 'bradesco@bradesco.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Bradesco', phone: 99999999)
+itau = User.create!(email: 'itau@itau.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Itau', phone: 99999999)
+santander = User.create!(email: 'santander@santander.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Santander', phone: 99999999)
+abc = User.create!(email: 'abc@abc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'ABC', phone: 99999999)
+fibra = User.create!(email: 'fibra@fibra.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Fibra', phone: 99999999)
+votorantim = User.create!(email: 'votorantim@votorantim.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Votorantim', phone: 99999999)
+pine = User.create!(email: 'pine@pine.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'pine', phone: 99999999)
+
+recovery = User.create!(email: 'recovery@recovery.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Recovery', phone: 99999999)
+jive = User.create!(email: 'jive@jive.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Jive', phone: 99999999)
+enforce = User.create!(email: 'enforce@enforce.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Enforce', phone: 99999999)
+rcb = User.create!(email: 'rcb@rcb.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'RCB', phone: 99999999)
+brd = User.create!(email: 'brd@brd.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'BrD', phone: 99999999)
+mgc = User.create!(email: 'mgc@mgc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'MGC', phone: 99999999)
+blackpartners = User.create!(email: 'blackpartners@blackpartners.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Black Partners', phone: 99999999)
+
 puts 'finished seed (User)!'
 
 puts 'starting seed (NPL)...'
@@ -27,33 +45,91 @@ npl_attributes1 = {
     min_value: 15000,
     name: 'CCB ODB 1',
     npl_type: 'CCB',
-    user: marco
+    user: bradesco
   }
   npl_attributes2 = {
     book_value: 90000,
     debtor: 'Odebrecht',
     maturity_date: Date.new(2018, 11, 30),
-    collateral_description: 'Imovel',
+    collateral_description: 'Debenture',
     min_value: 13000,
     name: 'CCB ODB 2',
     npl_type: 'CCB',
-    user: alan
+    user: itau
+  }
+
+npl_attributes3 = {
+    book_value: 400000,
+    debtor: 'Terra Forte',
+    maturity_date: Date.new(2019, 03, 15),
+    collateral_description: 'Imovel Rural',
+    min_value: 150000,
+    name: 'CCB Terra Forte 1',
+    npl_type: 'CCB',
+    user: fibra
   }
 
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
 npl1 = Npl.new(npl_attributes1)
 npl1.remote_document_url = url1
-npl1.save
-
+npl1.save!
 
 url2 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
 npl2 = Npl.new(npl_attributes2)
 npl2.remote_document_url = url2
-npl2.save
+npl2.save!
+
+url3 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571623608/d9s9xs4epc8mxj4wd4yy.pdf'
+npl3 = Npl.new(npl_attributes3)
+npl3.remote_document_url = url3
+npl3.save!
 puts 'finished seed (NPL)!'
 
 
-# puts 'starting seed (Bids)'
-# puts 'finished seed (Bids)'
+puts 'starting seed (Bids)...'
+bid1 = Bid.new
+bid1.npl = npl1
+bid1.user = enforce
+bid1.value = 20000
+bid1.save!
+
+bid2 = Bid.new
+bid2.npl = npl1
+bid2.user = jive
+bid2.value = 19000
+bid2.save!
+
+bid3 = Bid.new
+bid3.npl = npl2
+bid3.user = jive
+bid3.value = 14500
+bid3.save!
+
+bid4 = Bid.new
+bid4.npl = npl2
+bid4.user = brd
+bid4.value = 16999
+bid4.save!
+
+bid5 = Bid.new
+bid5.npl = npl3
+bid5.user = brd
+bid5.value = 150000
+bid5.save!
+
+bid6 = Bid.new
+bid6.npl = npl3
+bid6.user = blackpartners
+bid6.value = 160000
+bid6.save!
+
+bid7 = Bid.new
+bid7.npl = npl3
+bid7.user = mgc
+bid7.value = 250000
+bid7.save!
+
+
+puts 'finished seed (Bids)'
 
 puts 'seed completed!'

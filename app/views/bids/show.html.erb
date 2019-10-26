@@ -1,6 +1,8 @@
-<h1> Detalhes do BID</h1>
-  <p> <%= @bid.user.name %> ofertou <%= @bid.value %> pelo <%= @bid.npl.name %> do cedente <%= @bid.npl.user.name %> que tem valor de face de <%= @bid.npl.book_value %></p>
+<h1> BID details </h1>
+  <p> <%= @bid.user.name %> offered <%= @bid.value %> by <%= @bid.npl.name %> from seller <%= @bid.npl.user.name %> that has a gross book value of <%= @bid.npl.book_value %></p>
 
 
   <%= link_to 'Voltar para todos NPLs', npls_path, class: "btn btn-primary" %>
 </div>
+
+

@@ -3,7 +3,7 @@
 <h1>Coloque um bid</h1>
   <%= simple_form_for [@npl, @bid] do |f| %>
     <%= f.input :value %>
-    <%= f.submit "Add a bid", class: "btn btn-primary" %>
+    <%= f.submit "Add a bid", class: "btn btn-primary", data: { confirm: 'Please confirm your bid' } %>
   <% end %>
 <%= link_to 'Back', npls_path %>
 </div>
