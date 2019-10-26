@@ -1,1 +1,22 @@
 // Specific CSS for your home-page
+
+.image-banner{
+  position: absolute;
+  left: 5%;
+  top: 12%;
+  width:35%;
+}
+
+.steps{
+  position:relative;
+  background-color: white;
+}
+
+.buttons{
+  .btn{
+    border-radius: 10px;
+    color:$npl-blue;
+    margin: 0 calc(100%/12);
+  }
+}
+
