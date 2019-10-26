@@ -1,11 +1,15 @@
 
 <div class="container">
-<h1>Coloque um bid</h1>
-  <%= simple_form_for [@npl, @bid] do |f| %>
-    <%= f.input :value %>
-    <%= f.submit "Add a bid", class: "btn btn-primary", data: { confirm: 'Please confirm your bid' } %>
+  <% if current_user == @npl.user %>
+    <h1>Sorry as the seller of this NPL you cannot bid!</h1>
+    <%= link_to 'Back', npls_path %>
+  <% else %>
+    <h1>Please add your bid</h1>
+      <%= simple_form_for [@npl, @bid] do |f| %>
+        <%= f.input :value %>
+        <%= f.submit "Add a bid", class: "btn btn-primary", data: { confirm: 'Please confirm your bid' } %>
+      <% end %>
+    <%= link_to 'Back', npls_path %>
   <% end %>
-<%= link_to 'Back', npls_path %>
 </div>
-
 
