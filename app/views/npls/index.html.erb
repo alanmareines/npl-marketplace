@@ -3,9 +3,11 @@
     <% @npls.each do |npl| %>
     <div class="npl-card mx-0 my-4">
       <h2><%= link_to npl.name, npl_path(npl) %></h2>
-      <p><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></p>
-      <p><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></p>
-      <p><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></p>
+        <ul class="card-text">
+        <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+        <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+        <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
+        </ul>
     </div>
     <% end %>
   </div>
