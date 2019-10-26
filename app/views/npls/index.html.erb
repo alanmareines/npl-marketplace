@@ -1,10 +1,14 @@
 <div class="container">
-  <% @npls.each do |npl| %>
-  <h1><%= link_to npl.name, npl_path(npl) %></h1>
-  <p><%= npl.npl_type %></p>
-  <p><%= npl.book_value %></p>
-  <% end %>
+  <div class="cards d-flex justify-content-between flex-wrap">
+    <% @npls.each do |npl| %>
+    <div class="npl-card mx-0 my-4">
+      <h2><%= link_to npl.name, npl_path(npl) %></h2>
+      <p><strong> Asset Type: </strong><%= npl.npl_type %></p>
+      <p><strong>Book value: </strong><%= npl.book_value %></p>
+    </div>
+    <% end %>
+  </div>
 
-  <%= link_to 'Start a NPL offer', new_npl_path, class: "btn btn-primary" %>
+  <%= link_to 'Start a NPL offer', new_npl_path, class: "btn btn-primary btn-block btn-lg" %>
 </div>
 

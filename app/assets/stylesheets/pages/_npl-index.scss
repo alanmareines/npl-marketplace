@@ -1,0 +1,16 @@
+.npl-card{
+  padding: 16px;
+  margin: 16px 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  h2{
+    text-align:center;
+    font-weight:bold;
+    font-size: 32px;
+  }
+  p{
+    font-size:14px;
+  }
+}
