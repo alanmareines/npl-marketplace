@@ -1,15 +1,17 @@
 
 <div class="container">
-  <% if current_user == @npl.user %>
-    <h1>Sorry as the seller of this NPL you cannot bid!</h1>
+  <div class="bid-new-content">
+    <% if current_user == @npl.user %>
+    <h2>Sorry as the seller of this NPL you cannot bid!</h2>
     <%= link_to 'Back', npls_path %>
-  <% else %>
-    <h1>Please add your bid</h1>
-      <%= simple_form_for [@npl, @bid] do |f| %>
-        <%= f.input :value %>
-        <%= f.submit "Add a bid", class: "btn btn-primary", data: { confirm: 'Please confirm your bid' } %>
-      <% end %>
-    <%= link_to 'Back', npls_path %>
-  <% end %>
+    <% else %>
+    <h2>Please add your bid</h2>
+    <%= simple_form_for [@npl, @bid] do |f| %>
+    <%= f.input :value %>
+    <%= f.submit "Add a bid", class: "btn btn-primary", data: { confirm: 'Please confirm your bid' } %>
+    <% end %>
+    <%= link_to 'Back', npls_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
 
