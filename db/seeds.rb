@@ -21,18 +21,18 @@ felipe = User.create!(email: 'felipegirocha@gmail.com', password: '123123', cpf_
 bradesco = User.create!(email: 'bradesco@bradesco.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Bradesco', phone: 99999999)
 itau = User.create!(email: 'itau@itau.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Itau', phone: 99999999)
 santander = User.create!(email: 'santander@santander.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Santander', phone: 99999999)
-abc = User.create!(email: 'abc@abc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'abc', phone: 99999999)
-fibra = User.create!(email: 'fibra@fibra.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'fibra', phone: 99999999)
-votorantim = User.create!(email: 'votorantim@votorantim.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'votorantim', phone: 99999999)
+abc = User.create!(email: 'abc@abc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'ABC', phone: 99999999)
+fibra = User.create!(email: 'fibra@fibra.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Fibra', phone: 99999999)
+votorantim = User.create!(email: 'votorantim@votorantim.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Votorantim', phone: 99999999)
 pine = User.create!(email: 'pine@pine.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'pine', phone: 99999999)
 
 recovery = User.create!(email: 'recovery@recovery.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Recovery', phone: 99999999)
 jive = User.create!(email: 'jive@jive.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Jive', phone: 99999999)
-enforce = User.create!(email: 'enforce@enforce.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'enforce', phone: 99999999)
-rcb = User.create!(email: 'rcb@rcb.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'rcb', phone: 99999999)
-brd = User.create!(email: 'brd@brd.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'brd', phone: 99999999)
-mgc = User.create!(email: 'mgc@mgc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'mgc', phone: 99999999)
-blackpartners = User.create!(email: 'blackpartners@blackpartners.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'blackpartners', phone: 99999999)
+enforce = User.create!(email: 'enforce@enforce.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Enforce', phone: 99999999)
+rcb = User.create!(email: 'rcb@rcb.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'RCB', phone: 99999999)
+brd = User.create!(email: 'brd@brd.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'BrD', phone: 99999999)
+mgc = User.create!(email: 'mgc@mgc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'MGC', phone: 99999999)
+blackpartners = User.create!(email: 'blackpartners@blackpartners.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Black Partners', phone: 99999999)
 
 puts 'finished seed (User)!'
 

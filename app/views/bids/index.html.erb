@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1>Bids pelo <%= @npl.name %> </h1>
   <h3> Valor face: <%= @npl.book_value %> </h3>
   <h3> Cedente: <%= @npl.user.name %> </h3>
@@ -6,13 +6,11 @@
   <ol>
     <% @bids.each do |bid| %>
       <li> Bidder: <%= bid.user.name %> <br>
-      Valor do Bid: <%= bid.value %> <br>
-      <%= link_to 'Detalhes deste Bid', bid_path(bid), class: "btn btn-primary" %>
+      Valor do Bid: <%= link_to bid.value, bid_path(bid) %> <br>
     <% end %>
   </ol>
 
   <%= link_to 'Voltar para todos NPLs', npls_path, class: "btn btn-primary" %>
-</div>
-
+</div> -->
 
 
