@@ -1,25 +1,25 @@
 <div class="container">
   <div class="npl-show-content d-flex justify-content-around">
     <div class="npl-show">
-    <h3><%= @npl.name %></h3>
-    <p><strong> Tipo do ativo - </strong><%= @npl.npl_type %></p>
-    <p> <strong>Valor de face - </strong><%= @npl.book_value %></p>
-    <p> <strong>Devedor - </strong><%= @npl.debtor %></p>
-    <p> <strong>Vencimento - </strong><%= @npl.maturity_date %></p>
-    <p> <strong>Garantia </strong>- <%= @npl.collateral_description %></p>
-    <p> <strong>Valor mínimo </strong> - <%= @npl.min_value %></p>
-    <br>
-    <p><strong>Documentos</strong></p>
+      <h3><%= @npl.name %></h3>
+      <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
+      <p> <strong>Book Value - </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></p>
+      <p> <strong>Debtor - </strong><%= @npl.debtor %></p>
+      <p> <strong>Maturity Date - </strong><%= @npl.maturity_date.strftime("%d/%m/%Y") %></p>
+      <p> <strong>Collateral Description </strong>- <%= @npl.collateral_description %></p>
+      <p> <strong>Minimum Value </strong> - <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></p>
+      <br>
+      <p><strong>Documentos</strong></p>
 
-    <% if @npl.document.present? %>
-    <%= cl_image_tag @npl.document, :border=>"2px_solid_rgb:6f6b6b", :effect=>"grayscale", :quality=>47, :width=>200, :crop=>"scale" %>
-    <% end %>
+      <% if @npl.document.present? %>
+      <%= cl_image_tag @npl.document, :border=>"2px_solid_rgb:6f6b6b", :effect=>"grayscale", :quality=>47, :width=>200, :crop=>"scale" %>
+      <% end %>
 
-    <p>Cedido por <strong><%= @npl.user.name %></strong></p>
+      <p>Assigned by <strong><%= @npl.user.name %></strong></p>
 
-    <%= link_to "Back to NPLs offers", npls_path, class: "btn btn-primary btn-lg"%>
-    <%= link_to "Bid this NPL", new_npl_bid_path(@npl), class: "btn btn-primary btn-lg"%>
-  </div>
+      <%= link_to "Back to NPLs offers", npls_path, class: "btn btn-primary btn-lg"%>
+      <%= link_to "Bid this NPL", new_npl_bid_path(@npl), class: "btn btn-primary btn-lg"%>
+    </div>
 
     <div class="bids-made">
       <% if current_user == @npl.user %>
@@ -28,7 +28,7 @@
         <% @npl.bids.each do |bid| %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= bid.user.name %>
-          <%= link_to bid.value, bid_path(bid) %>
+          <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
         </li>
         <% end %>
       </ul>
@@ -38,15 +38,13 @@
         <% @current_user_bids.each do |bid| %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= bid.user.name %>
-          <%= link_to bid.value, bid_path(bid) %>
+          <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
         </li>
         <% end %>
       </ul>
       <% end %>
     </div>
   </div>
-
-
 </div>
 
 

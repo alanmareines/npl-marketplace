@@ -3,12 +3,15 @@
     <% @npls.each do |npl| %>
     <div class="npl-card mx-0 my-4">
       <h2><%= link_to npl.name, npl_path(npl) %></h2>
-      <p><strong> Asset Type: </strong><%= npl.npl_type %></p>
-      <p><strong>Book value: </strong><%= npl.book_value %></p>
+      <p><strong>Asset Type: </strong><%= npl.npl_type %></p>
+      <p><strong>Book value: </strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></p>
+      <p><strong>Assigned by: </strong><%= npl.user.name %></p>
     </div>
     <% end %>
   </div>
 
+<div class="npl-index-btn">
   <%= link_to 'Start a NPL offer', new_npl_path, class: "btn btn-primary btn-block btn-lg" %>
+</div>  
 </div>
 

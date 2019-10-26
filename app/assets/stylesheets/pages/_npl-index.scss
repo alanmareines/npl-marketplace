@@ -16,3 +16,12 @@
     font-size:14px;
   }
 }
+
+.npl-index-btn{
+  position:fixed;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align:center;
+  right:700px;
+  bottom: 30px;
+  width: calc(100%/3);
+}
