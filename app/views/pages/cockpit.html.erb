@@ -1,0 +1,54 @@
+<div class="cockpit">
+  <div id="sidebar">
+    <%= link_to icon('fas', 'user'), "#", class: "sidebar-icon" %>
+  </div>
+  <div class="cockpit-content flex-grow-1">
+
+    <div class="text-center pt-3">
+      <h1><%= @user.name.upcase %></h1>
+    </div>
+
+    <div class="cockpit-cards flex-wrap justify-content-around">
+      <div class="cockpit-card user-info col">
+        <h2>Personal Information</h2>
+        <%= simple_form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :name, autofocus: true %>
+          <%= f.input :cpf_cnpj, label: "CPF/CNPJ" %>
+          <%= f.input :phone %>
+          <%= f.input :email, required: true %>
+          <%= f.input :password,
+          hint: "leave it blank if you don't want to change it",
+          required: false,
+          input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+          required: false,
+          input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+          hint: "we need your current password to confirm your changes",
+          required: true,
+          input_html: { autocomplete: "current-password" } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Update info", class: "btn btn-primary btn-block" %>
+        </div>
+        <% end %>
+      </div>
+      
+      <div class="cockpit-card bids-won col">
+       <h2>Minhas compras</h2>
+     </div>
+
+     <div class="cockpit-card npl-selling col">
+      <h2>Minhas Offers</h2>
+    </div>
+
+    <div class="cockpit-card npl-bidding col">
+      <h2>Minhas Bids</h2>
+    </div>
+  </div>
+</div>
+</div>

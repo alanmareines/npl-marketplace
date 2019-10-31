@@ -1,0 +1,36 @@
+.cockpit{
+  min-height: calc(100vh - 100px);
+  padding: 0px;
+  display:flex;
+  background-color: #ffff;
+  border-radius:2px;
+  #sidebar{
+    background-color:$green;
+    padding:16px;
+    .sidebar-icon{
+      font-size:2em;
+      color:white;
+    }
+  }
+  .cockpit-cards{
+    display:flex;
+    .cockpit-card{
+      min-width: calc(40vw - 50px);
+      margin:16px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      h2{
+        text-align: center !important;
+      }
+    }
+  }
+}
+
+.form-group{
+  font-size:14px;
+  display:flex;
+  .form-control{
+    font-size:14px;
+    width:25%;
+    margin: 0px 16px;
+  }
+}
