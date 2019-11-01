@@ -1,21 +1,67 @@
 .npl-show-content{
   background-color: #ffff;
   border-radius: 8px;
-  padding: 32px;
+  padding: .7rem 32px 32px .7rem;
   margin-bottom:32px;
   h3{
-    color: $green;
-    margin-bottom: 2.5rem;
+    color: $npl-darkgreen;
+    margin-top:1rem;
+    margin-bottom: 2rem;
     font-size:32px;
+    text-align:center;
   }
   p{
     font-size:18px;
+    line-height:1rem;
+    text-align:center;
   }
+}
+
+.npl-show{
+  margin-left:1.5rem;
 }
 
 .bids-made{
   h3{
-    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     font-size:32px;
+  }
+}
+
+#new_bid{
+  background-color: #ffffff;
+  margin: 100px auto;
+  padding: 20px;
+  width: 70%;
+  width: calc(100%);
+  border-radius: 8px;
+  margin:30px auto;
+}
+
+#new_bid{
+  margin:2rem 0 0 0;
+  padding:0;
+  width: 100%;
+}
+
+.arrow-back{
+  font-size:1.5rem;
+  line-height: 2.5rem;
+  vertical-align: bottom;
+  color:$npl-blue;
+  height:50%;
+}
+
+#separator{
+  height: 450px;
+  border-left: 2px solid;
+  border-color: #dfdfdf;
+}
+
+li{
+  a{
+    font-size:1.2rem;
+    color:$npl-darkgreen;
   }
 }

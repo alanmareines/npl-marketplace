@@ -22,6 +22,13 @@ class NplsController < ApplicationController
 
   def show
     @current_user_bids = @npl.bids.where(user: current_user)
+    @bid = Bid.new
+  end
+
+  def npls_user
+    @user = current_user
+    npls = Npl.all
+    @npls = npls.where(user: @user)
   end
 
   private

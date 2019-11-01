@@ -26,7 +26,7 @@
     if @bid.save
       redirect_to npl_path(@npl)
     else
-      render :new
+      redirect_to npl_path(@npl)
     end
   end
 
