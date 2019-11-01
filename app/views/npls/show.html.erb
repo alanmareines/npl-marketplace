@@ -14,7 +14,11 @@
         <p><strong>Documentos</strong></p>
 
         <% if @npl.document.present? %>
-        <%= cl_image_tag "#{@npl.document}.png", :border=>"2px_solid_rgb:6f6b6b", :effect=>"grayscale", :quality=>47, :width=>200, :crop=>"scale" %>
+          <div class="document">
+            <%= link_to @npl.document.url do%>
+              <%=  cl_image_tag @npl.document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% end %>
+          </div>
         <% end %>
 
         <p>Assigned by <strong><%= @npl.user.name %></strong></p>

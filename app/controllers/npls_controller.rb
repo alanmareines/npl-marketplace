@@ -44,7 +44,6 @@ class NplsController < ApplicationController
     #   @npl.save
   end
 
-
   private
 
   def find_npl
