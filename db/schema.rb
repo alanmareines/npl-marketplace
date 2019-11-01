@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_184829) do
+ActiveRecord::Schema.define(version: 2019_10_30_002332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_184829) do
     t.string "name"
     t.string "npl_type"
     t.string "document"
+    t.date "auction_date"
+    t.boolean "auctioned", default: false
     t.index ["user_id"], name: "index_npls_on_user_id"
   end
 
