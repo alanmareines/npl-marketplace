@@ -26,12 +26,17 @@ class NplsController < ApplicationController
 
   def run_auction
     @npl = Npl.find(params[:npl_id])
-    print @npl.name
+    @npl.update(auctioned: true)
+
+    @winner_bid = @npl.bids.order(value: :desc).first
+    @winner_bid.update(winner: true)
+    redirect_to npl_path(@npl)
     # @bids = @npl
     # ActiveRecord
     #   @npl.auctioned = true
     #   @npl.save
   end
+
 
   private
 
