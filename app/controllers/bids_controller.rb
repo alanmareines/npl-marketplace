@@ -45,6 +45,7 @@
     redirect_to bids_path
   end
 
+
   private
 
   def bid_params
