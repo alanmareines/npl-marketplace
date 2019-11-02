@@ -3,7 +3,7 @@
     <%= link_to icon('fas', 'arrow-left'), npls_path, class: "arrow-back mr-3" %>
     <div class="flex-grow-1 d-flex justify-content-around mr-auto">
       <div class="npl-show">
-      
+
         <h3><%= @npl.name %></h3>
         <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
         <p> <strong>Book Value - </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></p>
@@ -12,7 +12,7 @@
         <p> <strong>Collateral Description </strong>- <%= @npl.collateral_description %></p>
         <p> <strong>Minimum Value </strong> - <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></p>
         <br>
-        <p><strong>Documentos</strong></p>
+        <p><strong>Documents</strong></p>
 
         <% if @npl.document.present? %>
           <div class="document">
@@ -26,19 +26,19 @@
 
         <div id="new-bid-form">
           <%= simple_form_for [@npl, @bid] do |f| %>
-          <%= f.input :value, label:false, required:false %>
+          <%= f.input :value, label:false, placeholder: "Want to bid this NPL? Bid here!", required:false %>
           <%= f.submit "Add a bid", class: "btn btn-primary btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
           <% end %>
         </div>
 
       </div>
-      
+
       <% if current_user == @npl.user && @npl.bids.present?%>
         <div id="separator", class="align-self-center"></div>
         <div class="bids-made">
           <h3>Bids already received</h3>
           <ul class="list-group">
-            <% @npl.bids.each do |bid| %>
+            <% @npl.bids.order(value: :desc).each do |bid| %>
               <% unless @npl.auctioned && bid.winner %>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <%= bid.user.name %>
@@ -64,17 +64,17 @@
         <div class="bids-made">
           <h3> Your Bids on this NPL</h3>
           <ul class="list-group">
-            <% @current_user_bids.each do |bid| %>
+            <% @current_user_bids.order(value: :desc).each do |bid| %>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= bid.user.name %>
               <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
-            </li> 
+            </li>
             <% end %>
           </ul>
         </div>
       <% end %>
 
-      
+
     </div>
   </div>
 </div>
