@@ -10,6 +10,7 @@
     <%= f.input :maturity_date, order: [:day, :month, :year]%>
     <%= f.input :min_value, label: 'Minimum Bid Value' %>
     <%= f.input :collateral_description %>
+    <%= f.input :auction_date, order: [:day, :month, :year]%>
     <%= f.input :document %>
     <%= f.input :document_cache, as: :hidden %>
     <%= f.submit "Add NPL", class: "btn btn-primary btn-block btn-lg" %>
