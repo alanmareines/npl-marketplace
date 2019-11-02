@@ -46,7 +46,7 @@ npl_attributes1 = {
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: bradesco,
-    auction_date: Date.new(2019, 11, 02)
+    auction_date: Date.new(2019, 11, 2)
   }
   npl_attributes2 = {
     book_value: 90000,
@@ -57,13 +57,13 @@ npl_attributes1 = {
     name: 'CCB ODB 2',
     npl_type: 'CCB',
     user: itau,
-    auction_date: Date.new(2019, 11, 03)
+    auction_date: Date.new(2019, 11, 3)
   }
 
 npl_attributes3 = {
     book_value: 400000,
     debtor: 'Terra Forte',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 150000,
     name: 'CCB Terra Forte 1',
@@ -75,7 +75,7 @@ npl_attributes3 = {
 npl_attributes4 = {
     book_value: 800000,
     debtor: 'Bom Jesus',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 200000,
     name: 'CCE Bom Jesus 1',
@@ -87,7 +87,7 @@ npl_attributes4 = {
 npl_attributes5 = {
     book_value: 900000,
     debtor: 'Santa Terezinha',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 250000,
     name: 'PPE Santa Terezinha 1',
@@ -99,7 +99,7 @@ npl_attributes5 = {
 npl_attributes6 = {
     book_value: 950000,
     debtor: 'Clealco',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de equipamentos',
     min_value: 200000,
     name: 'Repasse BNDES Clealco 1',
@@ -111,31 +111,31 @@ npl_attributes6 = {
 npl_attributes7 = {
     book_value: 300000,
     debtor: 'Renuka',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'penhor de cana',
     min_value: 30000,
     name: 'CDCA Renuka 1',
     npl_type: 'CDCA',
     user: santander,
-    auction_date: Date.new(2019, 11, 08)
+    auction_date: Date.new(2019, 11, 8)
   }
 
 npl_attributes8 = {
     book_value: 350000,
     debtor: 'Queiroz Galvao',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 220000,
     name: 'Debenture Queiroz Galvao 1',
     npl_type: 'Debenture',
     user: votorantim,
-    auction_date: Date.new(2019, 11, 09)
+    auction_date: Date.new(2019, 11, 9)
   }
 
 npl_attributes9 = {
     book_value: 820000,
     debtor: 'Galvao Engenharia',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Fianca da holding',
     min_value: 180000,
     name: 'Debenture Galvao Engenharia 1',
@@ -147,7 +147,7 @@ npl_attributes9 = {
 npl_attributes9 = {
     book_value: 350000,
     debtor: 'Usina Moreno',
-    maturity_date: Date.new(2019, 03, 15),
+    maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'CF de recebiveis',
     min_value: 180000,
     name: 'CCB Usina Moreno 1',
