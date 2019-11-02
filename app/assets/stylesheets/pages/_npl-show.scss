@@ -74,3 +74,19 @@ li{
   padding: 1rem;
   margin: 1rem;
 }
+
+.bid-winner{
+  background-color: $npl-blue;
+  color:white;
+  a{
+    color: white;
+  }
+}
+
+.npl-aucitoned{
+  color: $npl-blue;
+}
+
+h4{
+  color: $npl-blue;
+}

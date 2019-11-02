@@ -1,0 +1,18 @@
+function refreshForm(innerHTML) {
+  const newBidForm = document.getElementById('bid_value');
+  newBidForm.innerHTML = innerHTML;
+}
+
+function addBid(bidHTML) {
+  const bid = document.getElementByClassName('list-group');
+  bid.insertAdjacentHTML('beforeend', bidHTML);
+}
+
+<% if @user == @npl.user %>
+  <%= j render "shared/flashes", notice: @notice %>  
+<% elsif @bid.errors.any? %>
+  refreshForm('<%= j render "npls/show", npl: @npl %>');
+<% else %>
+  addReview('<%= j render "npls/show", npl: @npl % %>');
+  refreshForm('<%= j render "npls/show", npl: @npl, bid: Bid.new %>');
+<% end %>

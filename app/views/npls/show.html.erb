@@ -3,6 +3,7 @@
     <%= link_to icon('fas', 'arrow-left'), npls_path, class: "arrow-back mr-3" %>
     <div class="flex-grow-1 d-flex justify-content-around mr-auto">
       <div class="npl-show">
+      
         <h3><%= @npl.name %></h3>
         <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
         <p> <strong>Book Value - </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></p>
@@ -38,10 +39,21 @@
           <h3>Bids already received</h3>
           <ul class="list-group">
             <% @npl.bids.each do |bid| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%= bid.user.name %>
-              <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
-            </li>
+              <% unless @npl.auctioned && bid.winner %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= bid.user.name %>
+                <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
+              </li>
+              <% else %>
+                <h3 class="npl-aucitoned"> NPL AUCTIONED!</h3>
+                <div class="text-center">
+                  <h4>Winner</h4>
+                </div>
+                <li class="list-group-item d-flex justify-content-between align-items-center bid-winner">
+                  <%= bid.user.name %>
+                  <%= link_to number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: "."), bid_path(bid) %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
           <%= button_to "Run the auction", npl_run_auction_path(@npl), class: "btn btn-primary btn-block my-4" %>
