@@ -45,7 +45,8 @@ npl_attributes1 = {
     min_value: 15000,
     name: 'CCB ODB 1',
     npl_type: 'CCB',
-    user: bradesco
+    user: bradesco,
+    auction_date: Date.new(2019, 11, 02)
   }
   npl_attributes2 = {
     book_value: 90000,
@@ -55,7 +56,8 @@ npl_attributes1 = {
     min_value: 13000,
     name: 'CCB ODB 2',
     npl_type: 'CCB',
-    user: itau
+    user: itau,
+    auction_date: Date.new(2019, 11, 03)
   }
 
 npl_attributes3 = {
@@ -66,7 +68,8 @@ npl_attributes3 = {
     min_value: 150000,
     name: 'CCB Terra Forte 1',
     npl_type: 'CCB',
-    user: fibra
+    user: fibra,
+    auction_date: Date.new(2019, 11, 04)
   }
 
 npl_attributes4 = {
@@ -77,7 +80,8 @@ npl_attributes4 = {
     min_value: 200000,
     name: 'CCE Bom Jesus 1',
     npl_type: 'CCE',
-    user: abc
+    user: abc,
+    auction_date: Date.new(2019, 11, 05)
   }
 
 npl_attributes5 = {
@@ -88,7 +92,8 @@ npl_attributes5 = {
     min_value: 250000,
     name: 'PPE Santa Terezinha 1',
     npl_type: 'PPE',
-    user: votorantim
+    user: votorantim,
+    auction_date: Date.new(2019, 11, 06)
   }
 
 npl_attributes6 = {
@@ -99,7 +104,8 @@ npl_attributes6 = {
     min_value: 200000,
     name: 'Repasse BNDES Clealco 1',
     npl_type: 'Repasse BNDES',
-    user: bradesco
+    user: bradesco,
+    auction_date: Date.new(2019, 11, 07)
   }
 
 npl_attributes7 = {
@@ -110,7 +116,8 @@ npl_attributes7 = {
     min_value: 30000,
     name: 'CDCA Renuka 1',
     npl_type: 'CDCA',
-    user: santander
+    user: santander,
+    auction_date: Date.new(2019, 11, 08)
   }
 
 npl_attributes8 = {
@@ -121,7 +128,8 @@ npl_attributes8 = {
     min_value: 220000,
     name: 'Debenture Queiroz Galvao 1',
     npl_type: 'Debenture',
-    user: votorantim
+    user: votorantim,
+    auction_date: Date.new(2019, 11, 09)
   }
 
 npl_attributes9 = {
@@ -132,7 +140,8 @@ npl_attributes9 = {
     min_value: 180000,
     name: 'Debenture Galvao Engenharia 1',
     npl_type: 'Debenture',
-    user: abc
+    user: abc,
+    auction_date: Date.new(2019, 11, 10)
   }
 
 npl_attributes9 = {
@@ -143,7 +152,8 @@ npl_attributes9 = {
     min_value: 180000,
     name: 'CCB Usina Moreno 1',
     npl_type: 'CCB',
-    user: itau
+    user: itau,
+    auction_date: Date.new(2019, 11, 11)
   }
 
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
