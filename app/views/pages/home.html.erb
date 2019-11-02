@@ -35,3 +35,33 @@ a<div class="banner">
     </div>
   </div>
 </div>
+  <div class="banner-description">
+    <div class="container">
+      <h2>What is Yield?</h2>
+      <br>
+      <p>Yield is an online marketplace which allows companies, banks and funds to sell their illiquid credit exposures and non-performing loans ("NPLs") on the market through its auction-based online transaction platform to specialized investors.</p>
+    </div>
+  </div>
+<div class="steps">
+  <h3>Performance Highlights</h3>
+  <div class="container">
+    <div class="cards d-flex justify-content-around">
+      <div class="card text-center">
+         <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$",separator: ",", delimiter: ".") %> M </h2>
+         <p>NPLs sold</p>
+      </div>
+      <div class="card text-center">
+         <h2> <%= @npls_sold %></h2>
+         <p> Succesful transactions <br> since inception</p>
+      </div>
+      <div class="card text-center">
+         <h2> <%= @npls_available %></h2>
+         <p> Number of current NPLs available</p>
+      </div>
+      <div class="card text-center">
+         <h2> <%= @users_registered %> </h2>
+         <p> Number of registered users </p>
+      </div>
+    </div>
+  </div>
+</div>
