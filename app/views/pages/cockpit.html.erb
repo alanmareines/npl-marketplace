@@ -1,0 +1,68 @@
+<div class="cockpit">
+  <!-- sidebar -->
+  <div id="sidebar">
+    <%= link_to icon('fas', 'user'), "#", class: "sidebar-icon" %>
+  </div>
+  <!-- content -->
+  <div class="cockpit-content flex-grow-1">
+
+    <!-- cards -->
+    <div class="cockpit-cards py-3">
+
+      <!-- user-info -->
+      <div class="row m-0">
+        <div class="col-xs-12 col-sm-3">
+          <div class="cockpit-card user-info">
+            <h2>PERSONAL INFORMATION</h2>
+            <%= simple_form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs" id="cockpit-form">
+              <%= f.input :name, autofocus: true, required: false %>
+              <%= f.input :cpf_cnpj, label: "CPF/CNPJ", required: false %>
+              <%= f.input :phone, required: false%>
+              <%= f.input :email, required: false %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Update info", class: "btn btn-primary btn-block" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Bids won -->
+        <div class="col-xs-12 col-sm-9">
+          <div class="cockpit-card bids-won">
+           <h2>MY WINNING BIDS</h2>
+         </div>
+       </div>
+     </div>
+
+     <!-- selling NPLs -->
+     <div class="row m-0 mt-3">
+      <div class="col-xs-12 col-sm-6">
+        <div class="cockpit-card npl-selling">
+          <h2>MY NPL OFFERS</h2>
+          <div class="npl-card-selling">
+            <% @npls.each do |npl| %>
+              <h2><%= link_to npl.name, npl_path(npl) %></h2>
+              <ul class="card-text">
+                <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+                <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                <li><strong>Minimum Value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                <li><strong>Collateral:&nbsp;&nbsp;</strong><%= npl.collateral_description %></li>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- open bids in NPLs -->
+      <div class="col-xs-12 col-sm-6">
+        <div class="cockpit-card npl-bidding">
+          <h2>MY OPEN BIDS</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -22,6 +22,13 @@ class NplsController < ApplicationController
 
   def show
     @current_user_bids = @npl.bids.where(user: current_user)
+    @bid = Bid.new
+  end
+
+  def npls_user
+    @user = current_user
+    npls = Npl.all
+    @npls = npls.where(user: @user)
   end
 
   def run_auction
@@ -36,7 +43,6 @@ class NplsController < ApplicationController
     #   @npl.auctioned = true
     #   @npl.save
   end
-
 
   private
 

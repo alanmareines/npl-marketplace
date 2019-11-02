@@ -23,10 +23,12 @@
     @npl = Npl.find(params[:npl_id])
     @bid.npl = @npl
     @bid.user = current_user
-    if @bid.save
+    if current_user == @npl.user
+      redirect_to npl_path(@npl), notice: "You can't bid for your own NPL!"
+    elsif @bid.save
       redirect_to npl_path(@npl)
     else
-      render :new
+      redirect_to npl_path(@npl)
     end
   end
 
