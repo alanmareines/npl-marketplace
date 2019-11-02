@@ -24,11 +24,12 @@
     @bid.npl = @npl
     @bid.user = current_user
     if current_user == @npl.user
-      redirect_to npl_path(@npl), notice: "You can't bid for your own NPL!"
+      redirect_to npl_path(@npl), alert: "You can't bid for your own NPL!"
     elsif @bid.save
-      redirect_to npl_path(@npl)
+      redirect_to npl_path(@npl), notice: "Thanks for bidding!"
     else
-      redirect_to npl_path(@npl)
+      formated_number = view_context.number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")
+      redirect_to npl_path(@npl), alert: "Your bid should be greater then #{formated_number}"
     end
   end
 
