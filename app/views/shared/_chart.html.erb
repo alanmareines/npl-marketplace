@@ -1,0 +1,52 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="height: 280px;"></div>
+
+<script>
+    Highcharts.chart('container', {
+
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                    text: ''
+            },
+
+            yAxis: {
+                    title: {
+                            text: 'R$ - BRL'
+                    }
+            },
+            xAxis:{
+                categories: [
+                'Total Exposition Value',
+                'Total Minimum Value'
+                ],
+                crosshair: true
+            },
+
+            series: [{
+                    name: '<%= user.name %>',
+                    data: [<%= "#{npls.sum(:book_value)}, #{npls.sum(:min_value)}" %>]
+            }],
+
+            responsive: {
+                    rules: [{
+                            condition: {
+                                    maxWidth: 500
+                            },
+                            chartOptions: {
+                                    legend: {
+                                            layout: 'horizontal',
+                                            align: 'center',
+                                            verticalAlign: 'bottom'
+                                    }
+                            }
+                    }]
+            }
+
+    });
+</script>
