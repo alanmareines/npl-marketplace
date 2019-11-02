@@ -10,9 +10,18 @@
   #sidebar{
     background-color:$npl-blue;
     padding:16px;
+    max-width: 4rem;
     .sidebar-icon{
-      font-size:2em;
       color:white;
+    }
+    .user-icon{
+        font-size:2rem;
+      }
+    .pie-chart{
+        font-size:1.6rem;
+      }
+    .wallet{
+      font-size:1.6rem;
     }
   }
 
