@@ -44,6 +44,11 @@ class NplsController < ApplicationController
     #   @npl.save
   end
 
+  def self.user_npl
+    Npl.all.where(user: current_user)
+    .pluck("npls.user.name, sum(npls)")
+  end
+
   private
 
   def find_npl
