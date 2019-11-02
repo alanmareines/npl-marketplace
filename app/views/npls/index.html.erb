@@ -1,19 +1,22 @@
 <div class="container">
   <div class="cards d-flex justify-content-between flex-wrap">
     <% @npls.each do |npl| %>
-    <div class="npl-card mx-0 my-4">
-      <h2><%= link_to npl.name.upcase, npl_path(npl) %></h2>
-        <ul class="card-text">
-        <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
-        <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
-        <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
-        </ul>
-    </div>
+      <% if npl.auctioned == false %>
+        <div class="npl-card mx-0 my-4">
+          <h2><%= link_to npl.name.upcase, npl_path(npl) %></h2>
+            <ul class="card-text">
+            <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+            <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+            <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
+            <li><strong>Auction Date:&nbsp;&nbsp;</strong><%= npl.auction_date %></li>
+            </ul>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
 
 <div class="npl-index-btn">
   <%= link_to 'Start a NPL offer', new_npl_path, class: "btn btn-primary btn-block btn-lg" %>
-</div>  
+</div>
 

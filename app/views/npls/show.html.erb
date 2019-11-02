@@ -12,6 +12,7 @@
         <p> <strong>Collateral Description </strong>- <%= @npl.collateral_description %></p>
         <p> <strong>Minimum Value </strong> - <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></p>
         <br>
+        <p> <strong>Auction Date - </strong><%= @npl.auction_date %></p>
         <p><strong>Documents</strong></p>
 
         <% if @npl.document.present? %>
