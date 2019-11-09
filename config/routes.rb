@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :npls do
     resources :bids, only: [:index, :new, :create]
     post "run_auction", to: "npls#run_auction"
+    resources :due_diligences, except: [:destroy]
   end
   resources :bids, only: [:show]
   

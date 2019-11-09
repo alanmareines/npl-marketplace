@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_005951) do
+ActiveRecord::Schema.define(version: 2019_11_09_140156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,25 @@ ActiveRecord::Schema.define(version: 2019_10_30_005951) do
     t.datetime "updated_at", null: false
     t.index ["npl_id"], name: "index_bids_on_npl_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "due_diligences", force: :cascade do |t|
+    t.boolean "book_value_valid"
+    t.boolean "npl_type_valid"
+    t.boolean "debtor_valid"
+    t.boolean "maturity_date_valid"
+    t.boolean "collateral_description_valid"
+    t.boolean "guarantor_valid"
+    t.bigint "npl_id"
+    t.text "contract_document", default: [], array: true
+    t.text "collateral_document", default: [], array: true
+    t.text "other_document", default: [], array: true
+    t.text "legal_opinion"
+    t.string "api_info"
+    t.boolean "finished"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["npl_id"], name: "index_due_diligences_on_npl_id"
   end
 
   create_table "npls", force: :cascade do |t|
@@ -40,6 +59,9 @@ ActiveRecord::Schema.define(version: 2019_10_30_005951) do
     t.string "document"
     t.date "auction_date"
     t.boolean "auctioned", default: false
+    t.boolean "due_diligence"
+    t.string "guarantor_name"
+    t.string "guarantor_cnpj"
     t.index ["user_id"], name: "index_npls_on_user_id"
   end
 
@@ -60,5 +82,6 @@ ActiveRecord::Schema.define(version: 2019_10_30_005951) do
 
   add_foreign_key "bids", "npls"
   add_foreign_key "bids", "users"
+  add_foreign_key "due_diligences", "npls"
   add_foreign_key "npls", "users"
 end
