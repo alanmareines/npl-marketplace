@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="dd-edit-content">
+    <div class="titles">
+      <h2 style="display:inline">Due Diligence Submission for <h3 style="display:inline"><%= @npl.name %></h3></h2>
+    </div>
+    <div class="divider"></div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="text-center documents">
+          <h3>Credit Contracts</h3>
+           <% @dd.contract_document.each do |document| %>
+            <p><%= document %></p>
+          <% end %>
+          <h3>Collateral Documents</h3>
+          <% @dd.collateral_document.each do |document| %>
+            <%= document %>
+          <% end %>
+          <h3>Other Documents</h3>
+          <% @dd.other_document.each do |document| %>
+            <%= document %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+        <%= simple_form_for(@dd, url: npl_due_diligence_path(@dd), html: { method: :put }) do |f| %>
+          <%= f.input :book_value_valid, label: 'Book Value Check' %>
+          <%= f.input :npl_type_valid, label: 'NPL Type Check' %>
+          <%= f.input :debtor_valid, label: 'Debtor Info Check' %>
+          <%= f.input :maturity_date_valid, label: 'Maturity Date Check' %>
+          <%= f.input :collateral_description_valid, label: 'Collateral Info Check'%>
+          <%= f.input :guarantor_valid, label: 'Guarantor Info Check' %>
+          <%= f.input :legal_opinion %>
+          <%= f.submit "Submit Due Diligence", class: "btn btn-primary btn-block btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+legal_opinion
+api_info
+finished
+created_at
