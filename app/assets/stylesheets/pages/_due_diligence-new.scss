@@ -1,0 +1,29 @@
+.dd-new-content{
+  h2{
+    color:white;
+    text-align: center;
+    font-size:40px;
+  }
+  .dd-subtitle{
+    color: white;
+    font-size:24px;
+    text-align: center;
+    text-decoration: none;
+  }
+  .npl-dd{
+   color: $green;
+   font-size:24px;
+   text-decoration: none;
+   text-align: center;
+ }
+}
+.dd-doc-list{
+  margin: 100px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  width: 70%;
+  width: calc(100%);
+  border-radius: 8px;
+  margin-top:30px;
+}
+

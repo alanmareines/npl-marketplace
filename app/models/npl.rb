@@ -5,6 +5,7 @@ class Npl < ApplicationRecord
 
   def self.collateral_names
     [
+      "Clean",
       "Alienação Fiduciária - Outros",
       "Alienação Fiduciária de Ações",
       "Alienação Fiduciária de Commodities",

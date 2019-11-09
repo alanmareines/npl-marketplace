@@ -1,6 +1,6 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update]
-  before_action :find_npl, only: %i[edit]
+  before_action :find_npl, only: %i[edit new]
 
   def index
     # Só advogados podem ver essa página
