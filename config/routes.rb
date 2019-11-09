@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :due_diligences, except: [:destroy]
   end
   resources :bids, only: [:show]
-  
+
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

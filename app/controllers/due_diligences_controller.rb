@@ -6,6 +6,7 @@ class DueDiligencesController < ApplicationController
   end
 
   def new
+    @npl = Npl.find(params[:npl_id])
     @dd = DueDiligence.new
   end
 
