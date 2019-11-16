@@ -14,6 +14,7 @@ class NplsController < ApplicationController
     @npl = Npl.new(npl_params)
     @npl.user = @user
     if @npl.save
+      # AuctionJob.set(wait_until: @npl.auction_date).perform_later(@npl.id)
       redirect_to npl_path(@npl)
     else
       render :new

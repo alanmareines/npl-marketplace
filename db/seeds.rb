@@ -14,9 +14,9 @@ User.destroy_all
 puts 'seed cleaned!'
 
 puts 'starting seed (User)...'
-alan = User.create!(email: 'alanmareines@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Alan', phone: 99999999)
-marco = User.create!(email: 'macpjesus@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Marco', phone: 99999999)
-felipe = User.create!(email: 'felipegirocha@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Felipe', phone: 99999999)
+alan = User.create!(email: 'alanmareines@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Alan', phone: 99999999, admin: 'true')
+marco = User.create!(email: 'macpjesus@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Marco', phone: 99999999, admin: 'true' )
+felipe = User.create!(email: 'felipegirocha@gmail.com', password: '123123', cpf_cnpj: 11111111111, name: 'Felipe', phone: 99999999, admin: 'true')
 
 bradesco = User.create!(email: 'bradesco@bradesco.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Bradesco', phone: 99999999)
 itau = User.create!(email: 'itau@itau.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Itau', phone: 99999999)
@@ -144,18 +144,6 @@ npl_attributes9 = {
     auction_date: Date.new(2019, 11, 10)
   }
 
-npl_attributes9 = {
-    book_value: 350000,
-    debtor: 'Usina Moreno',
-    maturity_date: Date.new(2019, 3, 15),
-    collateral_description: 'CF de recebiveis',
-    min_value: 180000,
-    name: 'CCB Usina Moreno 1',
-    npl_type: 'CCB',
-    user: itau,
-    auction_date: Date.new(2019, 11, 11)
-  }
-
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
 npl1 = Npl.new(npl_attributes1)
 npl1.remote_document_url = url1
@@ -264,6 +252,48 @@ bid10.npl = npl3
 bid10.user = rcb
 bid10.value = 1000000
 bid10.save!
+
+bid11 = Bid.new
+bid11.npl = npl4
+bid11.user = blackpartners
+bid11.value = 300000
+bid11.save!
+
+bid12 = Bid.new
+bid12.npl = npl5
+bid12.user = mgc
+bid12.value = 280000
+bid12.save!
+
+bid13 = Bid.new
+bid13.npl = npl6
+bid13.user = jive
+bid13.value = 220000
+bid13.save!
+
+bid14 = Bid.new
+bid14.npl = npl7
+bid14.user = enforce
+bid14.value = 33000
+bid14.save!
+
+bid15 = Bid.new
+bid15.npl = npl8
+bid15.user = rcb
+bid15.value = 240000
+bid15.save!
+
+bid16 = Bid.new
+bid16.npl = npl9
+bid16.user = enforce
+bid16.value = 240000
+bid16.save!
+
+bid17 = Bid.new
+bid17.npl = npl9
+bid17.user = jive
+bid17.value = 250000
+bid17.save!
 
 puts 'finished seed (Bids)'
 
