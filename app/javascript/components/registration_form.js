@@ -12,13 +12,15 @@ const toggleTabs = (event) => {
 }
 
 const addingFormEventListners = () => {
-  const nextButton = document.querySelector('#step-btn'); 
-  nextButton.addEventListener('click', toggleTabs);
-  addEventSteps()
+  const nextButton = document.querySelector('#step-btn');
+  if(nextButton){
+    nextButton.addEventListener('click', toggleTabs);
+    addEventSteps();
+  }
 }
 
 const addEventSteps = () => {
-  const steps = document.querySelectorAll(".step")
+  const steps = document.querySelectorAll(".step");
   steps.forEach((step) => {
     step.addEventListener('click', (event) => {
     step.classList.length === 2 ? false : toggleTabs();

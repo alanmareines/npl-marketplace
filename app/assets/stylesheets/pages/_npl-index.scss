@@ -1,21 +1,32 @@
-.npl-card{
+.npl-index{
+  background: linear-gradient(rgba(211,219,226,0.6),rgba(211,219,226,0.6)), url(background-saopaulo.jpg);
+  .page-title{
+    padding: 20px 0;
+    background-color: $npl-blue;
+    color: white;
+    font-weight: 700;
+    letter-spacing: .3rem;
+  }
+  .npl-card{
   display:flex;
   flex-direction: column;
   justify-content: space-between;
   width: calc(100%/3.5);
   padding: 16px;
   margin: 16px 16px;
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 8px;
   h2{
+    line-height: 1.5em;
+    margin-top: -1em;
+    min-width: 100%;
+    background-color: $green;
     text-align:center;
     font-weight:bold;
-    font-size: 32px;
+    z-index: 100;
   }
   a{
-    color:$npl-darkgreen;
+    color:$npl-blue;
     font-size:1.3rem;
   }
   .card-text{
@@ -23,24 +34,36 @@
     margin:0;
     padding:0;
     vertical-align: bottom;
+    .book_value{
+      color: $npl-blue;
+    }
     li{
       display: inline-block;
       font-size:16px;
       line-height: 45px;
+      }
     }
   }
-}
 
-.npl-index-btn{
-  margin-left: -288px;
-  border-radius: 16px;
-  position:fixed;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
-  text-align:center;
-  left:50%;
-  bottom: 20px;
-  width: calc(100%/2.5);
-  .btn{
-    border-radius:16px;
+  .npl-index-btn{
+    .btn{
+      color: $npl-blue;
+      border: 1.5px solid $npl-blue;
+      background-color: white;
+      margin-left: -288px;
+      position:fixed;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      text-align:center;
+      left:50%;
+      bottom: 20px;
+      width: calc(100%/2.5);
+      letter-spacing:0.2em;
+      transition: 0.4s all 0s ease;
+      &:hover{
+        border: 1.5px solid $green;
+        background-color: $green;
+        color:$npl-blue;
+      }
+    }
   }
 }

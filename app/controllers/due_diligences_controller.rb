@@ -32,6 +32,7 @@ class DueDiligencesController < ApplicationController
   end
 
   def update
+    raise
     if @dd.update(dd_full_params)
       redirect_to npl_due_diligence_path(@dd)
     else

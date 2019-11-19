@@ -9,7 +9,7 @@
         <div class="text-center documents">
           <h3>Credit Contracts</h3>
            <% @dd.contract_document.each do |document| %>
-            <p><%= document %></p>
+            <%= document %>
           <% end %>
           <h3>Collateral Documents</h3>
           <% @dd.collateral_document.each do |document| %>
@@ -22,16 +22,7 @@
         </div>
       </div>
       <div class="col">
-        <%= simple_form_for(@dd, url: npl_due_diligence_path(@dd), html: { method: :put }) do |f| %>
-          <%= f.input :book_value_valid, label: 'Book Value Check' %>
-          <%= f.input :npl_type_valid, label: 'NPL Type Check' %>
-          <%= f.input :debtor_valid, label: 'Debtor Info Check' %>
-          <%= f.input :maturity_date_valid, label: 'Maturity Date Check' %>
-          <%= f.input :collateral_description_valid, label: 'Collateral Info Check'%>
-          <%= f.input :guarantor_valid, label: 'Guarantor Info Check' %>
-          <%= f.input :legal_opinion %>
-          <%= f.submit "Submit Due Diligence", class: "btn btn-primary btn-block btn-lg" %>
-        <% end %>
+        <%= render 'shared/form_dd' %>
       </div>
     </div>
   </div>
