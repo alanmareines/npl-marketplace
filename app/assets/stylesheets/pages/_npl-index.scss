@@ -1,5 +1,5 @@
 .npl-index{
-  background: linear-gradient(rgba(211,219,226,0.6),rgba(211,219,226,0.6)), url(background-saopaulo.jpg);
+  background: linear-gradient(rgba(211,219,226,0.6),rgba(211,219,226,0.6)), url(background_saopaulo.jpg);
   .page-title{
     padding: 20px 0;
     background-color: $npl-blue;
@@ -23,7 +23,7 @@
     background-color: $green;
     text-align:center;
     font-weight:bold;
-    z-index: 100;
+    z-index: 10;
   }
   a{
     color:$npl-blue;
@@ -47,6 +47,7 @@
 
   .npl-index-btn{
     .btn{
+      z-index:30;
       color: $npl-blue;
       border: 1.5px solid $npl-blue;
       background-color: white;

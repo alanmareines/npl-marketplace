@@ -2,12 +2,17 @@
   <div class="dd-new-content">
     <h2> Due-Diligence Plataform</h2>
     <p class="dd-subtitle"> Due-Diligence of: <span class="npl-dd"> <%= @npl.name %> </span> </p>
+    <ul id="progressbar">
+      <li class="active">Upload Documents</li>
+      <li>Analizing Documents</li>
+      <li>Due Diligence Finalized</li>
+    </ul>
       <div class="dd-doc-list">
         <%= simple_form_for [@npl, @dd] do |f| %>
           <div class="col-md-6">
-              <tr> <%= f.input :contract_document, as: :file %> </tr>
-              <tr> <%= f.input :collateral_document, as: :file %> </tr>
-              <tr> <%= f.input :other_document, as: :file %> </tr>
+              <tr> <%= f.input :contract_document %> </tr>
+              <tr> <%= f.input :collateral_document %> </tr>
+              <tr> <%= f.input :other_document %> </tr>
           <div>
           <%= f.submit "Add the documents", class: "btn btn-primary btn-block btn-lg" %>
         <% end %>
