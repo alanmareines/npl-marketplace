@@ -3,19 +3,29 @@
     <h2 class="text-center"> AVAILABLE NON-PERFORMING LOANS</h2>
   </div>
   <div class="container">
+    <%= simple_form_for :search, url: npls_path, method: :get do |f| %>
+      <div class="search-form-control form-group d-flex justify-content-between align-items-start">
+        <div class="flex-grow-1">
+          <%= f.input :npl_name, input_html: {value: ""}, label: false, placeholder: "E.x. CCB, CCE, PPE..." %>
+        </div>
+        <button name="button" type="submit" class="btn btn-primary">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
     <div class="cards d-flex justify-content-between flex-wrap">
       <% @npls.each do |npl| %>
-        <% if npl.auctioned == false%>
-          <div class="npl-card mx-0 my-4">
-            <h2><%= link_to npl.name.upcase, npl_path(npl) %></h2>
-              <ul class="card-text">
-                <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
-                <li class="book_value"><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
-                <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
-                <li><strong>Auction Date:&nbsp;&nbsp;</strong><%= npl.auction_date.strftime("%d/%m/%Y") %></li>
-              </ul>
-          </div>
-        <% end %>
+      <% if npl.auctioned == false%>
+      <div class="npl-card mx-0 my-4">
+        <h2 class="hvr-grow-shadow"><%= link_to npl.name.upcase, npl_path(npl) %></h2>
+        <ul class="card-text">
+          <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+          <li class="book_value"><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+          <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
+          <li><strong>Auction Date:&nbsp;&nbsp;</strong><%= npl.auction_date.strftime("%d/%m/%Y") %></li>
+        </ul>
+      </div>
+      <% end %>
       <% end %>
     </div>
   </div>
