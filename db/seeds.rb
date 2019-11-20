@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'cleaning seed...'
+DueDiligence.destroy_all
 Npl.destroy_all
 Bid.destroy_all
 User.destroy_all

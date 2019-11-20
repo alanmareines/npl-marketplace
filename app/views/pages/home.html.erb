@@ -1,12 +1,13 @@
-a<div class="banner">
-  <div class="container">
-    <h1>Welcome to the Yield Digital Platform</h1>
-    <p>Empowering the Brazilian Distressed Credit market.</p>
-    <br>
-    <%= image_tag "yield-banner.svg", class: "image-banner" %>
-    <div class="buttons d-flex justify-content-start">
-      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to "View NPL Offers", npls_path, class: "btn btn-primary btn-lg" %>
+<div class="banner home">
+  <div class="image-banner">
+    <div class="container">
+      <h1>Welcome to the Yield Digital Platform</h1>
+      <p>Empowering the Brazilian Distressed Credit Market.</p>
+      <br>
+      <div class="buttons d-flex justify-content-around">
+        <%= link_to "SIGN UP", new_user_registration_path, class: "btn btn-lg" %>
+        <%= link_to "NPL OFFERS", npls_path, class: "btn btn-lg" %>
+      </div>
     </div>
   </div>
 </div>
@@ -14,35 +15,38 @@ a<div class="banner">
   <div class="cards d-flex justify-content-around">
     <div class="number order1 text-white"><h2>1</h2></div>
     <div class="card">
-      <%= image_tag "user-profile.svg", class: "card-image" %>
-      <br>
+      <div class="card-image">
+        <%= image_tag "user_profile.jpg" %>
+      </div>
       <h3>Submit your user profile!</h3>
       <p>Fill in our form for new users and get the full experience of our Platform.</p>
     </div>
     <div class="number order2 text-white" ><h2>2</h2></div>
     <div class="card">
-      <%= image_tag "user-sell.svg", class: "card-image" %>
-      <br>
-      <h3>Setup your NPL Offers</h3>
+      <div class="card-image">
+        <%= image_tag "user_sell.jpg" %>
+      </div>
+      <h3>Setup and Bid NPL Offers</h3>
       <p>Add essential and additional information for your offerings and enjoy instant biddings.</p>
     </div>
     <div class="number order3 text-white" ><h2>3</h2></div>
     <div class="card">
-      <%= image_tag "user-dashboard.svg", class: "card-image" %>
-      <br>
-      <h3>Control your bids/sells</h3>
+      <div class="card-image">
+        <%= image_tag "user_dashboard.jpg" %>
+      </div>
+      <h3>Control your Bids, Sells and Exposure</h3>
       <p>Enjoy personalized tools that measure your offers and bids as well as other essential information.</p>
     </div>
   </div>
 </div>
-  <div class="banner-description">
+  <div class="yield-description">
     <div class="container">
       <h2>What is Yield?</h2>
       <br>
       <p>Yield is an online marketplace which allows companies, banks and funds to sell their illiquid credit exposures and non-performing loans ("NPLs") on the market through its auction-based online transaction platform to specialized investors.</p>
     </div>
   </div>
-<div class="steps">
+<div class="steps text-center">
   <h3>Performance Highlights</h3>
   <div class="container">
     <div class="cards d-flex justify-content-around">

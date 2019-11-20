@@ -1,0 +1,33 @@
+    
+.dd-edit-content{
+  background-color: #ffff;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 32px;
+}
+
+.titles{
+  text-align: center;
+  h2{
+    color: $npl-blue;
+  }
+  h3{
+    text-shadow: none;
+    color: $npl-darkgreen
+  }
+  margin-bottom: 1.5rem;
+}
+
+.documents{
+  h3{
+    color: $npl-blue
+  }
+  p{
+    color:blue;
+  }
+}
+
+.divider{
+  border: $light-gray 1px solid;
+}
+

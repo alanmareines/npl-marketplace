@@ -1,8 +1,11 @@
+.content{
+  background: linear-gradient(rgba(211,219,226,0.6),rgba(211,219,226,0.6)), url(background_saopaulo.jpg);
+}
 .npl-show-content{
   background-color: #ffff;
   border-radius: 8px;
   padding: .7rem 32px 32px .7rem;
-  margin-bottom:32px;
+  margin:32px 0;
   h3{
     color: $npl-darkgreen;
     margin-top:1rem;
@@ -90,3 +93,9 @@ li{
 h4{
   color: $npl-blue;
 }
+
+.list-group-item{
+    border-left: none;
+    border-right: none;
+  }
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_150622) do
+ActiveRecord::Schema.define(version: 2019_11_20_002955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2019_11_16_150622) do
     t.boolean "collateral_description_valid"
     t.boolean "guarantor_valid"
     t.bigint "npl_id"
-    t.text "contract_document", default: [], array: true
-    t.text "collateral_document", default: [], array: true
-    t.text "other_document", default: [], array: true
+    t.string "contract_document", default: "f"
+    t.string "collateral_document", default: "f"
+    t.string "other_document", default: "f"
     t.text "legal_opinion"
     t.string "api_info"
     t.boolean "finished"

@@ -1,8 +1,9 @@
+<div class="npl-show-mab">
  <div class="container">
   <div class="npl-show-content d-flex justify-content-bewtween">
     <%= link_to icon('fas', 'arrow-left'), npls_path, class: "arrow-back mr-3" %>
     <div class="flex-grow-1 d-flex justify-content-around mr-auto">
-      <div class="npl-show">
+      <div class="npl-show-2">
 
         <h3><%= @npl.name %></h3>
         <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
@@ -27,7 +28,7 @@
 
         <div id="new-bid-form">
           <%= simple_form_for [@npl, @bid] do |f| %>
-          <%= f.input :value, label:false, placeholder: "Want to bid this NPL? Bid here!", required:false %>
+          <%= f.input :value, label:false, placeholder: "Enter your Bid", required:false %>
           <%= f.submit "Add a bid", class: "btn btn-primary btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
           <% end %>
         </div>
