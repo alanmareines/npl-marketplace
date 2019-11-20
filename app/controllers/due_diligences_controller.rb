@@ -1,6 +1,6 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update]
-  before_action :find_npl, only: %i[edit new]
+  before_action :find_npl, only: %i[edit new create]
 
   def index
     # Só advogados podem ver essa página
@@ -16,7 +16,7 @@ class DueDiligencesController < ApplicationController
     @dd = DueDiligence.new(dd_params)
     @dd.npl = @npl
     if @dd.save
-      redirect_to npl_due_diligence_path(@dd)
+      redirect_to npl_due_diligence_path(@npl, @dd)
     else
       render :new
     end
@@ -32,7 +32,6 @@ class DueDiligencesController < ApplicationController
   end
 
   def update
-    raise
     if @dd.update(dd_full_params)
       redirect_to npl_due_diligence_path(@dd)
     else
