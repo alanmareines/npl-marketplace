@@ -15,6 +15,7 @@ class NplsController < ApplicationController
     @npl.user = @user
     if @npl.save
       # AuctionJob.set(wait_until: @npl.auction_date).perform_later(@npl.id)
+      NplMailer.npl_created(@npl).deliver_now
       redirect_to npl_path(@npl)
     else
       render :new
