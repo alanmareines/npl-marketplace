@@ -1,7 +1,7 @@
 <div class="container">
   <div class="npl-new-content">
     <h2>New Non-Performing Loan</h2>
-    <p>NPL offered by: <span class="user-offer"> <%= current_user.name %> </span> </p>
+    <p>NPL OFFERED BY: <span class="user-offer"> <%= current_user.name.upcase %> </span> </p>
     <%= simple_form_for @npl do |f| %>
     <%= f.input :name, label: 'Stressed Credit Name' %>
     <%= f.input :npl_type, label: 'Stressed Asset Type', collection: Npl.npl_type_names  %>
@@ -13,8 +13,7 @@
     <%= f.input :auction_date, order: [:day, :month, :year]%>
     <%= f.input :document %>
     <%= f.input :document_cache, as: :hidden %>
-    <%= f.submit "Add NPL", class: "btn btn-primary btn-block btn-lg" %>
+    <%= f.submit "ADD NPL", class: "btn btn-primary btn-block btn-lg" %>
     <% end %>
   </div>
-
 </div>

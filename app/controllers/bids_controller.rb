@@ -7,6 +7,7 @@
 
   def show
     @bid = Bid.find(params[:id])
+    @npl = @bid.npl
   end
 
   def new
