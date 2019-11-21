@@ -3,6 +3,11 @@ class NplsController < ApplicationController
 
   def index
     @npls = Npl.all
+    @search = params['search']
+    if @search.present?
+      @name = @search['npl_name']
+      @npls = Npl.where('name ILIKE ?', "%#{@name}%")
+    end
   end
 
   def new

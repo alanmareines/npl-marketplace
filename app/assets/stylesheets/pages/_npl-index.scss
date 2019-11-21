@@ -1,5 +1,35 @@
 .npl-index{
   background: linear-gradient(rgba(211,219,226,0.6),rgba(211,219,226,0.6)), url(background_saopaulo.jpg);
+  background-repeat: repeat-y;
+  .search-form-control{
+    margin-top: 1.5rem;
+    position:relative;
+    .form-control:focus {
+      border: 1.5px solid $npl-blue;
+      outline: none !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    #search_npl_name{
+      height: 3.5rem;
+    }
+    .btn{
+      padding: 6px 24px;
+      position:absolute;
+      right: 8px;
+      top: 8px;
+      color: $npl-blue;
+      border: 1.5px solid $npl-blue;
+      background-color: white;
+      &:hover{
+        border: 2px $green solid;
+        background-color: $green;
+        color:$npl-blue;
+      }
+    }
+  }
+
+
+
   .page-title{
     padding: 20px 0;
     background-color: $npl-blue;
@@ -7,6 +37,11 @@
     font-weight: 700;
     letter-spacing: .3rem;
   }
+
+  .cards{
+    margin-top: 0;
+  }
+
   .npl-card{
   display:flex;
   flex-direction: column;
@@ -66,5 +101,23 @@
         color:$npl-blue;
       }
     }
+  }
+
+  .hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+
+  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
   }
 }
