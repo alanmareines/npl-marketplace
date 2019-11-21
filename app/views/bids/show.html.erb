@@ -1,8 +1,17 @@
-<h1> BID details </h1>
-  <p> <%= @bid.user.name %> offered <%= @bid.value %> by <%= @bid.npl.name %> from seller <%= @bid.npl.user.name %> that has a gross book value of <%= @bid.npl.book_value %></p>
-
-
-  <%= link_to 'Voltar para todos NPLs', npls_path, class: "btn btn-primary" %>
+<div class="npl-show-mab">
+ <div class="container">
+  <div class="npl-show-content d-flex justify-content-bewtween">
+    <%= link_to icon('fas', 'arrow-left'), npl_path(@npl), class: "arrow-back mr-3" %>
+    <div class="flex-grow-1 d-flex justify-content-around mr-auto align-items-end">
+      <div class="npl-show-2">
+        <h3 class="bidshow-title text-center"> BID DETAILS </h3>
+        <p class="bidshow"> <strong> <%= @bid.user.name.upcase %> </strong> offered <strong><%= number_to_currency(@bid.value, nit:"R$", separator: ",", delimiter: ".") %></strong> for <%= @bid.npl.name %> assigned by <strong> <%= @bid.npl.user.name.upcase %> </strong> with a gross book value of <strong> <%= number_to_currency(@bid.npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></strong> </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 

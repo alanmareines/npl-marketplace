@@ -3,12 +3,29 @@
   display:flex;
   justify-content: center;
   a{
-  position: inline;
-  margin: 20px;
+    min-width:30%;
+    background-color: white;
+    color: $npl-blue;  
+    position: inline;
+    margin: 20px;
+    border: 2px $npl-blue solid;
+    transition: 0.4s all 0s ease;
+  &:hover{
+    border: 2px $green solid;
+    background-color: $green;
+    color:$npl-blue;
+    }
   }
 }
 
 #new_user{
   margin: 50px auto;
-  border-radius: 8px
+  border-radius: 0px;
+}
+
+.devise-new{
+  h2{
+    text-align:center;
+    color: $npl-blue;
+  }
 }

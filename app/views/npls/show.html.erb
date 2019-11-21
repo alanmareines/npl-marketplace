@@ -1,4 +1,4 @@
-<div class="npl-show-mab">
+ <div class="npl-show-mab">
  <div class="container">
   <div class="npl-show-content d-flex justify-content-bewtween">
     <%= link_to icon('fas', 'arrow-left'), npls_path, class: "arrow-back mr-3" %>
@@ -26,12 +26,18 @@
 
         <p>Assigned by <strong><%= @npl.user.name %></strong></p>
 
-        <div id="new-bid-form">
-          <%= simple_form_for [@npl, @bid] do |f| %>
-          <%= f.input :value, label:false, placeholder: "Enter your Bid", required:false %>
-          <%= f.submit "Add a bid", class: "btn btn-primary btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
-          <% end %>
-        </div>
+        <% if current_user != @npl.user %>
+
+          <div id="new-bid-form">
+            <%= simple_form_for [@npl, @bid] do |f| %>
+            <%= f.input :value, label:false, placeholder: "Enter your Bid", required:false %>
+            <%= f.submit "ADD A BID", class: "btn btn-primary btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
+            <% end %>
+          </div>
+
+        <% else %>
+          <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-primary btn-block dd-btn my-1" %>
+        <% end %>
 
       </div>
 
@@ -75,10 +81,7 @@
           </ul>
         </div>
       <% end %>
-
-
     </div>
   </div>
-</div>
 
 

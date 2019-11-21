@@ -1,9 +1,10 @@
     
 .dd-edit-content{
+
   background-color: #ffff;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 2rem;
-  margin-bottom: 32px;
+  margin: 32px 0;
 }
 
 .titles{
@@ -29,5 +30,6 @@
 
 .divider{
   border: $light-gray 1px solid;
+  margin-bottom:24px;
 }
 
