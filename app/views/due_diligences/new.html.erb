@@ -1,11 +1,11 @@
 <div class="container">
   <div class="dd-new-content">
     <h2> Due-Diligence Plataform</h2>
-    <p class="dd-subtitle"> Due-Diligence of: <span class="npl-dd"> <%= @npl.name %> </span> </p>
+    <p class="dd-subtitle"> <strong>Due-Diligence of:</strong> <span class="npl-dd"> <%= @npl.name %> </span> </p>
     <ul id="progressbar">
-      <li class="active">Upload Documents</li>
-      <li>Analizing Documents</li>
-      <li>Due Diligence Finalized</li>
+      <li class="active1"><strong>Upload Documents</strong></li>
+      <li class="active2"><strong>Analizing Documents</strong></li>
+      <li class="active3"><strong>Due Diligence Finalized</strong></li>
     </ul>
       <div class="dd-doc-list">
         <%= simple_form_for [@npl, @dd] do |f| %>
