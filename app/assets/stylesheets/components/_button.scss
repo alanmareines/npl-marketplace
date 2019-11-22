@@ -10,3 +10,16 @@
 .btn-lg{
   border-radius: 0px;
 }
+
+.btn-npl{
+  border: 2px $npl-blue solid;
+  background-color: white;
+  font-weight:600;
+  letter-spacing: .2em;
+  transition: 0.4s all 0s ease;
+  &:hover{
+    color: $npl-blue;
+    border: 2px $green solid;
+    background-color: $green;
+  }
+}

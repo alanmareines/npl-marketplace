@@ -4,11 +4,11 @@
 
 .dd-boolean{
   background-color: $light-gray;
-  border-radius: 8px;
+  border-radius: 0px;
   min-width: 100%;
   padding: 20px 20px 20px 35px;
   opacity: 0.5;
-  margin-bottom:1.5em;
+  margin-bottom:1em;
   color: #a90202;
   &:hover{
     cursor: pointer;
