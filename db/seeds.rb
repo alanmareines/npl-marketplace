@@ -33,6 +33,7 @@ enforce = User.create!(email: 'enforce@enforce.com.br', password: '123123', cpf_
 rcb = User.create!(email: 'rcb@rcb.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'RCB', phone: 99999999)
 brd = User.create!(email: 'brd@brd.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'BrD', phone: 99999999)
 mgc = User.create!(email: 'mgc@mgc.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'MGC', phone: 99999999)
+pna = User.create!(email: 'pna@pna.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'PNA', phone: 99999999, lawyer: true)
 blackpartners = User.create!(email: 'blackpartners@blackpartners.com.br', password: '123123', cpf_cnpj: 11111111111, name: 'Black Partners', phone: 99999999)
 
 puts 'finished seed (User)!'
