@@ -1,5 +1,6 @@
 <div class="messages">
   <div class="msg_history">
+    
     <% @messages.each do |message| %>
       <% if message.user == current_user %>
         <div class="outgoing_msg">
