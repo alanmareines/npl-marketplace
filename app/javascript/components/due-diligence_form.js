@@ -1,6 +1,3 @@
-const toggleCheckbox = (element) => {
-  element.classList.toggle("active");
-}
 
 const toggleIcon = (element) => {
   element.classList.toggle("far");
@@ -10,14 +7,13 @@ const toggleIcon = (element) => {
 }
 
 const dueDiligenceCheck = () => {
-  const checkboxes = document.querySelectorAll(".dd-boolean");
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('click', () => { toggleCheckbox(checkbox) });
+  const labels = document.querySelectorAll(".form-check-label");
+
+  labels.forEach((label) => {
+    label.addEventListener('click', () => {
+      label.classList.toggle("active");
+    });
   });
-  const icons = document.querySelectorAll(".check-icon");
-  icons.forEach((icon) => {
-    icon.addEventListener('click', () => { toggleIcon(icon) });
-  })
 }
 
 
