@@ -1,0 +1,28 @@
+<style>
+  h1, h2, h3, p {
+font-family: sans-serif;
+  }
+</style>
+
+
+<h1> Congrats <%= @winner_bid.npl.user.name %>, your auction on <%=   @winner_bid.npl.name %> NPL at Yield website was succesful!! </h1>
+
+<p>You are receiving this e-mail to confirm that your auction following NPL was a success:</p>
+
+<ul>
+  <li>NPL Name: <%= @winner_bid.npl.name %></li>
+  <li>NPL Buyer: <%= @winner_bid.user.name %></li>
+  <li>Settlement price: <%= number_to_currency(@winner_bid.value, unit:"R$", separator: ",", delimiter: ".") %></li>
+  <br>
+  <li>Gain above minimun price: <%= number_to_currency(@winner_bid.value - @winner_bid.npl.min_value, unit:"R$", separator: ",", delimiter: ".") %> or <%= (((@winner_bid.value / @winner_bid.npl.min_value) - 1) * 100).round(1) %>% </li>
+</ul>
+
+<p><strong>You will receive an upcoming contact regarding the assigment contract and with the instructions for the payment.</strong></p>
+
+
+<%= link_to "Get back to our website", root_url  %>
+
+
+<p>Kind regards,</p>
+<p>The Yield team</p>
+

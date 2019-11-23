@@ -49,6 +49,9 @@ class NplsController < ApplicationController
 
     @winner_bid = @npl.bids.order(value: :desc).first
     @winner_bid.update(winner: true)
+
+    AuctionMailer.auction_npl_seller(@winner_bid).deliver_now
+    AuctionMailer.auction_npl_winner(@winner_bid).deliver_now
     redirect_to npl_path(@npl)
     # @bids = @npl
     # ActiveRecord

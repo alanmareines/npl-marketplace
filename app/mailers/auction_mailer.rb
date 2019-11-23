@@ -5,9 +5,21 @@ class AuctionMailer < ApplicationMailer
   #
   #   en.auction_mailer.auction_completed.subject
   #
-  def auction_completed
-    @greeting = "Hi"
+  def auction_npl_winner(winner_bid)
+    @winner_bid = winner_bid
 
-    mail to: "to@example.org"
+    mail(
+      to: @winner_bid.user.email,
+      subject: 'You won an auction'
+      )
+  end
+
+  def auction_npl_seller(winner_bid)
+    @winner_bid = winner_bid
+
+    mail(
+      to: @winner_bid.npl.user.email,
+      subject: 'Your NPL auction was succesful'
+      )
   end
 end
