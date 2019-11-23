@@ -75,6 +75,7 @@ img{ max-width:100%;}
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
-  height: 516px;
+  min-height: 250px;
+  max-height: 400px;
   overflow-y: auto;
 }

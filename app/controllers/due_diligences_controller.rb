@@ -25,6 +25,7 @@ class DueDiligencesController < ApplicationController
 
   def show
     # Só o cedente pode ver essa página - precisamos deixar ele alterar os documentos também
+    @messages = @dd.messages.all.order(created_at: :asc)
     @message = Message.new
   end
 
