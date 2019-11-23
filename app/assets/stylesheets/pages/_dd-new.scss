@@ -1,0 +1,82 @@
+.dd-new-content{
+  h2{
+    color:white;
+    text-align: center;
+    font-size:40px;
+  }
+  .dd-subtitle{
+    color: white;
+    font-size:24px;
+    text-align: center;
+    text-decoration: none;
+  }
+  .npl-dd{
+   color: $green;
+   font-size:24px;
+   text-decoration: none;
+   text-align: center;
+ }
+}
+.dd-doc-list{
+  margin: 100px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  width: 70%;
+  width: calc(100%);
+  margin-top:30px;
+}
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  li {
+      list-style-type: none;
+      color: #99a2a8;
+      font-size: 16px;
+      width: calc(100%/3);
+      float: left;
+      position: relative;
+      text-align: center;
+      &:before {
+        content: counter(step);
+        counter-increment: step;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        display: block;
+        background: #eaf0f4;
+        border-radius: 50%;
+        margin: 0 auto 10px auto;
+      }
+      &:after {
+        content: '';
+        width: 100%;
+        height: 10px;
+        background: #eaf0f4;
+        position: absolute;
+        left: -50%;
+        top: 21px;
+        z-index: -1;
+      }
+      &.active1{
+        color: $npl-blue;
+        position: center;
+        &:before, &:after{
+            background: $green;
+            color: white;
+            position: center;
+        }
+      }
+      &.active2{
+        color: $npl-blue;
+        counter-increment: step;
+
+      }
+      &.active3{
+        color: $npl-blue;
+        counter-increment: step - 1;
+      }
+    }
+  }
+  #text{
+    position: center;
+  }
