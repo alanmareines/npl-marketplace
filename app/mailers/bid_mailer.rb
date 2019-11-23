@@ -5,9 +5,21 @@ class BidMailer < ApplicationMailer
   #
   #   en.bid_mailer.bid_posted.subject
   #
-  def bid_posted
-    @greeting = "Hi"
+  def bid_posted(bid)
+    @bid = bid
 
-    mail to: "to@example.org"
+    mail(
+      to: @bid.user.email,
+      subject: 'You posted a bid'
+      )
+  end
+
+  def bid_received(bid)
+    @bid = bid
+
+    mail(
+      to: @bid.npl.user.email,
+      subject: 'You received a bid'
+      )
   end
 end
