@@ -1,7 +1,8 @@
+
 <div class="container">
   <div class="npl-new-content">
     <h2>New Non-Performing Loan</h2>
-    <p>NPL offered by: <span class="user-offer"> <%= current_user.name %> </span> </p>
+    <p>NPL OFFERED BY: <span class="user-offer"> <%= current_user.name.upcase %> </span> </p>
     <%= simple_form_for @npl do |f| %>
     <%= f.input :name, label: 'Stressed Credit Name' %>
     <%= f.input :npl_type, label: 'Stressed Asset Type', collection: Npl.npl_type_names  %>
@@ -13,8 +14,27 @@
     <%= f.input :auction_date, order: [:day, :month, :year]%>
     <%= f.input :document %>
     <%= f.input :document_cache, as: :hidden %>
-    <%= f.submit "Add NPL", class: "btn btn-primary btn-block btn-lg" %>
+    <div class="hidden">
+      <%= f.input :due_diligence, as: :boolean, checked_value: true, unchecked_value: false %>
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Please consider our Offers</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "shared/modal_comparison" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-block btn-lg btn-npl" data-toggle="modal" data-target="#exampleModalCenter">
+    ADD NPL
+    </button>
     <% end %>
   </div>
-
 </div>

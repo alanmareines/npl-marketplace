@@ -1,36 +1,44 @@
-<%= simple_form_for [@npl,@dd], method: 'PUT' do |f| %>
+<form class="edit_due_diligence mt-4" id="edit_due_diligence_11" novalidate="novalidate" action="/npls/11/due_diligences/11" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="SEadjpoMNLEwTMWcGMp5I2eLwdxeQzqcQPPBJdYLnIq16q/4xflWrZkywphKb13nFU7R7CRhnqzMV0Ko8NFD/w==">
 
-  <div class="d-flex flex-column justify-content-around">
-      <input class="hidden" type="checkbox" name="due_diligence[book_value_valid] " id="due_diligence_book_value_valid">
-      <label class= "dd-boolean d-flex align-items-center" for="due_diligence_book_value_valid">
-        <i class="far fa-check-circle check-icon"></i> Book Value
-      </label>
-
-    <input class="hidden" type="checkbox" name="due_diligence[npl_type_valid]" id="due_diligence_npl_type_valid">
-    <label class="form-check-label boolean optional dd-boolean d-flex align-items-center" for="due_diligence_npl_type_valid">
-      <i class="far fa-check-circle check-icon"></i>NPL Type
-    </label>
-
-    <input class="hidden" type="checkbox" name="due_diligence[debtor_valid]" id="due_diligence_debtor_valid">
-    <label class="form-check-label boolean optional dd-boolean d-flex align-items-center" for="due_diligence_debtor_valid">
-      <i class="far fa-check-circle check-icon"></i>Debtor Info
-    </label>
-
-    <input class="hidden" type="checkbox" name="due_diligence[maturity_date_valid]" id="due_diligence_maturity_date_valid">
-    <label class="form-check-label boolean optional dd-boolean d-flex align-items-center" for="due_diligence_maturity_date_valid">
-      <i class="far fa-check-circle check-icon"></i>Maturity Date
-    </label>
-
-    <input class="hidden" type="checkbox" name="due_diligence[collateral_description_valid]" id="due_diligence_collateral_description_valid">
-    <label class="form-check-label boolean optional dd-boolean d-flex align-items-center" for="due_diligence_collateral_description_valid">
-      <i class="far fa-check-circle check-icon"></i>Collateral Info
-    </label>
-
-    <label class="form-check-label boolean optional dd-boolean d-flex align-items-center" for="due_diligence_guarantor_valid">
-      <i class="far fa-check-circle check-icon"></i>Guarantor Info
-    </label>
-    <input name="due_diligence[guarantor_valid]" id="due_diligence_guarantor_valid" type="checkbox" class="hidden">
+  <div class="form-check">
+    <div class="hidden">
+      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[debtor_valid]" id="due_diligence_debtor_valid">
+    </div>
+    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_debtor_valid">Debtor valid</label>
   </div>
-  <%= f.input :legal_opinion %>
-  <%= f.submit "Submit Due Diligence", class: "btn btn-primary btn-block btn-lg" %>
-<% end %> 
+
+
+  <div class="form-check">
+    <div class="hidden">
+      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[npl_type_valid]" id="due_diligence_npl_type_valid">
+    </div>
+    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_npl_type_valid">Npl type valid</label>
+  </div>
+
+  <div class="form-check">
+    <div class="hidden">
+      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[maturity_date_valid]" id="due_diligence_maturity_date_valid">
+    </div>
+    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_maturity_date_valid">Maturity date valid</label>
+  </div>
+
+  <div class="form-check">
+    <div class="hidden">
+      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[collateral_description_valid]" id="due_diligence_collateral_description_valid">
+    </div>
+    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_collateral_description_valid">Collateral description valid</label>
+  </div>
+
+  <div class="form-check">
+    <div class="hidden">
+      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[guarantor_valid]" id="due_diligence_guarantor_valid">
+    </div>
+    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_guarantor_valid">Guarantor valid</label>
+  </div>
+
+  <input type="submit" name="commit" value="SUBMIT DUE DILIGENCE" data-disable-with="SUBMIT DUE DILIGENCE" class="mt-3 btn btn-npl btn-block">
+
+</form>

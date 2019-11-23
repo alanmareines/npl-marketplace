@@ -1,9 +1,16 @@
     
 .dd-edit-content{
   background-color: #ffff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 32px;
+  border-radius: 0px;
+  padding: 2rem 0;
+  margin: 32px 0;
+  h4{
+    font-size:19px;
+    color: $green;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-decoration: underline;
+  }
 }
 
 .titles{
@@ -15,7 +22,7 @@
     text-shadow: none;
     color: $npl-darkgreen
   }
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .documents{
@@ -27,7 +34,9 @@
   }
 }
 
-.divider{
-  border: $light-gray 1px solid;
+#separator-lg{
+  margin: 2rem 0;
+  height: 700px;
+  border-left: 1px solid;
+  border-color: #dfdfdf;
 }
-

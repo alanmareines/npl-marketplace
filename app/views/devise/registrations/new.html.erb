@@ -3,7 +3,7 @@
 <%= f.error_notification %>
 
 <!-- <div class="form-inputs"> -->
-  <div class="tab">
+  <div class="devise-new tab">
     <h2>Contact Information</h2>
     <%= f.input :name, label: 'Full Name or Company Name:',
     placeholder: "Gavin Belson OR Hooli Inc.",
@@ -11,10 +11,10 @@
     <%= f.input :cpf_cnpj, label: "CPF/CNPJ" %>
     <%= f.input :phone,
     placeholder: '12345-1234'%>
-    <p id="step-btn" class="btn btn-primary btn-block">Next</p>
+    <p id="step-btn" class="btn btn-npl btn-block">NEXT</p>
   </div>
 
-  <div class="tab hidden">
+  <div class="devise-new tab hidden">
     <h2>Sign up Information</h2>
     <%= f.input :email,
     placeholder: "gavin.belson@hooli.com",
@@ -27,7 +27,7 @@
     <%= f.input :password_confirmation,
     required: true,
     input_html: { autocomplete: "new-password" } %>
-    <%= f.button :submit, class: "btn btn-primary btn-block" %>
+    <%= f.button :submit, class: "btn btn-npl btn-block", value: "CREATE USER" %>
   </div>
 
 <!-- Passos do Form (current e next/prev): -->

@@ -2,7 +2,7 @@ class NplsController < ApplicationController
   before_action :find_npl, only: %i[edit show]
 
   def index
-    @npls = Npl.all
+    @npls = Npl.all.order(auction_date: :asc)
     @search = params['search']
     if @search.present?
       @name = @search['npl_name']
@@ -21,7 +21,11 @@ class NplsController < ApplicationController
     if @npl.save
       # AuctionJob.set(wait_until: @npl.auction_date).perform_later(@npl.id)
       NplMailer.npl_created(@npl).deliver_now
-      redirect_to npl_path(@npl)
+      if @npl.due_diligence
+        redirect_to new_npl_due_diligence_path(@npl)
+      else
+        redirect_to npl_path(@npl)
+      end
     else
       render :new
     end
@@ -30,6 +34,7 @@ class NplsController < ApplicationController
   def show
     @current_user_bids = @npl.bids.where(user: current_user)
     @bid = Bid.new
+    @dd = DueDiligence.where(npl: @npl).first
   end
 
   def npls_user
@@ -66,6 +71,6 @@ class NplsController < ApplicationController
     params.require(:npl).permit(:name, :book_value, :min_value,
                                 :collateral_description, :debtor,
                                 :maturity_date, :npl_type, :user_id,
-                                :auction_date, :document)
+                                :auction_date, :document, :due_diligence)
   end
 end

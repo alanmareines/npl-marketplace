@@ -9,6 +9,7 @@ class DueDiligencesController < ApplicationController
 
   def new
     # Só o cedente pode ver essa página e incluir os campos de documentos
+    @npl.due_diligence = true
     @dd = DueDiligence.new
   end
 
