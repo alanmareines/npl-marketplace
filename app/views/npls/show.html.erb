@@ -24,19 +24,21 @@
           </div>
         <% end %>
 
-        <p>Assigned by <strong><%= @npl.user.name %></strong></p>
+        <p class="my-4">Assigned by <strong><%= @npl.user.name %></strong></p>
 
         <% if current_user != @npl.user %>
 
           <div id="new-bid-form">
             <%= simple_form_for [@npl, @bid] do |f| %>
             <%= f.input :value, label:false, placeholder: "Enter your Bid", required:false %>
-            <%= f.submit "ADD A BID", class: "btn btn-primary btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
+            <%= f.submit "ADD A BID", class: "btn btn-npl btn-block my-1", data: { confirm: 'Please confirm your bid' } %>
             <% end %>
           </div>
 
+        <% elsif @npl.due_diligence %>
+          <%= link_to "Check Due-Diligence", npl_due_diligence_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% else %>
-          <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-primary btn-block dd-btn my-1" %>
+          <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% end %>
 
       </div>
@@ -64,7 +66,7 @@
               <% end %>
             <% end %>
           </ul>
-          <%= button_to "Run the auction", npl_run_auction_path(@npl), class: "btn btn-primary btn-block my-4" %>
+          <%= button_to "Run the auction", npl_run_auction_path(@npl), class: "btn btn-npl btn-block my-4" %>
         </div>
 
         <% elsif @current_user_bids.present? %>

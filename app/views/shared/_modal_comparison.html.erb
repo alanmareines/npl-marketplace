@@ -1,5 +1,4 @@
 <div class="comparison">
-
   <table>
     <thead>
       <tr>
@@ -83,7 +82,7 @@
       </tr>
     </tbody>
   </table>
-  <%= link_to "GET THE FULL YIELD EXPERIENCE", npls_path(@npl), class: "btn btn-primary btn-block" %>
 
-  <%= link_to "or continue with Basic Plan", npls_path(@npl), class: "basic" %>
+  <input type="submit" name="commit" value="GET THE FULL YIELD EXPERIENCE" class="btn btn-npl btn-block" data-disable-with="GET THE FULL YIELD EXPERIENCE" id="due-diligence-btn">
+  <a class="basic" href="javascript:{}" onclick="document.getElementById('new_npl').submit();">or continue with Basic Plan</a>
 </div>

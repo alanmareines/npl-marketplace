@@ -3,15 +3,52 @@
     <div class="titles">
       <h2 style="display:inline">Due Diligence Submission for <h3 style="display:inline"><%= @npl.name %></h3></h2>
     </div>
-    <div class="divider"></div>
     <div class="row justify-content-center">
-      <div class="col">
-        <div class="text-center documents">
-          
+      <div class="col-md-4">
+        <div class="text-center d-flex flex-column justify-content-around">
+          <h4 class="text-center">CONTRACT DOCUMENTS</h4>
+          <div class="dd-documents document">
+            <%= link_to @dd.contract_document.url do%>
+              <%=  cl_image_tag @dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% end %>
+          </div>
+          <h4 class="text-center">COLLATERAL DOCUMENTS</h4>
+          <div class="dd-documents document">
+            <%= link_to @dd.collateral_document.url do%>
+              <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% end %>
+          </div>
+          <h4 class="text-center">OTHER DOCUMENTS</h4>
+          <div class="dd-documents document">
+            <%= link_to @dd.other_document.url do%>
+              <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="col">
+
+      <div id="separator-lg"></div>
+
+      <div class="col-md-7 ml-3">
+        <h4 class="text-center">CHECK-LIST</h4>
         <%= render 'shared/form_dd' %>
+
+          <div class="dd-chat">
+            <h3 class="text-center">Message Board</h3>
+            <%= render 'messages/message' %>
+          
+            <%= simple_form_for [@npl, @dd, @message] do |f| %>
+              <div class="message-form form-group d-flex justify-content-between align-items-start">
+                <div class="message-form-text flex-grow-1">
+                  <%= f.input :content, label: false, placeholder: 'Type a message' %>
+                </div>
+                <button name="button" type="submit" class="btn message-form-submit">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+              </div>
+            <% end %>
+
+          </div>
       </div>
     </div>
   </div>

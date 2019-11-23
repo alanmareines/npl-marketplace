@@ -1,6 +1,6 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update]
-  before_action :find_npl, only: %i[edit new create]
+  before_action :find_npl, only: %i[edit new create show]
 
   def index
     # Só advogados podem ver essa página
@@ -9,6 +9,7 @@ class DueDiligencesController < ApplicationController
 
   def new
     # Só o cedente pode ver essa página e incluir os campos de documentos
+    @npl.due_diligence = true
     @dd = DueDiligence.new
   end
 
@@ -24,11 +25,13 @@ class DueDiligencesController < ApplicationController
 
   def show
     # Só o cedente pode ver essa página - precisamos deixar ele alterar os documentos também
-    @npl = @dd.npl
+    @message = Message.new
   end
 
   def edit
     # Só advogados podem ver essa página
+    @messages = @dd.messages.all.order(created_at: :asc)
+    @message = Message.new
   end
 
   def update

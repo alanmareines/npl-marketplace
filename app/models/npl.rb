@@ -2,6 +2,13 @@ class Npl < ApplicationRecord
   belongs_to :user
   has_many :bids, dependent: :destroy
   mount_uploader :document, DocumentUploader
+  validates :book_value, presence: true
+  validates :debtor, presence: true
+  validates :maturity_date, presence: true
+  validates :collateral_description, presence: true
+  validates :min_value, presence: true
+  validates :name, presence: true
+  validates :npl_type, presence: true
 
   def self.collateral_names
     [

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_002955) do
+ActiveRecord::Schema.define(version: 2019_11_22_224401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2019_11_20_002955) do
     t.index ["npl_id"], name: "index_due_diligences_on_npl_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "due_diligence_id"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_diligence_id"], name: "index_messages_on_due_diligence_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "npls", force: :cascade do |t|
     t.float "book_value"
     t.string "debtor"
@@ -65,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_002955) do
     t.string "document"
     t.date "auction_date"
     t.boolean "auctioned", default: false
-    t.boolean "due_diligence"
+    t.boolean "due_diligence", default: false
     t.string "guarantor_name"
     t.string "guarantor_cnpj"
     t.index ["user_id"], name: "index_npls_on_user_id"
@@ -92,5 +102,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_002955) do
   add_foreign_key "bids", "npls"
   add_foreign_key "bids", "users"
   add_foreign_key "due_diligences", "npls"
+  add_foreign_key "messages", "due_diligences"
+  add_foreign_key "messages", "users"
   add_foreign_key "npls", "users"
 end

@@ -118,18 +118,6 @@
   color:#202020;
 }
 
-.comparison .btn{
-  border: 2px $npl-blue solid;
-  background-color: white;
-  font-weight:600;
-  letter-spacing: .2em;
-  transition: 0.4s all 0s ease;
-  &:hover{
-    border: 2px $green solid;
-    background-color: $green;
-  }
-}
-
 .basic{
   color: gray;
   font-size:15px;
