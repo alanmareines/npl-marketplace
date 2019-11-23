@@ -1,39 +1,9 @@
-  <div class="form-check">
-    <div class="hidden">
-      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[debtor_valid]" id="due_diligence_debtor_valid">
-    </div>
-    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_debtor_valid">Debtor valid</label>
-  </div>
-
-
-  <div class="form-check">
-    <div class="hidden">
-      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[npl_type_valid]" id="due_diligence_npl_type_valid">
-    </div>
-    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_npl_type_valid">Npl type valid</label>
-  </div>
-
-  <div class="form-check">
-    <div class="hidden">
-      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[maturity_date_valid]" id="due_diligence_maturity_date_valid">
-    </div>
-    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_maturity_date_valid">Maturity date valid</label>
-  </div>
-
-  <div class="form-check">
-    <div class="hidden">
-      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[collateral_description_valid]" id="due_diligence_collateral_description_valid">
-    </div>
-    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_collateral_description_valid">Collateral description valid</label>
-  </div>
-
-  <div class="form-check">
-    <div class="hidden">
-      <input class="form-check-input is-valid boolean optional" type="checkbox" value="1" name="due_diligence[guarantor_valid]" id="due_diligence_guarantor_valid">
-    </div>
-    <label class="form-check-label boolean optional dd-boolean" for="due_diligence_guarantor_valid">Guarantor valid</label>
-  </div>
-
-  <input type="submit" name="commit" value="SUBMIT DUE DILIGENCE" data-disable-with="SUBMIT DUE DILIGENCE" class="mt-3 btn btn-npl btn-block">
-
-</form>
+<div class="form-dd">
+  <%= simple_form_for [@npl, @dd] do |f|%>
+    <%= f.input :debtor_valid, as: :boolean %>
+    <%= f.input :npl_type_valid, as: :boolean %>
+    <%= f.input :maturity_date_valid, as: :boolean %>
+    <%= f.input :collateral_description_valid, as: :boolean %>
+    <%= f.input :guarantor_valid, as: :boolean %>
+  <% end %>
+</div>
