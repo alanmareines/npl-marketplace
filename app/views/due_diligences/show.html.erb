@@ -1,24 +1,53 @@
 \<div class="container">
   <div class="dd-new-content">
     <h2> Due-Diligence Plataform</h2>
-    <p class="dd-subtitle"> Due-Diligence of: <span class="npl-dd"> <%= @npl.name %> </span> </p>
-    <ul id="progressbar">
-      <li class="active">Upload Documents</li>
-      <li>Analizing Documents</li>
-      <li>Due Diligence Finalized</li>
+    <p class="dd-subtitle"> <strong> Due-Diligence of: </strong> <span class="npl-dd"> <%= @npl.name %> </span> </p>
+    <ul id="progressbar2">
+      <li class="active1"> <strong class="test">Upload Documents</strong></li>
+      <li class="active2"> <strong class="test">Analizing Documents</strong></li>
+      <li class="active3"> <strong >Due Diligence Finalized</strong></li>
     </ul>
       <div class="dd-doc-list">
-        <div class="col-md-6">
-          <%= @dd.contract_document.url do%>
-            <%=  cl_image_tag(@dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale") %>
-          <% end %>
-          <%= link_to @dd.collateral_document.url do%>
-            <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
-          <% end %>
-          <%= link_to @dd.other_document.url do%>
-            <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
-          <% end %>
-        </div>
+        <div>
+          <!-- <div class="js-navigation-item" aria-selected="false"> -->
+
+            <!-- <tr class="contract"> -->
+          <table>
+            <thead>
+                <th><a class="js-navigation-open" title="app">Contract Document</a></th>
+                <th><a class="js-navigation-open" title="app">Collateral Document</a></th>
+                <th><a class="js-navigation-open" title="app">Other Documents</a></th>
+              </tr>
+
+            <tbody>
+              <tr class="css-truncate css-truncate-target">
+                <td> <%= link_to @dd.contract_document.url do%>
+                    <%=  cl_image_tag @dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+                  <% end %>
+                </td>
+
+                <td><%= link_to @dd.collateral_document.url do%>
+                  <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+                  <% end %>
+                </td>
+
+                <td><%= link_to @dd.other_document.url do%>
+                  <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+
+            <!-- <tr class="collateral"> -->
+            <tr>
+            </tr>
+
+            <!-- <tr class="other"> -->
+              <tr> <span class="css-truncate css-truncate-target">
+              </tr>
+            </thead>
+          </table>  <!-- </div> -->
+          </div>
       </div>
   </div>
 </div>
