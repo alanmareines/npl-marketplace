@@ -40,3 +40,23 @@
   border-left: 1px solid;
   border-color: #dfdfdf;
 }
+
+.message-form{
+  margin-top: 1.5rem;
+  position:relative;
+  &:focus {
+    border: 1.5px solid $npl-blue;
+    outline: none !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+}
+
+.message-form-submit{
+  text-decoration:none;
+  font-size:2rem;
+  margin:0;
+  color: $npl-blue;
+  &:hover{
+    color:$green;
+  }
+}

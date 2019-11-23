@@ -24,13 +24,31 @@
               <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
             <% end %>
           </div>
-
         </div>
       </div>
+
       <div id="separator-lg"></div>
+
       <div class="col-md-7 ml-3">
         <h4 class="text-center">CHECK-LIST</h4>
         <%= render 'shared/form_dd' %>
+
+          <div class="dd-chat">
+            <h3 class="text-center">Message Board</h3>
+            <%= render 'messages/message' %>
+          
+            <%= simple_form_for [@npl, @dd, @message] do |f| %>
+              <div class="message-form form-group d-flex justify-content-between align-items-start">
+                <div class="message-form-text flex-grow-1">
+                  <%= f.input :content, label: false, placeholder: 'Type a message' %>
+                </div>
+                <button name="button" type="submit" class="btn message-form-submit">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+              </div>
+            <% end %>
+
+          </div>
       </div>
     </div>
   </div>

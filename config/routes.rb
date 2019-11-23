@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/cockpit', to: 'pages#cockpit', as: 'user_cockpit'
   resources :npls do
-    resources :bids, only: [:index, :new, :create]
+    resources :bids, only: %i[index new create]
     post "run_auction", to: "npls#run_auction"
-    resources :due_diligences, except: [:destroy]
+    resources :due_diligences, except: [:destroy] do
+      resources :messages, only: %i[create]
+    end
   end
   resources :bids, only: [:show]
 
