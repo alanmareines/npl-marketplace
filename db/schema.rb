@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_025503) do
+ActiveRecord::Schema.define(version: 2019_11_22_224401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2019_11_22_025503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["npl_id"], name: "index_due_diligences_on_npl_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "due_diligence_id"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_diligence_id"], name: "index_messages_on_due_diligence_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "npls", force: :cascade do |t|
@@ -86,5 +96,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_025503) do
   add_foreign_key "bids", "npls"
   add_foreign_key "bids", "users"
   add_foreign_key "due_diligences", "npls"
+  add_foreign_key "messages", "due_diligences"
+  add_foreign_key "messages", "users"
   add_foreign_key "npls", "users"
 end
