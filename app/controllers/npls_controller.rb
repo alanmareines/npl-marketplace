@@ -20,7 +20,9 @@ class NplsController < ApplicationController
     @npl.user = @user
     if @npl.save
       # AuctionJob.set(wait_until: @npl.auction_date).perform_later(@npl.id)
+      ###########
       NplMailer.npl_created(@npl).deliver_now
+      ###########
       if @npl.due_diligence
         redirect_to new_npl_due_diligence_path(@npl)
       else
@@ -49,9 +51,10 @@ class NplsController < ApplicationController
 
     @winner_bid = @npl.bids.order(value: :desc).first
     @winner_bid.update(winner: true)
-
-    AuctionMailer.auction_npl_seller(@winner_bid).deliver_now
-    AuctionMailer.auction_npl_winner(@winner_bid).deliver_now
+    ###########
+    AuctionMailer.auction_npl_seller(@winner_bid).deliver_later
+    AuctionMailer.auction_npl_winner(@winner_bid).deliver_later
+    ###########
     redirect_to npl_path(@npl)
     # @bids = @npl
     # ActiveRecord

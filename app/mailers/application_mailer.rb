@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'yield@yield.com'
+  default from: 'yieldservicing@gmail.com'
 
   layout 'mailer'
 end

@@ -18,7 +18,7 @@
 
         <% if @npl.document.present? %>
           <div class="document">
-            <%= link_to @npl.document.url do%>
+            <%= link_to @npl.document.url, target: '_blank' do%>
               <%=  cl_image_tag @npl.document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
             <% end %>
           </div>
@@ -36,7 +36,7 @@
           </div>
 
         <% elsif @npl.due_diligence %>
-          <%= link_to "Check Due-Diligence", npl_due_diligence_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
+          <%= link_to "CHECK DUE-DILIGENCE", npl_due_diligence_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% else %>
           <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% end %>
@@ -66,7 +66,7 @@
               <% end %>
             <% end %>
           </ul>
-          <%= button_to "Run the auction", npl_run_auction_path(@npl), class: "btn btn-npl btn-block my-4" %>
+          <%= button_to "RUN THE AUCTION", npl_run_auction_path(@npl), class: "btn btn-npl btn-block my-4" %>
         </div>
 
         <% elsif @current_user_bids.present? %>
@@ -85,5 +85,8 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<%= render 'shared/footer' %>
 
 

@@ -1,0 +1,17 @@
+<div class="npl-show-mab">
+  <div class="container">
+    <div class="npl-show-content text-center d-flex flex-column">
+      <%= image_tag "logo_dark.svg", id: "logo_404" %>
+      <div class="error-content">
+        <h3><em>Unfortunately we can't load this page...</em></h3>
+        <p><em>Please check if you have the necessary credentials to acess the requested page</em></p>
+      </div>
+      <div class="mx-4">
+        <%= link_to "BACK TO HOME", root_path, class: "btn btn-npl btn-lg btn-block" %>
+      </div>
+    </div>  
+  </div>
+</div>
+</div>
+
+<%= render 'shared/footer' %>
