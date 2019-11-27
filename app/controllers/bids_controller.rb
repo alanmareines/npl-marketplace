@@ -27,10 +27,10 @@
     if current_user == @npl.user
       redirect_to npl_path(@npl), alert: "You can't bid for your own NPL!"
     elsif @bid.save
-      # sending email to the owner of the NPL about the bid
+      # sending email to the owner of the NPL and to the bidder about the bid
       ##########
-      # BidMailer.bid_posted(@bid).deliver_now
-      # BidMailer.bid_received(@bid).deliver_now
+      BidMailer.bid_posted(@bid).deliver_later
+      BidMailer.bid_received(@bid).deliver_later
       ##########
       redirect_to npl_path(@npl), notice: "Thanks for bidding!"
     else

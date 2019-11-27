@@ -12,12 +12,12 @@ class User < ApplicationRecord
 
   # send an welcome email after sucessful sign-up
   #########
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
   #########
   private
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
+    UserMailer.with(user: self).welcome.deliver_later
   end
 
 end
