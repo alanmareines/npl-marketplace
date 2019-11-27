@@ -1,12 +1,16 @@
+.dd-cards{
+  padding:2rem;
+}
+
 .dd-card{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 16px;
-  margin: 16px 16px;
+  margin: 2rem 8px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: calc(100%/3);
+  width: calc(100%/4);
   h2{
     line-height: 1.5em;
     margin-top: -1em;

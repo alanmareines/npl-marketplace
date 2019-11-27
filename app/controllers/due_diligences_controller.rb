@@ -1,8 +1,8 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update finish]
   before_action :find_npl, only: %i[edit new create update show finish]
-  before_action :lawyer?, only: %i[index edit finish]
-  before_action :npl_user?, only: %i[new create show finish]
+  before_action :lawyer?, only: %i[index edit]
+  before_action :npl_user?, only: %i[new create show]
 
   def index
     # Só advogados podem ver essa página
@@ -50,6 +50,9 @@ class DueDiligencesController < ApplicationController
   end
 
   def finish
+    unless current_user.lawyer? || current_user == @npl.user
+      redirect_to page_error_path
+    end
   end
 
   private

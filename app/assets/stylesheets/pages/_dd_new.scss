@@ -23,14 +23,25 @@
  }
 }
 
-.dd-doc-list{
-  margin: 100px auto;
+.dd-doc-list-new{
   background-color: #ffffff;
   padding: 20px;
-  width: 70%;
   width: calc(100%);
-  margin-top:30px;
+  margin: 2rem auto;
   font-size: 18px;
+  text-align:center;
+  .dd-form-new{
+    margin-bottom: 1rem;
+    form{
+      display:inline-block;
+      text-align:center;
+    }
+    label{
+      color: $npl-blue;
+      font-weight:600;
+      letter-spacing:0.1rem;
+    }
+  }
 }
 
 #progressbar {

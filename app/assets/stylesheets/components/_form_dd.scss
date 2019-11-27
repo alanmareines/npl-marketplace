@@ -7,6 +7,8 @@
   display:none;
   }
   .form-check-label{
+    flex-grow: 1;
+    width:100%;
     text-align: center;
     background-color: transparent;
     border: 2px #a90202 solid;
@@ -24,8 +26,7 @@
 }
 
 .active{
-  color: $npl-lightgreen !important;
-  background-color: rgba(5, 64, 62, 0.3) !important;
+  color: rgb(5, 64, 62) !important;
   border-color: rgb(5, 64, 62) !important;
   opacity:1;
 }

@@ -1,13 +1,13 @@
 <div class="dd-new-content">
   <h2> Due-Diligence Plataform</h2>
-  <p class="dd-subtitle"> <em> Due-Diligence of: <span class="npl-dd"> <%= @npl.name %> </span> </em></p>
+  <p class="dd-subtitle"> <em> Due-Diligence for: <span class="npl-dd"> <%= @npl.name %> </span> </em></p>
   <ul id="progressbar2">
     <li class="active1"> <strong class="test">Upload Documents</strong></li>
     <li class="active2"> <strong class="test">Analyzing Documents</strong></li>
-    <li class="active3"> <strong >Due Diligence Finalized</strong></li>
+    <li class="active3"> <strong >Finalized Due Diligence</strong></li>
   </ul>
     <div class="container">
-      <div class="dd-doc-list">
+      <div class="dd-doc-list-show page-content">
         <div class="documents d-flex justify-content-between mx-3">
           <div class="document">
             <h4>CONTRACT DOCUMENT</h4>
@@ -18,9 +18,8 @@
             <% else %>
               <%= simple_form_for [@npl, @dd] do |f| %>
                 <%= f.input :contract_document, label: "Choose File" %>
-                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl"%>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
               <% end %>
-              <p><em>Awaiting</em> &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i></p>
             <% end %>
           </div>
             
@@ -33,9 +32,8 @@
             <% else %>
               <%= simple_form_for [@npl, @dd] do |f| %>
                 <%= f.input :collateral_document, label: "Choose File" %>
-                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl"%>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
               <% end %>
-              <p><em>Awaiting</em> &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i></p>
             <% end %>
           </div>
 
@@ -48,7 +46,7 @@
             <% else %>
               <%= simple_form_for [@npl, @dd] do |f| %>
                 <%= f.input :other_document, label: "Choose File"%>
-                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl"%>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
               <% end %>
             <% end %>
           </div>

@@ -1,6 +1,7 @@
 class NplsController < ApplicationController
   before_action :find_npl, only: %i[edit show]
-  before_action :lawyer?
+  before_action :log_in, except: %i[index]
+  before_action :lawyer?, except: %i[index]
 
   def index
     @npls = Npl.all.order(auction_date: :asc)
@@ -70,8 +71,14 @@ class NplsController < ApplicationController
 
   private
 
+  def log_in
+    unless current_user
+      redirect_to page_error_path
+    end
+  end
+
   def lawyer?
-    if current_user.lawyer?
+    if current_user.lawyer
       redirect_to page_error_path
     end
   end
