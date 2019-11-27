@@ -1,7 +1,7 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update finish]
-  before_action :find_npl, only: %i[edit new create show finish]
-  before_action :lawyer?, only: %i[index edit update finish]
+  before_action :find_npl, only: %i[edit new create update show finish]
+  before_action :lawyer?, only: %i[index edit finish]
   before_action :npl_user?, only: %i[new create show finish]
 
   def index
@@ -39,7 +39,10 @@ class DueDiligencesController < ApplicationController
   end
 
   def update
-    if @dd.update(dd_full_params)
+    if current_user == @npl.user
+      @dd.update(dd_params)
+      redirect_to npl_due_diligence_path(@npl, @dd)
+    elsif @dd.update(dd_full_params)
       redirect_to npl_due_diligence_finish_path(@npl, @dd)
     else
       render :edit
