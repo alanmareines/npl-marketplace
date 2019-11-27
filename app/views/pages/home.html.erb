@@ -8,7 +8,7 @@
         <% if current_user && current_user.lawyer %>
           <%= link_to "AVAILABLE DUE DILIGENCES", due_diligences_path, class: "btn btn-lg" %>
         <% elsif current_user %>
-          <%= link_to "NPL OFFERS", npls_path, class: "btn btn-lg" %>
+          <%= link_to "NEW NPL OFFER", new_npl_path, class: "btn btn-lg" %>
         <% else %>
           <%= link_to "SIGN UP", new_user_registration_path, class: "btn btn-lg" %>
         <% end %>
