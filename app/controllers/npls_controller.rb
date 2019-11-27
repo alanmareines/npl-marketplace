@@ -1,5 +1,6 @@
 class NplsController < ApplicationController
   before_action :find_npl, only: %i[edit show]
+  before_action :lawyer?
 
   def index
     @npls = Npl.all.order(auction_date: :asc)
@@ -68,6 +69,12 @@ class NplsController < ApplicationController
   end
 
   private
+
+  def lawyer?
+    if current_user.lawyer?
+      redirect_to page_error_path
+    end
+  end
 
   def find_npl
     @npl = Npl.find(params[:id])

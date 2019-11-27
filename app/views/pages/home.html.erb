@@ -5,12 +5,15 @@
       <p>Empowering the Brazilian Distressed Credit Market.</p>
       <br>
       <div class="buttons d-flex justify-content-around">
-        <% if current_user %>
+        <% if current_user && current_user.lawyer %>
+          <%= link_to "VIEW ALL AVAILABLE DUE DILIGENCES", due_diligences_path, class: "btn btn-lg" %>
+        <% elsif current_user %>
           <%= link_to "NEW NPL OFFER", new_npl_path, class: "btn btn-lg" %>
+          <%= link_to "NPL OFFERS", npls_path, class: "btn btn-lg" %>
         <% else %>
           <%= link_to "SIGN UP", new_user_registration_path, class: "btn btn-lg" %>
+          <%= link_to "NPL OFFERS", npls_path, class: "btn btn-lg" %>
         <% end %>
-        <%= link_to "NPL OFFERS", npls_path, class: "btn btn-lg" %>
       </div>
     </div>
   </div>
