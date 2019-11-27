@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_194850) do
+ActiveRecord::Schema.define(version: 2019_11_27_203928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_194850) do
     t.string "other_document"
     t.text "legal_opinion"
     t.string "api_info"
-    t.boolean "finished"
+    t.boolean "finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["npl_id"], name: "index_due_diligences_on_npl_id"

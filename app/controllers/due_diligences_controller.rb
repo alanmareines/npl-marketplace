@@ -43,7 +43,11 @@ class DueDiligencesController < ApplicationController
       @dd.update(dd_params)
       redirect_to npl_due_diligence_path(@npl, @dd)
     elsif @dd.update(dd_full_params)
-      redirect_to npl_due_diligence_finish_path(@npl, @dd)
+      if @dd.finished
+        redirect_to npl_due_diligence_finish_path(@npl, @dd)
+      else
+        redirect_to edit_npl_due_diligence_path(@npl, @dd), notice: "Progress Saved!"
+      end
     else
       render :edit
     end
@@ -70,7 +74,7 @@ class DueDiligencesController < ApplicationController
   end
 
   def dd_full_params
-    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl)
+    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl, :finished)
   end
 
   def lawyer?

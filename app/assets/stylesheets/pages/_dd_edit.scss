@@ -2,8 +2,9 @@
 .dd-edit-content{
   background-color: #ffff;
   border-radius: 0px;
-  padding: 2rem 0;
   margin: 32px 0;
+  padding: 1rem;
+  padding-bottom:2rem;
   h4{
     font-size:19px;
     color: $npl-blue;
@@ -11,18 +12,6 @@
     letter-spacing: 0.1rem;
     margin-bottom: 1rem;
   }
-}
-
-.titles{
-  text-align: center;
-  h2{
-    color: $npl-blue;
-  }
-  h3{
-    text-shadow: none;
-    color: $npl-darkgreen
-  }
-  margin-bottom: 2rem;
 }
 
 .documents{
@@ -59,4 +48,17 @@
   &:hover{
     color:$green;
   }
+}
+
+.btn-dd-finish:hover{  
+  color:$green;
+  background-color:$npl-blue;
+}
+
+.fa-save{
+  font-size: 24px;
+}
+
+.fa-check-square{
+  font-size: 20px;
 }
