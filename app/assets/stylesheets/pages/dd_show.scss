@@ -60,8 +60,13 @@
       }
       &.active3{
         color: $npl-blue;
-        counter-increment: step - 1;
-        font-weight:600;
+        position: center;
+          &:before, &:after {
+          background: $green;
+          color: $npl-blue;
+          position: center;
+          font-weight:600;
+        }
       }
     }
   }

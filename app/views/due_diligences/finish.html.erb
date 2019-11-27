@@ -1,8 +1,22 @@
+<div class="dd-new-content">
+  <h2> Due-Diligence Plataform</h2>
+</div>
+<ul id="progressbar2">
+    <li class="active1"> <strong class="test">Upload Documents</strong></li>
+    <li class="active2"> <strong class="test">Analyzing Documents</strong></li>
+    <li class="active3"> <strong class="test">Finalized Due Diligence</strong></li>
+  </ul>
 <div class="container">
-  <div class="page-content">
-    <div class="check">
-      <i class="fas fa-check" id="check_finish"></i>
+  <div class="page-content dd-finish">
+    <h3> Due-Diligence for: <span><em><%= @npl.name %> </em></span></h3>
+    <div class="check scale-in-center text-center">
+      <i class="fas fa-check-circle heartbeat" id=""></i>
     </div>
+    <br>
+    <p>Thank you for choosing the true 'Yield Experience'. We will be forwarding you an e-mail at <span class="email"><%= current_user.email %></span> with all necessary information.</p>
+    <p>Please feel free to refer to the same information under your <span class="email">Cockpit</span> whenever, wherever necessary.</p>
+
+    <%= link_to "DUE DILIGENCE DOCUMENTATION", "#" %>
   </div>
 </div>
 </div>

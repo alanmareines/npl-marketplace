@@ -1,3 +1,20 @@
-.check{
+.dd-finish{
+  text-align:center;
+  h3{
+    font-weight:600;
+    letter-spacing:0.1rem;
+    margin-bottom:2rem;
+    span{
+      color:$npl-darkgreen;
+    }
+  }
+  .email{
+    color:$green;
+  }
+}
 
+
+.fa-check-circle{
+  font-size: 200px;
+  color:$green;
 }
