@@ -6,13 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts 'cleaning seed...'
+puts 'Cleaning seed...'
+puts 'Deleting Messages...'
 Message.destroy_all
+puts 'Deleting DueDiligences...'
 DueDiligence.destroy_all
+puts 'Deleting Npls...'
 Npl.destroy_all
+puts 'Deleting Bids...'
 Bid.destroy_all
+puts 'Deleting Users...'
 User.destroy_all
-# Bid.delete_all
 puts 'seed cleaned!'
 
 puts 'starting seed (User)...'

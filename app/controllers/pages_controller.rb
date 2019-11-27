@@ -11,4 +11,7 @@ class PagesController < ApplicationController
     @bids = @user.bids
     @npls = Npl.where(user_id: @user)
   end
+
+  def errorpage
+  end
 end

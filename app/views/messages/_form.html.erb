@@ -1,0 +1,10 @@
+<%= simple_form_for([npl, dd, message], remote: true ) do |f| %>
+  <div class="message-form form-group d-flex justify-content-between align-items-start">
+    <div class="message-form-text flex-grow-1">
+      <%= f.input :content, label: false, placeholder: 'Type a message' %>
+    </div>
+    <button name="button" type="submit" class="btn message-form-submit">
+      <i class="fas fa-arrow-circle-right"></i>
+    </button>
+  </div>
+<% end %>

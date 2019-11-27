@@ -8,39 +8,28 @@
         <div class="text-center d-flex justify-content-around">
           <div class="dd-documents document col-md-3">
             <h4 class="text-center">CONTRACT DOCUMENTS</h4>
-            <%= link_to @dd.contract_document.url do%>
+            <%= link_to @dd.contract_document.url, target: '_blank' do%>
               <%=  cl_image_tag @dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
             <% end %>
           </div>
           <div class="dd-documents document col-md-3">
             <h4 class="text-center">COLLATERAL DOCUMENTS</h4>
-            <%= link_to @dd.collateral_document.url do%>
+            <%= link_to @dd.collateral_document.url, target: '_blank' do%>
               <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
             <% end %>
           </div>
           <div class="dd-documents document col-md-3">
             <h4 class="text-center">OTHER DOCUMENTS</h4>
-            <%= link_to @dd.other_document.url do%>
+            <%= link_to @dd.other_document.url, target: '_blank' do%>
               <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
             <% end %>
           </div>
         </div>
 
         <div class="dd-chat">
-          <h3 class="text-center">Message Board</h3>
-          <%= render 'messages/message' %>
-        
-          <%= simple_form_for [@npl, @dd, @message] do |f| %>
-            <div class="message-form form-group d-flex justify-content-between align-items-start">
-              <div class="message-form-text flex-grow-1">
-                <%= f.input :content, label: false, placeholder: 'Type a message' %>
-              </div>
-              <button name="button" type="submit" class="btn message-form-submit">
-                <i class="fas fa-arrow-circle-right"></i>
-              </button>
-            </div>
-          <% end %>
-
+          <h3 class="text-center chat-title">Message Board</h3>
+          <%= render 'messages/messages', messages: @messages %>
+          <%= render 'messages/form', npl: @npl, dd: @dd, message: @message %>
         </div>
 
       </div>

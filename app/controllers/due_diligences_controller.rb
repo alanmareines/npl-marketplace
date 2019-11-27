@@ -1,6 +1,8 @@
 class DueDiligencesController < ApplicationController
-  before_action :find_dd, only: %i[edit show update]
-  before_action :find_npl, only: %i[edit new create show]
+  before_action :find_dd, only: %i[edit show update finish]
+  before_action :find_npl, only: %i[edit new create show finish]
+  before_action :lawyer?, only: %i[index edit update finish]
+  before_action :npl_user?, only: %i[new create show finish]
 
   def index
     # Só advogados podem ver essa página
@@ -9,7 +11,6 @@ class DueDiligencesController < ApplicationController
 
   def new
     # Só o cedente pode ver essa página e incluir os campos de documentos
-    @npl.due_diligence = true
     @dd = DueDiligence.new
   end
 
@@ -17,6 +18,8 @@ class DueDiligencesController < ApplicationController
     @dd = DueDiligence.new(dd_params)
     @dd.npl = @npl
     if @dd.save
+      @npl.due_diligence = true
+      @npl.save
       redirect_to npl_due_diligence_path(@npl, @dd)
     else
       render :new
@@ -37,10 +40,13 @@ class DueDiligencesController < ApplicationController
 
   def update
     if @dd.update(dd_full_params)
-      redirect_to npl_due_diligence_path(@dd)
+      redirect_to npl_due_diligence_finish_path(@npl, @dd)
     else
       render :edit
     end
+  end
+
+  def finish
   end
 
   private
@@ -59,5 +65,17 @@ class DueDiligencesController < ApplicationController
 
   def dd_full_params
     params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl)
+  end
+
+  def lawyer?
+    unless current_user.lawyer?
+      redirect_to page_error_path
+    end
+  end
+
+  def npl_user?
+    unless current_user == @npl.user
+      redirect_to page_error_path
+    end
   end
 end
