@@ -60,24 +60,13 @@
       }
       &.active3{
         color: $npl-blue;
-        position: center;
-          &:before, &:after {
-          background: $green;
-          color: $npl-blue;
-          position: center;
-          font-weight:600;
-        }
+        counter-increment: step - 1;
+        font-weight:600;
       }
     }
   }
   #text{
     position: center;
-  }
-
-  .test{
-    background-color:$green;
-    padding: 8px;
-    border-radius: 25px;
   }
 
 .dd-doc-list-show{

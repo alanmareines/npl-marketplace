@@ -1,14 +1,14 @@
-<div class="dd-new-content">
+<div class="header-title">
   <h2> Due-Diligence Plataform</h2>
 </div>
-<ul id="progressbar2">
-    <li class="active1"> <strong class="test">Upload Documents</strong></li>
-    <li class="active2"> <strong class="test">Analyzing Documents</strong></li>
-    <li class="active3"> <strong class="test">Finalized Due Diligence</strong></li>
+<ul id="progressbar3">
+    <li class="active1"> <strong class="progress-bar-item">Upload Documents</strong></li>
+    <li class="active2"> <strong class="progress-bar-item">Due Diligence Analysis</strong></li>
+    <li class="active3"> <strong class="progress-bar-item">Finalized Due Diligence</strong></li>
   </ul>
 <div class="container">
   <div class="page-content dd-finish">
-    <h3> Due-Diligence for: <span><em><%= @npl.name %> </em></span></h3>
+    <h3> Due-Diligence for: <span><em><%= @npl.name.upcase %> </em></span></h3>
     <div class="check scale-in-center text-center">
       <i class="fas fa-check-circle heartbeat" id=""></i>
     </div>
