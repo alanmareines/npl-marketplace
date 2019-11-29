@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td width="33%"><%= wicked_pdf_image_tag 'logo_dark.png' %></td>
-        <td width="33%" class="doc-title"><h1>Legal Opinion</h1></td>
+        <td width="33%" class="doc-title"><h1>Legal Opinion by <span class="green"> <strong><%= @lawyer.name %></strong></span></h1></td>
         <td width="33%" class="dd-date">
           <ul>
             <li>
@@ -26,20 +26,38 @@
   <div class="party">
     <table>
       <tr>
+        <th></th>
         <th><strong>ASSINGOR</strong></th>
         <th><strong>ASSIGNEE</strong></th>
         <th><strong>DUE-DILIGENCE FACILITATOR</strong></th>
       </tr>
       <tr class="name">
+        <td><strong>Name</strong></td>
         <td><%= @npl.user.name %></td>
         <td><%= @bid_winner.user.name %></td>
-        <td><%= @dd.user.name %></td>
+        <td><%= @lawyer.name %></td>
       </tr>
-      <tr class="email"></tr>
-      <tr class="cpf-cnpj"></tr>
+      <tr class="email">
+        <td><strong>E-mail</strong></td>
+        <td><em><%= @npl.user.email %></em></td>
+        <td><em><%= @bid_winner.user.email %></em></td>
+        <td><em><%= @lawyer.email %></em></td>
+      </tr>
+      <tr class="cpf-cnpj">
+        <td><strong>CPF/CNPJ</strong></td>
+        <td><%= @npl.user.cpf_cnpj %></td>
+        <td><%= @bid_winner.user.cpf_cnpj %></td>
+        <td><%= @lawyer.cpf_cnpj %></td>
+      </tr>
+      <tr class="phone">
+        <td><strong>Phone</strong></td>
+        <td><%= @npl.user.phone %></td>
+        <td><%= @bid_winner.user.phone %></td>
+        <td><%= @lawyer.phone %></td>
+      </tr>
     </table>
   </div>
-
+  <br>
   <br>
   <div class="intro-title">
     <h2><%= @npl.name %> assigned by: <strong><span class="green"><%= @npl.user.name.upcase %></span></strong></h2>
@@ -50,7 +68,10 @@
     <br><br>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quod aliquam quia quae magni aliquid officia optio libero eligendi molestias. Molestiae sed, enim reiciendis tempore fuga alias molestias et magni?
     <br><br>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem recusandae quasi sapiente quia consectetur commodi omnis ea. Officiis consectetur dolore perferendis eveniet, deleniti neque maxime, eaque sit ratione, repellat repudiandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae a animi suscipit enim, inventore odit qui quam, sint dolorum voluptate perspiciatis placeat sit. Fugit a sed ipsa ipsam, natus nisi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo impedit ut voluptas recusandae accusantium, optio minima, voluptatibus alias, nihil eveniet vel unde eos excepturi magnam autem odio fuga perferendis temporibus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, fuga rerum! Aspernatur magnam voluptatum quaerat repellendus rerum eligendi, deserunt fuga iusto at dolorem non dignissimos inventore culpa, temporibus porro iste!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque nam eius voluptates aspernatur! Delectus amet, explicabo dignissimos error aspernatur maxime, iste. Fugiat, repudiandae consequuntur molestiae deleniti, hic consequatur temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas aperiam, architecto reprehenderit sint aliquid? Voluptatibus natus perferendis non nesciunt necessitatibus distinctio alias nisi in, doloremque rerum cum, laboriosam dolore, neque?</p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem recusandae quasi sapiente quia consectetur commodi omnis ea. Officiis consectetur dolore perferendis eveniet, deleniti neque maxime, eaque sit ratione, repellat repudiandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae a animi suscipit enim, inventore odit qui quam, sint dolorum voluptate perspiciatis placeat sit. Fugit a sed ipsa ipsam, natus nisi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo impedit ut voluptas recusandae accusantium, optio minima, voluptatibus alias, nihil eveniet vel unde eos excepturi magnam autem odio fuga perferendis temporibus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, fuga rerum! Aspernatur magnam voluptatum quaerat repellendus rerum eligendi, deserunt fuga iusto at dolorem non dignissimos inventore culpa, temporibus porro iste!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque nam eius voluptates aspernatur! Delectus amet, explicabo dignissimos error aspernatur maxime, iste. Fugiat, repudiandae consequuntur molestiae deleniti, hic consequatur temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas aperiam, architecto reprehenderit sint aliquid? Voluptatibus natus perferendis non nesciunt necessitatibus distinctio alias nisi in, doloremque rerum cum, laboriosam dolore, neque?
+    <br><br>
+    Praesent ipsum lacus, suscipit id rutrum eget, pharetra nec tellus. Morbi felis tortor, feugiat eget urna pulvinar, accumsan finibus sem. Maecenas sit amet mattis erat, ac pretium libero. Quisque non cursus orci.
+    </p>
   </div>
   <br>
 
@@ -97,7 +118,7 @@
   <hr>
   <div class="messages-info list-double-spacing">
     <ul>
-      <% @dd.messages.each do |message| %>
+      <% @messages.each do |message| %>
         <li>[ <%= message.created_at.strftime("%d/%m/%Y") %> - <%= message.created_at.strftime("%-I:%M %p") %> ] <strong class="green"><%= message.user.name.upcase %></strong> ( <span class="italic"><%= message.user.email %></span> ) - <%= message.content %></li>
       <% end %>
     </ul>
@@ -148,8 +169,6 @@
     <br><br>
     Aenean id sodales tortor. Duis ultrices commodo orci vitae porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ornare risus. Cras commodo orci quis metus dignissim aliquam. Quisque vel urna vitae neque vehicula hendrerit. Quisque eu laoreet ante. Sed eu libero felis. Duis elementum tellus ac ante dictum, eget sollicitudin nisl placerat. Sed varius cursus urna eget hendrerit. Suspendisse nisi turpis, blandit cursus urna a, scelerisque tristique sem. Maecenas ac ultricies est.
     <br><br>
-    Maecenas sagittis justo et est dignissim aliquet. Nullam eu massa sed mi volutpat bibendum. Curabitur ac facilisis justo, a tincidunt nibh. Mauris sed mauris vel velit dictum tristique vitae quis lectus. Nulla ornare accumsan quam at sagittis. Praesent ultricies tempus condimentum. Aenean bibendum ex at augue fringilla, eget hendrerit sapien faucibus.
-    <br><br>
-    Curabitur vehicula risus lectus, sed egestas orci vehicula eget. Ut rutrum, sem efficitur lacinia pellentesque, eros erat suscipit eros, ut hendrerit mi nunc eget eros. Aenean in nunc in augue iaculis molestie. Sed sodales, nisl a commodo rutrum, felis enim tincidunt neque, eget mattis lorem felis non ante. Pellentesque iaculis purus turpis, non sodales lorem viverra quis. Sed fringilla, velit nec vestibulum congue, massa nibh sodales ipsum, sit amet posuere mi est eu nisi. Proin consequat pretium leo et placerat.</p>
+    Maecenas sagittis justo et est dignissim aliquet. Nullam eu massa sed mi volutpat bibendum. Curabitur ac facilisis justo, a tincidunt nibh. Mauris sed mauris vel velit dictum tristique vitae quis lectus. Nulla ornare accumsan quam at sagittis. Praesent ultricies tempus condimentum. Aenean bibendum ex at augue fringilla, eget hendrerit sapien faucibus. Curabitur vehicula risus lectus, sed egestas orci vehicula eget. Ut rutrum, sem efficitur lacinia pellentesque, eros erat suscipit eros, ut hendrerit mi nunc eget eros. Aenean in nunc in augue iaculis molestie. Sed sodales, nisl a commodo rutrum, felis enim tincidunt neque, eget mattis lorem felis non ante. Pellentesque iaculis purus turpis, non sodales lorem viverra quis. Sed fringilla, velit nec vestibulum congue, massa nibh sodales ipsum, sit amet posuere mi est eu nisi. Proin consequat pretium leo et placerat.</p>
   </div>
 </div>
