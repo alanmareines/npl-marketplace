@@ -10,7 +10,7 @@
   margin: 2rem 8px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: calc(100%/4);
+  width: calc(100%/3.6);
   h2{
     line-height: 1.5em;
     margin-top: -1em;
@@ -32,6 +32,8 @@
     .dd-date{
       color: $npl-blue;
       text-align: center;
+      width: 45%;
+      padding-bottom:0.2rem;
     }
     li{
       height:100%;

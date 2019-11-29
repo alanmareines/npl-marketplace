@@ -57,6 +57,19 @@ class DueDiligencesController < ApplicationController
     unless current_user.lawyer? || current_user == @npl.user
       redirect_to page_error_path
     end
+    @bid_winner = Bid.where(npl: 55, winner: true).first
+    @bids = @npl.bids
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: "Yield_platform_#{@npl.name.split(' ').join('_')}",
+                layout: "pdf.html",
+                template: "due_diligences/finish.pdf.erb",
+                footer: {
+                  center: "Yield Platform - All Rights Reserved"
+                }
+      end
+    end
   end
 
   private

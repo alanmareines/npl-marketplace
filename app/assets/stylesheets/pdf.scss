@@ -1,0 +1,55 @@
+@import "application";
+
+body{
+  background-color: white;
+  font-size:16px;
+}
+
+#pdf-file{
+  text-align: justify;
+  table{
+    height:100px;
+  }
+  #header{
+    img{
+      width:50%;
+    }
+  }
+  .doc-title{
+    text-align:center;
+  }
+  .dd-date{
+    text-align: right;
+    line-height:0.8rem;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  .list-double-spacing{
+    padding: 0;
+    line-height: 2rem;
+  }
+  .green{
+    color: $npl-darkgreen;
+  }
+  .italic{
+    font-style: italic;
+  }
+  .links{
+    font-size:16px;
+  }
+}
+
+.party{
+  th{
+    border-bottom: $gray 1px solid;
+    background-color: $light-gray;
+    text-align: center;
+  }
+  td{
+    text-align:center;
+    width:400px;
+  }
+}
+

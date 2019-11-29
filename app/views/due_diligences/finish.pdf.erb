@@ -1,0 +1,155 @@
+<div id="pdf-file">
+  <div id="header">
+    <table>
+      <tr>
+        <td width="33%"><%= wicked_pdf_image_tag 'logo_dark.png' %></td>
+        <td width="33%" class="doc-title"><h1>Legal Opinion</h1></td>
+        <td width="33%" class="dd-date">
+          <ul>
+            <li>
+              <p>Due Diligence finalized at:</p> 
+              <strong><%= @dd.updated_at.strftime("%d/%m/%Y")%></strong>
+            </li>
+            <li>
+              
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+  
+  <h2>Parties Information</h2>
+  <hr>
+  <div class="party">
+    <table>
+      <tr>
+        <th><strong>ASSINGOR</strong></th>
+        <th><strong>ASSIGNEE</strong></th>
+        <th><strong>DUE-DILIGENCE FACILITATOR</strong></th>
+      </tr>
+      <tr class="name">
+        <td><%= @npl.user.name %></td>
+        <td><%= @bid_winner.user.name %></td>
+        <td><%= @dd.user.name %></td>
+      </tr>
+      <tr class="email"></tr>
+      <tr class="cpf-cnpj"></tr>
+    </table>
+  </div>
+
+  <br>
+  <div class="intro-title">
+    <h2><%= @npl.name %> assigned by: <strong><span class="green"><%= @npl.user.name.upcase %></span></strong></h2>
+  </div>
+  <hr>
+  <div class="intro-text">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex reprehenderit ipsam rerum tempora sed, excepturi eaque, optio, ratione ab, dolorum magni. Fugiat, ea perferendis in quibusdam laboriosam earum sint soluta.
+    <br><br>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quod aliquam quia quae magni aliquid officia optio libero eligendi molestias. Molestiae sed, enim reiciendis tempore fuga alias molestias et magni?
+    <br><br>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem recusandae quasi sapiente quia consectetur commodi omnis ea. Officiis consectetur dolore perferendis eveniet, deleniti neque maxime, eaque sit ratione, repellat repudiandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae a animi suscipit enim, inventore odit qui quam, sint dolorum voluptate perspiciatis placeat sit. Fugit a sed ipsa ipsam, natus nisi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo impedit ut voluptas recusandae accusantium, optio minima, voluptatibus alias, nihil eveniet vel unde eos excepturi magnam autem odio fuga perferendis temporibus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, fuga rerum! Aspernatur magnam voluptatum quaerat repellendus rerum eligendi, deserunt fuga iusto at dolorem non dignissimos inventore culpa, temporibus porro iste!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque nam eius voluptates aspernatur! Delectus amet, explicabo dignissimos error aspernatur maxime, iste. Fugiat, repudiandae consequuntur molestiae deleniti, hic consequatur temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas aperiam, architecto reprehenderit sint aliquid? Voluptatibus natus perferendis non nesciunt necessitatibus distinctio alias nisi in, doloremque rerum cum, laboriosam dolore, neque?</p>
+  </div>
+  <br>
+
+  <h2>Non-performing Loan Information</h2>
+  <hr>
+  <div class="npl-info">
+    <table>
+      <tr>
+        <td width="60%">
+          <ul class="list-double-spacing">
+            <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= @npl.npl_type %></li>
+            <li class="book_value"><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+            <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= @npl.user.name %></li>
+            <li><strong>Auction Date:&nbsp;&nbsp;</strong><%= @npl.auction_date.strftime("%d/%m/%Y") %></li>
+            <li><strong>Offered at:&nbsp;&nbsp;</strong><%= @npl.created_at.strftime("%d/%m/%Y") %></li>
+          </ul>
+        </td>
+        <td width="60%">
+            <ul class="list-double-spacing">
+              <li> <strong>Book Value : </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></li>
+              <li> <strong>Debtor : </strong><%= @npl.debtor %></li>
+              <li> <strong>Maturity Date : </strong><%= @npl.maturity_date.strftime("%d/%m/%Y") %></li>
+              <li> <strong>Collateral Description </strong>: <%= @npl.collateral_description %></li>
+              <li> <strong>Minimum Value </strong> : <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></li>
+            </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+
+  <h2>Auction Record</h2>
+  <hr>
+  <div class="auction-info">
+    <ul class="bids-list list-double-spacing">
+      <% @bids.order(created_at: :desc).each do |bid| %>
+      <li>[ <%= bid.created_at.strftime("%d/%m/%Y") %> - <%= bid.created_at.strftime("%-I:%M %p") %> ] <strong class="green"><%= bid.user.name.upcase %></strong> - <span class="italic"><%= number_to_currency(bid.value, unit:"R$", separator: ",", delimiter: ".") %></span></li>
+      <% end %>
+    </ul>
+  </div>
+  <br>
+
+  <h2>Communication Register</h2>
+  <hr>
+  <div class="messages-info list-double-spacing">
+    <ul>
+      <% @dd.messages.each do |message| %>
+        <li>[ <%= message.created_at.strftime("%d/%m/%Y") %> - <%= message.created_at.strftime("%-I:%M %p") %> ] <strong class="green"><%= message.user.name.upcase %></strong> ( <span class="italic"><%= message.user.email %></span> ) - <%= message.content %></li>
+      <% end %>
+    </ul>
+  </div>
+  <br>
+
+  <h2>Data Room</h2>
+  <hr>
+  <div class="data-room list-double-spacing">
+    <ul>
+      <li><strong>Contract Document</strong> : <span class="links"><%= link_to "Contract Document for #{@dd.npl.name}", @dd.contract_document.url %></span></li></span>
+      <li><strong>Collateral Document</strong> : <span class="links"><%= link_to "Collateral Document for #{@dd.npl.name}", @dd.collateral_document.url %></span></li>
+      <li><strong>Other Documents</strong> : <span class="links"><%= link_to "Other Document for #{@dd.npl.name}", @dd.other_document.url %></span></li>
+    </ul>
+  </div>
+  <br>
+
+  <h2>Due Diligence Details</h2>
+  <hr>
+  <div class="dd-details list-double-spacing">
+    <ul>
+      <li>Book Value Validation - <span class="green"><%= @dd.book_value_valid ? "APPROVED" : "DISCLAIMER" %></span></li>
+      <li>Non-Performing Loan Type Validation - <span class="green"><%= @dd.npl_type_valid ? "APPROVED" : "DISCLAIMER"  %></span></li>
+      <li>Debtor Company Validation - <span class="green"><%= @dd.debtor_valid ? "APPROVED" : "DISCLAIMER"  %></span></li>
+      <li>Loan Maturity Date Validation - <span class="green"><%= @dd.maturity_date_valid ? "APPROVED" : "DISCLAIMER"  %></span></li>
+      <li>Collateral Veracity Description Validation - <span class="green"><%= @dd.collateral_description_valid ? "APPROVED" : "DISCLAIMER"  %></span></li>
+      <li>Loan Guarantor Validation - <span class="green"><%= @dd.guarantor_valid ? "APPROVED" : "DISCLAIMER"  %></span></li>
+    </ul>
+  </div>
+  <br>
+
+  <h2>Legal Opinion Details</h2>
+  <hr>
+  <div class="dd-legal-opinion">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed bibendum lacinia massa. Nulla scelerisque tristique tempus. Sed a urna facilisis, placerat ex quis, posuere neque. Suspendisse malesuada ante nec ex rutrum, id eleifend lacus porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec in pellentesque velit. Donec semper laoreet pulvinar.
+    <br><br>
+    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc vestibulum gravida quam at vestibulum. Quisque feugiat ligula elit, in placerat magna venenatis non. Sed semper, tortor et dictum convallis, nisi diam rhoncus dolor, in fringilla ante odio eu mi. Nulla dui diam, tincidunt sit amet molestie ut, commodo non felis. Donec imperdiet sapien sapien, ac tempus mauris lacinia ac. Aenean elit ante, suscipit fermentum condimentum et, fringilla aliquet risus. Duis vestibulum molestie dignissim. Quisque lobortis enim vel nulla posuere posuere. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus et dolor pretium, vestibulum odio nec, semper dui. Curabitur volutpat turpis eget magna porta finibus. Aenean tempus at dolor vel tempor. Fusce vel urna porttitor, placerat massa at, viverra tortor. In a turpis ut eros vulputate porttitor.
+    <br><br>
+    In non mollis odio, vel efficitur nunc. Maecenas ac metus massa. Nulla facilisi. Vestibulum molestie magna vitae mi tempor, id sagittis urna auctor. Duis non mauris interdum, laoreet nunc nec, sollicitudin nibh. Sed non imperdiet velit. Nunc ac lectus fermentum ex volutpat pellentesque in eu nisi. In hac habitasse platea dictumst. Vestibulum gravida consequat neque, eu feugiat metus cursus sed. Nunc vel lectus sapien.
+    <br><br>
+    Nam eu posuere arcu, ut pellentesque nunc. Etiam eros massa, venenatis in lectus quis, dictum interdum diam. Phasellus eget orci non enim auctor mollis. Quisque posuere mauris ante, nec rutrum nulla maximus vel. Praesent ipsum lacus, suscipit id rutrum eget, pharetra nec tellus. Morbi felis tortor, feugiat eget urna pulvinar, accumsan finibus sem. Maecenas sit amet mattis erat, ac pretium libero. Quisque non cursus orci. Vivamus lorem nibh, fringilla vel sagittis at, lobortis non nunc. Nunc velit erat, bibendum sit amet metus a, pulvinar lacinia orci. Quisque tristique maximus massa id tincidunt. Mauris malesuada porta turpis blandit iaculis.
+    <br><br>
+    Morbi ut elementum nulla. Quisque euismod id lacus eget pharetra. Sed venenatis vestibulum maximus. Donec sit amet diam hendrerit, pharetra mi sed, iaculis dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur rhoncus, sem vitae aliquet consectetur, quam arcu rutrum enim, a aliquam nisi enim sit amet odio. Ut faucibus risus eu placerat pharetra. Nullam nibh urna, pellentesque ac gravida nec, placerat sed ligula. Sed iaculis tellus id maximus hendrerit. Mauris fringilla malesuada convallis. Curabitur sodales nisi et purus faucibus, ut fermentum orci porttitor. Integer blandit velit massa. Duis faucibus sollicitudin est sed efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam sed congue odio, ac commodo dolor.
+    <br><br>
+    In dictum, urna in euismod condimentum, erat justo tristique velit, dignissim egestas ligula elit sit amet tellus. In hac habitasse platea dictumst. Maecenas ut laoreet tortor, et imperdiet nulla. Quisque commodo sapien in dolor interdum, et dictum massa faucibus. Suspendisse finibus, mi sed mollis efficitur, tortor mi pharetra tellus, eget ultricies augue diam ut quam. Donec imperdiet dui a lacus vestibulum porta. Cras a arcu malesuada, feugiat turpis non, porta purus. Sed ut est vel nulla sollicitudin iaculis at molestie lectus. Nulla finibus arcu turpis. Nunc dignissim nulla sit amet neque posuere, a tempor metus consectetur. Cras fringilla nisi sollicitudin dolor placerat aliquam. Morbi non pharetra lacus.
+    <br><br>
+    Fusce maximus volutpat gravida. Nullam nulla mi, scelerisque id lectus vel, tristique tempor mauris. Nam pellentesque posuere auctor. Sed libero nisi, gravida vel ex pretium, convallis consectetur purus. Donec tincidunt vitae risus vel aliquet. Curabitur ex risus, vestibulum eu luctus eget, eleifend non metus. Integer nec euismod magna, sed scelerisque nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras eget facilisis nunc, sed ullamcorper erat. Fusce ultricies porta magna efficitur mollis. Pellentesque vitae volutpat nisl, vel maximus dolor.
+    <br><br>
+    Aenean id sodales tortor. Duis ultrices commodo orci vitae porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ornare risus. Cras commodo orci quis metus dignissim aliquam. Quisque vel urna vitae neque vehicula hendrerit. Quisque eu laoreet ante. Sed eu libero felis. Duis elementum tellus ac ante dictum, eget sollicitudin nisl placerat. Sed varius cursus urna eget hendrerit. Suspendisse nisi turpis, blandit cursus urna a, scelerisque tristique sem. Maecenas ac ultricies est.
+    <br><br>
+    Maecenas sagittis justo et est dignissim aliquet. Nullam eu massa sed mi volutpat bibendum. Curabitur ac facilisis justo, a tincidunt nibh. Mauris sed mauris vel velit dictum tristique vitae quis lectus. Nulla ornare accumsan quam at sagittis. Praesent ultricies tempus condimentum. Aenean bibendum ex at augue fringilla, eget hendrerit sapien faucibus.
+    <br><br>
+    Curabitur vehicula risus lectus, sed egestas orci vehicula eget. Ut rutrum, sem efficitur lacinia pellentesque, eros erat suscipit eros, ut hendrerit mi nunc eget eros. Aenean in nunc in augue iaculis molestie. Sed sodales, nisl a commodo rutrum, felis enim tincidunt neque, eget mattis lorem felis non ante. Pellentesque iaculis purus turpis, non sodales lorem viverra quis. Sed fringilla, velit nec vestibulum congue, massa nibh sodales ipsum, sit amet posuere mi est eu nisi. Proin consequat pretium leo et placerat.</p>
+  </div>
+</div>

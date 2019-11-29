@@ -35,8 +35,12 @@
             <% end %>
           </div>
 
+        <% elsif @dd.finished %>
+          <%= link_to "CHECK DUE-DILIGENCE REPORT", npl_due_diligence_finish_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
+
         <% elsif @npl.due_diligence %>
           <%= link_to "CHECK DUE-DILIGENCE", npl_due_diligence_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
+
         <% else %>
           <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% end %>
