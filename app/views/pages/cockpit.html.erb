@@ -12,31 +12,32 @@
     <!-- /.dashboard-stat -->
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <a class="dashboard-stat bg-primary" href="#">
-        <span class="counter">1,411</span>
+        <span class="counter"><%= number_to_currency(@user.npls.where(auctioned: true).sum(:book_value) / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </span>
         <span class="name">NPLs Sold</span>
       </a>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <a class="dashboard-stat bg-danger" href="#">
-          <span class="counter">322</span>
+          <span class="counter"><%= number_to_currency(@user.npls.where(auctioned: false).sum(:book_value) / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </span>
           <span class="name">NPLs Avaliable</span>
       </a>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <a class="dashboard-stat bg-warning" href="#">
-          <span class="counter">5,551</span>
-          <span class="name">Bids Recived</span>
+          <span class="counter"><%= number_to_currency(@bids_winner_sum / 1000000 , unit: "R$ ",separator: ",", delimiter: ".") %> M </span>
+          <span class="name">Recovery Realized</span>
       </a>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <a class="dashboard-stat bg-success" href="#">
-          <span class="counter">16,710</span>
-          <span class="name">Thumbs Up</span>
+          <span class="counter"><%= (((@bids_winner_sum / @user.npls.where(auctioned: true).sum(:book_value))) * 100).round(1)%> % </span>
+          <span class="name">Recovery Rate</span>
       </a>
     </div>
+
     </div>
     <!-- cards -->
     <div class="cockpit-cards py-3">
@@ -81,7 +82,7 @@
         <div class="cockpit-card">
           <h2>YOUR NPL OFFERS</h2>
           <div class="npl-selling d-flex">
-            <% @npls.each do |npl| %>
+            <% @user.npls.each do |npl| %>
               <div class="npl-card-selling mx-2 p-3">
                 <h3><%= link_to npl.name, npl_path(npl) %></h3>
                 <ul class="card-text">
