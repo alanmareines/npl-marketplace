@@ -20,28 +20,36 @@
 <div class="steps">
   <div class="cards d-flex justify-content-around">
     <div class="number order1 text-white"><h2>1</h2></div>
-    <div class="card">
+    <div class="card text-center">
       <div class="card-image">
         <%= image_tag "user_profile.jpg" %>
       </div>
-      <h3>Submit your user profile!</h3>
-      <p>Fill in our form for new users and get the full experience of our Platform.</p>
+      <h3>Post your NPLs</h3>
+      <p>Just a few basic information is required, our engine will do the rest and get all the relevant data automatically.</p>
     </div>
     <div class="number order2 text-white" ><h2>2</h2></div>
-    <div class="card">
+    <div class="card text-center">
       <div class="card-image">
         <%= image_tag "user_sell.jpg" %>
       </div>
-      <h3>Setup and Bid NPL Offers</h3>
-      <p>Add essential and additional information for your offerings and enjoy instant biddings.</p>
+      <h3>Hire a Due Diligence</h3>
+      <p>With a Due Diligence, you will save time and money for your potential investors. Your NPLs will stand out in our plataform.</p>
     </div>
     <div class="number order3 text-white" ><h2>3</h2></div>
-    <div class="card">
+    <div class="card text-center">
       <div class="card-image">
         <%= image_tag "user_dashboard.jpg" %>
       </div>
-      <h3>Control your Bids, Sells and Exposure</h3>
-      <p>Enjoy personalized tools that measure your offers and bids as well as other essential information.</p>
+      <h3>Receive bids</h3>
+      <p>Investors will evaluate your NPLs and will submmit their bids. We will keep you informed of every bid you received.</p>
+    </div>
+    <div class="number order4 text-white" ><h2>4</h2></div>
+    <div class="card text-center">
+      <div class="card-image">
+        <%= image_tag "user_dashboard.jpg" %>
+      </div>
+      <h3>Auction</h3>
+      <p>The highest bid wins. Transfer Documents in exchange for the purchase price.<br> <br> </p>
     </div>
   </div>
 </div>
@@ -58,11 +66,11 @@
     <div class="cards d-flex justify-content-around">
       <div class="card text-center">
          <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$",separator: ",", delimiter: ".") %> M </h2>
-         <p>NPLs sold</p>
+         <p>NPLs sold <br><br></p>
       </div>
       <div class="card text-center">
          <h2> <%= @npls_sold %></h2>
-         <p> Succesful transactions <br> since inception</p>
+         <p> Succesful transactions <br>since inception</p>
       </div>
       <div class="card text-center">
          <h2> <%= @npls_available %></h2>
@@ -70,7 +78,7 @@
       </div>
       <div class="card text-center">
          <h2> <%= @users_registered %> </h2>
-         <p> Number of registered users </p>
+         <p> Number of registered users <br> <br></p>
       </div>
     </div>
   </div>
