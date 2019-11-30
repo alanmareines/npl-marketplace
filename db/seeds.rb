@@ -53,7 +53,7 @@ npl_attributes1 = {
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: bradesco,
-    auction_date: Date.new(date.today + 10)
+    auction_date: Date.today + 10
   }
   npl_attributes2 = {
     book_value: 90000,

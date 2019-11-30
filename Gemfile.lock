@@ -76,6 +76,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
+    cpf_cnpj (0.5.0)
     crass (1.0.5)
     daru (0.2.2)
       backports
@@ -259,6 +260,7 @@ DEPENDENCIES
   bootsnap
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
+  cpf_cnpj
   daru-view!
   devise
   dotenv-rails
