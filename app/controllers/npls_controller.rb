@@ -91,6 +91,7 @@ class NplsController < ApplicationController
     params.require(:npl).permit(:name, :book_value, :min_value,
                                 :collateral_description, :debtor,
                                 :maturity_date, :npl_type, :user_id,
-                                :auction_date, :document, :due_diligence)
+                                :auction_date, :document, :due_diligence,
+                                :debtor_cpf_cnpj)
   end
 end
