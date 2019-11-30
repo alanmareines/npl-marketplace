@@ -7,11 +7,11 @@
         <td width="33%" class="dd-date">
           <ul>
             <li>
-              <p>Due Diligence finalized at:</p> 
+              <p>Due Diligence finalized at:</p>
               <strong><%= @dd.updated_at.strftime("%d/%m/%Y")%></strong>
             </li>
             <li>
-              
+
             </li>
           </ul>
         </td>
@@ -20,7 +20,7 @@
   </div>
   <br>
   <br>
-  
+
   <h2>Parties Information</h2>
   <hr>
   <div class="party">
@@ -34,25 +34,25 @@
       <tr class="name">
         <td><strong>Name</strong></td>
         <td><%= @npl.user.name %></td>
-        <td><%= @bid_winner.user.name %></td>
+        <td><%= @bid_winner.user.name if @bid_winner%></td>
         <td><%= @lawyer.name %></td>
       </tr>
       <tr class="email">
         <td><strong>E-mail</strong></td>
         <td><em><%= @npl.user.email %></em></td>
-        <td><em><%= @bid_winner.user.email %></em></td>
+        <td><em><%= @bid_winner.user.email if @bid_winner%></em></td>
         <td><em><%= @lawyer.email %></em></td>
       </tr>
       <tr class="cpf-cnpj">
         <td><strong>CPF/CNPJ</strong></td>
         <td><%= @npl.user.cpf_cnpj %></td>
-        <td><%= @bid_winner.user.cpf_cnpj %></td>
+        <td><%= @bid_winner.user.cpf_cnpj if @bid_winner%></td>
         <td><%= @lawyer.cpf_cnpj %></td>
       </tr>
       <tr class="phone">
         <td><strong>Phone</strong></td>
         <td><%= @npl.user.phone %></td>
-        <td><%= @bid_winner.user.phone %></td>
+        <td><%= @bid_winner.user.phone if @bid_winner%></td>
         <td><%= @lawyer.phone %></td>
       </tr>
     </table>
