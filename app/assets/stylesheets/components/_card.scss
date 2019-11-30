@@ -15,6 +15,8 @@
   }
   p{
     font-size:16px;
+    // text-align: center;
+    // text-justify: inter-word;
   }
 }
 
@@ -28,8 +30,8 @@
     position:relative;
     z-index:10;
     margin-top: -100px;
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
     border:3px $green solid;
     border-radius:50%;
     margin-bottom: 30px;
@@ -56,18 +58,27 @@
 
 .order1 {
   position:absolute;
-  left:240px;
-  margin-left: -25px;
+  // left:240px;
+  left:10.5%;
+  // margin-left: -25px;
   }
 
 .order2 {
   position:absolute;
-  left:50%;
-  margin-left:-25px;
+  left:35.5%;
+  // margin-left:-25px;
   }
 
 .order3 {
   position:absolute;
-  right:240px;
-  margin-right:-25px;
+  // right:240px;
+  left:60.5%;
+  // margin-right:-25px;
+  }
+
+  .order4 {
+  position:absolute;
+  // right:240px;
+  left:85.5%;
+  // margin-right:-25px;
   }
