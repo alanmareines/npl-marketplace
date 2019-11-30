@@ -1,2 +1,0 @@
-class Debtor < ApplicationRecord
-end

@@ -18,7 +18,6 @@ class NeowayApi
 
   def get_cpf_info
     token = fetch_token
-    query = { fields: @fields }
     header = { Authorization: token }
     url = "https://api.neoway.com.br/v1/data/pessoas/#{@cpf}"
     response = RestClient::Request.execute(method: :get, url: url,
