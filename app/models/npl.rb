@@ -1,4 +1,5 @@
 class Npl < ApplicationRecord
+  require 'ostruct'
   belongs_to :user
   has_many :bids, dependent: :destroy
   mount_uploader :document, DocumentUploader
@@ -57,6 +58,10 @@ class Npl < ApplicationRecord
       "NP",
       "PPE"
     ]
+  end
+
+  def debtor_info
+    JSON.parse(self.debtor_additional_info, object_class: OpenStruct)
   end
 
 end
