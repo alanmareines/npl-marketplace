@@ -5,7 +5,9 @@
       <p>Empowering the Brazilian Distressed Credit Market.</p>
       <br>
       <div class="buttons d-flex justify-content-around">
-        <% if current_user %>
+        <% if current_user && current_user.lawyer %>
+          <%= link_to "AVAILABLE DUE DILIGENCES", due_diligences_path, class: "btn btn-lg" %>
+        <% elsif current_user %>
           <%= link_to "NEW NPL OFFER", new_npl_path, class: "btn btn-lg" %>
         <% else %>
           <%= link_to "SIGN UP", new_user_registration_path, class: "btn btn-lg" %>
@@ -44,7 +46,7 @@
     <div class="number order4 text-white" ><h2>4</h2></div>
     <div class="card text-center">
       <div class="card-image">
-        <%= image_tag "user_dashboard.jpg" %>
+        <%= image_tag "auction.png" %>
       </div>
       <h3>Auction</h3>
       <p>The highest bid wins. Transfer Documents in exchange for the purchase price.<br> <br> </p>
@@ -81,5 +83,4 @@
     </div>
   </div>
 </div>
-
-<%= render 'shared/footer' %>
+</div>

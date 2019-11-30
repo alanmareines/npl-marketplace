@@ -24,6 +24,9 @@
           <li><strong>Assigned by:&nbsp;&nbsp;</strong><%= npl.user.name %></li>
           <li><strong>Auction Date:&nbsp;&nbsp;</strong><%= npl.auction_date.strftime("%d/%m/%Y") %></li>
         </ul>
+        <% if npl.due_diligence %>
+          <i class="fas fa-award text-center"></i>
+        <% end %>
       </div>
       <% end %>
       <% end %>
@@ -34,5 +37,4 @@
     <%= link_to 'START A NPL OFFER', new_npl_path, class: "btn  btn-block btn-lg" %>
   </div>
 </div>
-
-<%= render 'shared/footer' %>
+</div>

@@ -26,8 +26,6 @@
     }
   }
 
-
-
   .page-title{
     padding: 20px 0;
     background-color: $npl-blue;
@@ -41,40 +39,52 @@
   }
 
   .npl-card{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: calc(100%/3.5);
-  padding: 16px;
-  margin: 16px 16px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  h2{
-    line-height: 1.5em;
-    margin-top: -1em;
-    min-width: 100%;
-    background-color: $green;
-    text-align:center;
-    font-weight:bold;
-    z-index: 10;
-  }
-  a{
-    color:$npl-blue;
-    font-size:1.3rem;
-  }
-  .card-text{
-    list-style-type: none;
-    margin:0;
-    padding:0;
-    vertical-align: bottom;
-    .book_value{
-      color: $npl-blue;
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100%/3.5);
+    padding: 16px;
+    margin: 16px 16px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    h2{
+      line-height: 1.5em;
+      margin-top: -1em;
+      min-width: 100%;
+      background-color: $green;
+      text-align:center;
+      font-weight:bold;
+      z-index: 10;
     }
-    li{
-      display: inline-block;
-      font-size:16px;
-      line-height: 45px;
+    a{
+      color:$npl-blue;
+      font-size:1.3rem;
+    }
+    .card-text{
+      list-style-type: none;
+      margin:0;
+      padding:0;
+      vertical-align: bottom;
+      .book_value{
+        color: $npl-blue;
       }
+      li{
+        font-size:16px;
+        line-height: 45px;
+        }
+      }
+    .fa-award{
+      position: absolute;
+      bottom: -20px;
+      right:-20px;
+      color: $yellow;
+      font-size: 50px;
+      background-color:$npl-blue;
+      width: 80px;
+      height: 80px;
+      line-height:80px;
+      border-radius: 50%;
     }
   }
 
@@ -99,23 +109,5 @@
         color:$npl-blue;
       }
     }
-  }
-
-  .hvr-grow-shadow {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: box-shadow, transform;
-    transition-property: box-shadow, transform;
-  }
-
-  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
   }
 }

@@ -1,8 +1,8 @@
 class DueDiligencesController < ApplicationController
   before_action :find_dd, only: %i[edit show update finish]
-  before_action :find_npl, only: %i[edit new create show finish]
-  before_action :lawyer?, only: %i[index edit update finish]
-  before_action :npl_user?, only: %i[new create show finish]
+  before_action :find_npl, only: %i[edit new create update show finish]
+  before_action :lawyer?, only: %i[index edit]
+  before_action :npl_user?, only: %i[new create show]
 
   def index
     # Só advogados podem ver essa página
@@ -39,14 +39,39 @@ class DueDiligencesController < ApplicationController
   end
 
   def update
-    if @dd.update(dd_full_params)
-      redirect_to npl_due_diligence_finish_path(@npl, @dd)
+    if current_user == @npl.user
+      @dd.update(dd_params)
+      redirect_to npl_due_diligence_path(@npl, @dd)
+    elsif @dd.update(dd_full_params)
+      if @dd.finished
+        redirect_to npl_due_diligence_finish_path(@npl, @dd)
+      else
+        redirect_to edit_npl_due_diligence_path(@npl, @dd), notice: "Progress Saved!"
+      end
     else
       render :edit
     end
   end
 
   def finish
+    unless current_user.lawyer? || current_user == @npl.user
+      redirect_to page_error_path
+    end
+    @bid_winner = Bid.where(npl: 55, winner: true).first
+    @bids = @npl.bids
+    @messages = @dd.messages
+    @lawyer = @messages.select { |message| message.user != @npl.user }.first.user
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: "Yield_platform_#{@npl.name.split(' ').join('_')}",
+                layout: "pdf.html",
+                template: "due_diligences/finish.pdf.erb",
+                footer: {
+                  center: "Yield Platform - All Rights Reserved"
+                }
+      end
+    end
   end
 
   private
@@ -64,7 +89,7 @@ class DueDiligencesController < ApplicationController
   end
 
   def dd_full_params
-    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl)
+    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl, :finished)
   end
 
   def lawyer?

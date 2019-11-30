@@ -9,6 +9,8 @@ gem 'rails', '5.2.3'
 gem 'redis'
 gem 'devise'
 gem 'daru-view', git: 'https://github.com/SciRuby/daru-view'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

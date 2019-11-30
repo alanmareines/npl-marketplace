@@ -1,22 +1,22 @@
 
-<div class="dd-new-content">
+<div class="header-title">
   <h2>Due-Diligence Plataform</h2>
-  <p class="dd-subtitle"><em>Due-Diligence for: <span class="npl-dd"> <%= @npl.name.upcase %> </span> </em> </p>
+  <p class="header-subtitle"><em>Due-Diligence for: <span class="header-span"> <%= @npl.name.upcase %> </span> </em> </p>
   <ul id="progressbar">
-    <li class="active1"><strong class="test">Upload Documents</strong></li>
+    <li class="active1"><strong class="progress-bar-item">Upload Documents</strong></li>
     <li class="active2"><strong>Due Diligence Analysis</strong></li>
-    <li class="active3"><strong>NPL Due Diligence Finalized</strong></li>
+    <li class="active3"><strong>Finalized Due Diligence</strong></li>
   </ul>
   <div class="container">
-    <div class="dd-doc-list">
+    <div class="dd-doc-list-new">
+      <div class="dd-form-new">
       <%= simple_form_for [@npl, @dd] do |f| %>
-        <%= f.input :contract_document %>
-        <%= f.input :collateral_document %>
-        <%= f.input :other_document %>
+        <%= f.input :contract_document, label: "CONTRACT DOCUMENT"%>
+        <%= f.input :collateral_document, label: "COLLATERAL DOCUMENT" %>
+        <%= f.input :other_document, label: "OTHER DOCUMENTS" %>
+      </div>
         <%= f.submit "ADD DUE DILIGENCE DOCUMENTS", class: "btn btn-npl btn-block btn-lg" %>
       <% end %>
     </div>
   </div>
 </div>
-
-<%= render 'shared/footer' %>

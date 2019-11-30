@@ -1,32 +1,53 @@
-<div class="dd-new-content">
+<div class="header-title">
   <h2> Due-Diligence Plataform</h2>
-  <p class="dd-subtitle"> <em> Due-Diligence of: <span class="npl-dd"> <%= @npl.name %> </span> </em></p>
+  <p class="header-subtitle"> <em> Due-Diligence for: <span class="header-span"> <%= @npl.name %> </span> </em></p>
   <ul id="progressbar2">
-    <li class="active1"> <strong class="test">Upload Documents</strong></li>
-    <li class="active2"> <strong class="test">Analizing Documents</strong></li>
-    <li class="active3"> <strong >Due Diligence Finalized</strong></li>
+    <li class="active1"> <strong class="progress-bar-item">Upload Documents</strong></li>
+    <li class="active2"> <strong class="progress-bar-item">Analyzing Documents</strong></li>
+    <li class="active3"> <strong >Finalized Due Diligence</strong></li>
   </ul>
     <div class="container">
-      <div class="dd-doc-list">
-        <div class="documents d-flex justify-content-around">
+      <div class="dd-doc-list-show page-content">
+        <div class="documents d-flex justify-content-between mx-3">
           <div class="document">
             <h4>CONTRACT DOCUMENT</h4>
-            <%= link_to @dd.contract_document.url, target: '_blank' do %>
-              <%=  cl_image_tag @dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% if @dd.contract_document.url.present? %>
+              <%= link_to @dd.contract_document.url, target: '_blank' do %>
+                <%=  cl_image_tag @dd.contract_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+              <% end %>
+            <% else %>
+              <%= simple_form_for [@npl, @dd] do |f| %>
+                <%= f.input :contract_document, label: "Choose File" %>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
+              <% end %>
             <% end %>
           </div>
             
           <div class="document">
             <h4>COLLATERAL DOCUMENT</h4>
-            <%= link_to @dd.collateral_document.url, target: '_blank' do %>
-              <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% if @dd.collateral_document.url.present? %>
+              <%= link_to @dd.collateral_document.url, target: '_blank' do %>
+                <%=  cl_image_tag @dd.collateral_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+              <% end %>
+            <% else %>
+              <%= simple_form_for [@npl, @dd] do |f| %>
+                <%= f.input :collateral_document, label: "Choose File" %>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
+              <% end %>
             <% end %>
           </div>
 
           <div class="document">
             <h4>OTHER DOCUMENT</h4>
-            <%= link_to @dd.other_document.url, target: '_blank' do %>
-              <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+            <% if @dd.other_document.url.present? %>
+              <%= link_to @dd.other_document.url, target: '_blank' do %>
+                <%=  cl_image_tag @dd.other_document.url(:thumnail), :quality=>47, :width=>100, :crop=>"scale" %>
+              <% end %>
+            <% else %>
+              <%= simple_form_for [@npl, @dd] do |f| %>
+                <%= f.input :other_document, label: "Choose File"%>
+                <%= f.submit "UPLOAD DOCUMENT", class: "btn btn-npl btn-block"%>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_224401) do
+ActiveRecord::Schema.define(version: 2019_11_27_203928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 2019_11_22_224401) do
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
-  create_table "collaterals", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "due_diligences", force: :cascade do |t|
     t.boolean "book_value_valid"
     t.boolean "npl_type_valid"
@@ -40,12 +34,12 @@ ActiveRecord::Schema.define(version: 2019_11_22_224401) do
     t.boolean "collateral_description_valid"
     t.boolean "guarantor_valid"
     t.bigint "npl_id"
-    t.string "contract_document", default: "f"
-    t.string "collateral_document", default: "f"
-    t.string "other_document", default: "f"
+    t.string "contract_document"
+    t.string "collateral_document"
+    t.string "other_document"
     t.text "legal_opinion"
     t.string "api_info"
-    t.boolean "finished"
+    t.boolean "finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["npl_id"], name: "index_due_diligences_on_npl_id"

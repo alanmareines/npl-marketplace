@@ -1,36 +1,22 @@
-.dd-new-content{
-  h2{
-    color:white;
-    text-align: center;
-    font-size:40px;
-    background-color:$npl-blue;
-    padding: 1rem 0;
-    margin-bottom:1rem;
-  }
-  .dd-subtitle{
-    color: white;
-    font-size:24px;
-    text-align: center;
-    text-decoration: none;
-  }
-  .npl-dd{
-   color: $npl-blue;
-   letter-spacing:0.1rem;
-   font-size:24px;
-   text-decoration: none;
-   text-align: center;
-   font-weight:600;
- }
-}
-
-.dd-doc-list{
-  margin: 100px auto;
+.dd-doc-list-new{
   background-color: #ffffff;
   padding: 20px;
-  width: 70%;
   width: calc(100%);
-  margin-top:30px;
+  margin: 2rem auto;
   font-size: 18px;
+  text-align:center;
+  .dd-form-new{
+    margin-bottom: 1rem;
+    form{
+      display:inline-block;
+      text-align:center;
+    }
+    label{
+      color: $npl-blue;
+      font-weight:600;
+      letter-spacing:0.1rem;
+    }
+  }
 }
 
 #progressbar {
