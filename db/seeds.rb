@@ -47,108 +47,117 @@ puts 'starting seed (NPL)...'
 npl_attributes1 = {
     book_value: 100000,
     debtor: 'Odebrecht',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 12, 20),
     collateral_description: 'Clean',
     min_value: 15000,
     name: 'CCB ODB 1',
     npl_type: 'CCB',
     user: bradesco,
-    auction_date: Date.new(date.today + 10)
+    auction_date: Date.today + 10
   }
   npl_attributes2 = {
     book_value: 90000,
     debtor: 'Odebrecht',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 11, 30),
     collateral_description: 'Debenture',
     min_value: 13000,
     name: 'CCB ODB 2',
     npl_type: 'CCB',
     user: itau,
-    auction_date: Date.new(2019, 11, 3)
+    auction_date: Date.today + 12
   }
 
 npl_attributes3 = {
     book_value: 400000,
     debtor: 'Terra Forte',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 150000,
     name: 'CCB Terra Forte 1',
     npl_type: 'CCB',
     user: fibra,
-    auction_date: Date.new(2019, 11, 04)
+    auction_date: Date.today + 13
   }
 
 npl_attributes4 = {
     book_value: 800000,
     debtor: 'Bom Jesus',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 200000,
     name: 'CCE Bom Jesus 1',
     npl_type: 'CCE',
     user: abc,
-    auction_date: Date.new(2019, 11, 05)
+    auction_date: Date.today + 7
   }
 
 npl_attributes5 = {
     book_value: 900000,
     debtor: 'Santa Terezinha',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 250000,
     name: 'PPE Santa Terezinha 1',
     npl_type: 'PPE',
     user: votorantim,
-    auction_date: Date.new(2019, 11, 06)
+    auction_date: Date.today + 18
   }
 
 npl_attributes6 = {
     book_value: 950000,
     debtor: 'Clealco',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de equipamentos',
     min_value: 200000,
     name: 'Repasse BNDES Clealco 1',
     npl_type: 'Repasse BNDES',
     user: bradesco,
-    auction_date: Date.new(2019, 11, 07)
+    auction_date: Date.today + 39
   }
 
 npl_attributes7 = {
     book_value: 300000,
     debtor: 'Renuka',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'penhor de cana',
     min_value: 30000,
     name: 'CDCA Renuka 1',
     npl_type: 'CDCA',
     user: santander,
-    auction_date: Date.new(2019, 11, 8)
+    auction_date: Date.today + 102
   }
 
 npl_attributes8 = {
     book_value: 350000,
     debtor: 'Queiroz Galvao',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 220000,
     name: 'Debenture Queiroz Galvao 1',
     npl_type: 'Debenture',
     user: votorantim,
-    auction_date: Date.new(2019, 11, 9)
+    auction_date: Date.today + 23
   }
 
 npl_attributes9 = {
     book_value: 820000,
     debtor: 'Galvao Engenharia',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Fianca da holding',
     min_value: 180000,
     name: 'Debenture Galvao Engenharia 1',
     npl_type: 'Debenture',
     user: abc,
-    auction_date: Date.new(2019, 11, 10)
+    auction_date: Date.today + 63
   }
 
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'
