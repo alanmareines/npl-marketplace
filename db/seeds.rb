@@ -46,6 +46,7 @@ puts 'starting seed (NPL)...'
 npl_attributes1 = {
     book_value: 100000,
     debtor: 'Odebrecht',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 12, 20),
     collateral_description: 'Clean',
     min_value: 15000,
@@ -57,6 +58,7 @@ npl_attributes1 = {
   npl_attributes2 = {
     book_value: 90000,
     debtor: 'Odebrecht',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 11, 30),
     collateral_description: 'Debenture',
     min_value: 13000,
@@ -69,6 +71,7 @@ npl_attributes1 = {
 npl_attributes3 = {
     book_value: 400000,
     debtor: 'Terra Forte',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 150000,
@@ -81,6 +84,7 @@ npl_attributes3 = {
 npl_attributes4 = {
     book_value: 800000,
     debtor: 'Bom Jesus',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 200000,
@@ -93,6 +97,7 @@ npl_attributes4 = {
 npl_attributes5 = {
     book_value: 900000,
     debtor: 'Santa Terezinha',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 250000,
@@ -105,6 +110,7 @@ npl_attributes5 = {
 npl_attributes6 = {
     book_value: 950000,
     debtor: 'Clealco',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de equipamentos',
     min_value: 200000,
@@ -117,37 +123,40 @@ npl_attributes6 = {
 npl_attributes7 = {
     book_value: 300000,
     debtor: 'Renuka',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'penhor de cana',
     min_value: 30000,
     name: 'CDCA Renuka 1',
     npl_type: 'CDCA',
     user: santander,
-    auction_date: Date.new(2019, 12, 20)
+    auction_date: Date.today + 102
   }
 
 npl_attributes8 = {
     book_value: 350000,
     debtor: 'Queiroz Galvao',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 220000,
     name: 'Debenture Queiroz Galvao 1',
     npl_type: 'Debenture',
     user: votorantim,
-    auction_date: Date.new(2019, 12, 20)
+    auction_date: Date.today + 23
   }
 
 npl_attributes9 = {
     book_value: 820000,
     debtor: 'Galvao Engenharia',
+    debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Fianca da holding',
     min_value: 180000,
     name: 'Debenture Galvao Engenharia 1',
     npl_type: 'Debenture',
     user: abc,
-    auction_date: Date.new(2019, 12, 20)
+    auction_date: Date.today + 63
   }
 
 url1 = 'https://res.cloudinary.com/alanmareines/image/upload/v1571626073/vuy7pfkesk0qwp5rblem.pdf'

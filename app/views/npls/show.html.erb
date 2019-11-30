@@ -9,6 +9,7 @@
         <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
         <p> <strong>Book Value - </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></p>
         <p> <strong>Debtor - </strong><%= @npl.debtor %></p>
+        <p> <strong>Debtor CPF or CNPJ - <%= @npl.debtor_cpf_cnpj %></strong></p>
         <p> <strong>Maturity Date - </strong><%= @npl.maturity_date.strftime("%d/%m/%Y") %></p>
         <p> <strong>Collateral Description </strong>- <%= @npl.collateral_description %></p>
         <p> <strong>Minimum Value </strong> - <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></p>
