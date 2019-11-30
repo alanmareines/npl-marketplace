@@ -63,8 +63,8 @@
   <div class="container">
     <div class="cards d-flex justify-content-around">
       <div class="card text-center">
-         <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$",separator: ",", delimiter: ".") %> M </h2>
-         <p>NPLs sold <br><br></p>
+         <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </h2>
+         <p>NPLs sold</p>
       </div>
       <div class="card text-center">
          <h2> <%= @npls_sold %></h2>
