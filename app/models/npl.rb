@@ -9,6 +9,7 @@ class Npl < ApplicationRecord
   validates :min_value, presence: true
   validates :name, presence: true
   validates :npl_type, presence: true
+  validates :debtor_cpf_cnpj, presence: true
 
   def self.collateral_names
     [

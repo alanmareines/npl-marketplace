@@ -5,7 +5,11 @@
     <div class="cards dd-cards d-flex justify-content-between flex-wrap">
       <% @dd.each do |dd| %>
       <div class="dd-card">
-        <h2 class="hvr-grow-shadow"><%= link_to dd.npl.name.upcase, edit_npl_due_diligence_path(dd.npl, dd) %></h2>
+        <% if dd.finished %>
+          <h2 class="hvr-grow-shadow"><%= link_to dd.npl.name.upcase, npl_due_diligence_finish_path(dd.npl, dd) %></h2>
+        <% else %>
+          <h2 class="hvr-grow-shadow"><%= link_to dd.npl.name.upcase, edit_npl_due_diligence_path(dd.npl, dd) %></h2>
+        <% end %>
         <ul class="card-text">
           <li class="d-flex justify-content-between align-items-center"><strong>Assignment Date:&nbsp;&nbsp;</strong> <span class="dd-date"><%= dd.created_at.strftime("%d/%m/%Y") %>&nbsp;&nbsp;<i class="far fa-calendar-alt"></i></span></li>
           <li class="d-flex justify-content-between align-items-center"><strong>Assigned by:&nbsp;&nbsp;</strong> <span class="dd-date"><%= dd.npl.user.name.upcase %>&nbsp;&nbsp;</span></li>
