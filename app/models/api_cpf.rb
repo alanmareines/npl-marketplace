@@ -1,0 +1,3 @@
+class ApiCpf
+  
+end
