@@ -30,7 +30,7 @@
 
             series: [{
                     name: '<%= user.name %>',
-                    data: [<%= "#{npls.sum(:book_value)}, #{npls.sum(:min_value)}" %>]
+                    data: [<%= "#{@user.npls.sum(:book_value)}, #{@user.npls.sum(:min_value)}" %>]
             }],
 
             responsive: {
