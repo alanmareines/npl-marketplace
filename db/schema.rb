@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_11_30_200416) do
     t.string "guarantor_name"
     t.string "guarantor_cnpj"
     t.string "debtor_cpf_cnpj"
-    t.text "debtor_additional_info"
+    t.json "debtor_additional_info"
     t.index ["user_id"], name: "index_npls_on_user_id"
   end
 

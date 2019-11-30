@@ -13,7 +13,7 @@ class NeowayApi
     url = 'https://api.neoway.com.br/auth/token'
     response = RestClient.post(url, body.to_json, { content_type: :json, accept: :json })
     token_id = JSON.parse(response)["token"]
-    token = "Bearer " + token_id
+    "Bearer " + token_id
   end
 
   def get_cpf_info
@@ -22,7 +22,5 @@ class NeowayApi
     url = "https://api.neoway.com.br/v1/data/pessoas/#{@cpf}"
     response = RestClient::Request.execute(method: :get, url: url,
                                            headers: header)
-    debtor_info = JSON.parse(response)
-    binding.pry
   end
 end

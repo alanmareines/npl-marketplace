@@ -27,6 +27,8 @@
 
         <p class="my-4">Assigned by <strong><%= @npl.user.name %></strong></p>
 
+        <%= link_to "Request Additional Information", npl_additional_info_path(@npl) %>
+
         <% if current_user != @npl.user %>
 
           <div id="new-bid-form">

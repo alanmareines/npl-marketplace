@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/error', to: 'pages#errorpage', as: 'page_error'
   resources :due_diligences, only: [:index]
   resources :npls do
+    get "additional_info", to: "npls#additional_info"
     resources :bids, only: %i[index new create]
     post "run_auction", to: "npls#run_auction"
     resources :due_diligences, except: %i[index destroy] do
