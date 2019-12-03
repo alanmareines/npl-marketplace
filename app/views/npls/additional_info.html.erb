@@ -1,4 +1,118 @@
+<div class="container">
+  <div class="page-content d-flex justify-content-between p-4">
+    <%= link_to icon('fas', 'arrow-left'), npl_path(@npl), class: "arrow-back mr-3" %>
+    <div class="debtor-info flex-grow-1">
+      <h3 class="text-center">DEBTOR ADDITIONAL INFORMATION</h3>
+      <br>
+      <h4>Basic Information</h4>
+      <div class="personal-info row">
+        <div class="col-xs-12 col-md-6">
+          <h5>CPF</h5> <p><%= not_nil(@npl.debtor_info&.cpf) %></p>
+          
+          <h5>Name</h5> <p><%= not_nil(capitalize(@npl.debtor_info&.nome)) %></p>
+          
+          <h5>Address</h5> <p><%= capitalize(@npl.debtor_info&.endereco&.logradouro) %>, <%= not_nil(@npl.debtor_info&.endereco&.numero) %>, <%= not_nil(@npl.debtor_info&.endereco&.complemento) %> - <%= capitalize(@npl.debtor_info&.endereco&.bairro) %> - <%= capitalize(@npl.debtor_info&.endereco&.municipio) %>/<%= not_nil(@npl.debtor_info&.endereco&.uf) %></p>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <h5>Age</h5> <p><%= not_nil(@npl.debtor_info&.idade) %></p>
+          <h5>Income Estimate</h5> <p><%= capitalize(@npl.debtor_info&.incomePrediction&.incomeInterval) %></p>
+          <h5>Liveness</h5> <p><%= @npl.debtor_info.falecido ? "Deceased" : "Live" %></p>
+        </div>
+      </div>
 
+      <h4>Work History</h4>
+      <div class="work-history row">
+        <div class="current_work col-xs-12 col-md-6">
+          <h5>Current Experience</h5>
+          <ul>
+            <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.razaoSocial) %></li>
+            <li><span class="company-info">Location :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.municipio)%>/<%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.uf) %></li>
+            <li><span class="company-info">Industry :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.ramoAtividade) %></li>
+            <li><span class="company-info">Company Registry (CNPJ) :</span> <%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.cnpj) %></li>
+            <li><span class="company-info">Description :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.descricaoCnae) %></li>
+            <li><span class="company-info">Employed For :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.first&.numeroMesesEmpresa) %> Months</li>
+          </ul>
+        </div>
+        <div class="past_work col-xs-12 col-md-6">
+          <h5>Last Past Experience</h5>
+          <ul>
+            <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.historicoFuncional&.second&.razaoSocial) %></li>
+            <li><span class="company-info">Company Registry (CNPJ) : <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.cnpj) %></span></li>
+            <li><span class="company-info">Admission Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataAdmissao&.to_date&.strftime("%d/%m/%Y")) %></li>
+            <li><span class="company-info">Termination Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataDesligamento&.to_date&.strftime("%d/%m/%Y")) %></li>
+          </ul>
+        </div>
+      </div>
 
-<%= @npl.debtor_additional_info.cpf %>
+      <h4>Legal Information</h4>
+      <div class="legal row">
+        <div class="offset-md-3 flex-grow-1">
+          <table class="legal-table">
+            <tr>
+              <th>Lawsuit Type</th>
+              <th>Defendant</th>
+              <th>Respondent</th>
+              <th>Other Party</th>
+            </tr>
+            <% @npl.debtor_info.processoJudicialTotalizadores.quantidades&.each do |lawsuit| %>
+              <tr>
+                <td class="lawsuit-type">
+                  <% case lawsuit&.tipo %>
+                  <% when "NUMERO DE PROCESSOS" %>
+                    Total
+                  <% when "CRIMINAL" %>
+                    Criminal
+                  <% when "TRIBUTARIO" %>
+                    Tax
+                  <% when "TRABALHISTA" %>
+                    Labour
+                  <% when "ELEITORAL" %>
+                    Electoral
+                  <% when "MILITAR" %>
+                    Military
+                  <% when "CIVEL / ADMINISTRATIVO" %>
+                    Civil
+                  <% end %>
+                </td>
+                <td><%= not_nil(lawsuit&.qtdPartePassiva)  %></td>
+                <td><%= not_nil(lawsuit&.qtdParteAtiva) %></td>
+                <td><%= not_nil(lawsuit&.qtdOutrasPartes) %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      
+      <h4>Last Data Update</h4>
+      <div class="updates">
+        <table>
+          <tr>
+            <th></th>
+            <th>Current Work</th>
+            <th>Working History</th>
+            <th>Relatives</th>
+            <th>Real Estate</th>
+            <th>Equity Interest</th>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.enderecoEmpregoRaisNovo&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+            <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.historicoFuncional&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+            <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.pessoas&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+            <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.imoveis&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+            <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.participacaoSocietaria&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+          </tr>
+          <tr>
+            <th>Public Database</th>
+            <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.enderecoEmpregoRaisNovo&.source&.first) %></em></td>
+            <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.historicoFuncional&.source&.first) %></em></td>
+            <td><em><%= capitalize(@npl.debtor_info&._metadata&.pessoas&._metadata&.pessoas&.source&.first) %></em></td>
+            <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.imoveis&.source&.first) %></em></td>
+            <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.participacaoSocietaria&.source&.first) %></em></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 

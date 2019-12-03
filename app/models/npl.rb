@@ -61,7 +61,6 @@ class Npl < ApplicationRecord
   end
 
   def debtor_info
-    JSON.parse(self.debtor_additional_info, object_class: OpenStruct)
+    JSON.parse(debtor_additional_info, object_class: OpenStruct)
   end
-
 end

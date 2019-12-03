@@ -73,10 +73,9 @@ class NplsController < ApplicationController
 
   def additional_info
     @npl = Npl.find(params[:npl_id])
-    info_request = NeowayApi.new(@npl)
-    @npl.debtor_additional_info = info_request.get_cpf_info
-    @npl.save
-    json = @npl.debtor_additional_info
+    # info_request = NeowayApi.new(@npl)
+    # @npl.debtor_additional_info = info_request.get_cpf_info
+    # @npl.save
   end
 
   private
