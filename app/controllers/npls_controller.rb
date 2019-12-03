@@ -1,5 +1,5 @@
 class NplsController < ApplicationController
-  require_relative '../services/neoway_api.rb'
+  # require_relative '../services/neoway_api.rb'
   require 'ostruct'
   before_action :find_npl, only: %i[edit show]
   before_action :log_in, except: %i[index]
@@ -73,10 +73,11 @@ class NplsController < ApplicationController
 
   def additional_info
     @npl = Npl.find(params[:npl_id])
-    info_request = NeowayApi.new(@npl)
-    @npl.debtor_additional_info = info_request.get_cpf_info
-    @npl.save
-    json = @npl.debtor_additional_info
+      if @npl.debtor_additional_info.nil?
+      info_request = NeowayApi.new(@npl)
+      @npl.debtor_additional_info = info_request.get_cpf_info
+      @npl.save
+    end
   end
 
   private
@@ -99,7 +100,7 @@ class NplsController < ApplicationController
 
   def npl_params
     params.require(:npl).permit(:name, :book_value, :min_value,
-                                :collateral_description, :debtor,
+                                :collateral_description, :debtor, :debtor_cpf_cnpj,
                                 :maturity_date, :npl_type, :user_id,
                                 :auction_date, :document, :due_diligence,
                                 :debtor_cpf_cnpj)

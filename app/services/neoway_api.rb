@@ -3,9 +3,7 @@ class NeowayApi
   require 'json'
 
   def initialize(npl)
-    @cpf = '03517785784'
-    @fields = "cpf,nome,situacaoCpf,imoveis.endereco.logradouro,imoveis.endereco.numero,imoveis.endereco.complemento,imoveis.endereco.bairro,imoveis.endereco.municipio"
-    # get_cpf_info(token, cpf, fields)
+    @cpf = npl.debtor_cpf_cnpj
   end
 
   def fetch_token
@@ -20,7 +18,7 @@ class NeowayApi
     token = fetch_token
     header = { Authorization: token }
     url = "https://api.neoway.com.br/v1/data/pessoas/#{@cpf}"
-    response = RestClient::Request.execute(method: :get, url: url,
-                                           headers: header)
+    RestClient::Request.execute(method: :get, url: url,
+                                headers: header)
   end
 end

@@ -1,0 +1,79 @@
+.debtor-info{
+  h4{
+    line-height: 1.5;
+    text-align:center;
+    margin-top: 3rem;
+    letter-spacing: 0.1rem;
+    color:$npl-darkgreen;
+    font-weight:600;
+  }
+
+  h5{
+    color:$npl-blue;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  table {
+    width:100%;
+    th{
+      background-color:$npl-blue;
+      color:white;
+      font-weight: 300;
+      font-size:16px;
+      }
+    tr{
+      border-bottom: $gray solid 1px;
+      line-height:1.8rem;
+      font-size:14px;
+      &:nth-child(even) { background-color: white; };
+      &:hover{ background-color: #ddd };
+    }
+  }
+
+
+  .personal-info{
+    margin: 1rem 0;
+  }
+
+  .work-history{
+    margin: 1rem 0;
+  }
+
+  .company-info{
+    color: $npl-blue;
+  }
+
+  .legal{
+    margin: 1rem 0;
+    .legal-table{
+      width:80%;
+      text-align:center;
+      border-radius:4px;
+    }
+    .no-legal{
+      color: $npl-darkgreen;
+    }
+  }
+
+  .building{
+    background-color: $white;
+    text-align:center;
+    .card-title{
+      padding: 1rem;
+      margin-top: -2.5rem;
+      color: white;
+      background-color: $npl-blue;
+    }
+  }
+
+  .updates{
+    margin: 1rem 0;
+  }
+}
