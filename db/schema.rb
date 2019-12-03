@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_203928) do
+ActiveRecord::Schema.define(version: 2019_11_30_200416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_203928) do
     t.boolean "due_diligence", default: false
     t.string "guarantor_name"
     t.string "guarantor_cnpj"
+    t.string "debtor_cpf_cnpj"
+    t.json "debtor_additional_info"
     t.index ["user_id"], name: "index_npls_on_user_id"
   end
 
