@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 2019_11_30_200416) do
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
+  create_table "collaterals", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "due_diligences", force: :cascade do |t|
     t.boolean "book_value_valid"
     t.boolean "npl_type_valid"
