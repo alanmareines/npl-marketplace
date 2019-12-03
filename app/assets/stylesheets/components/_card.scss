@@ -18,6 +18,15 @@
   }
 }
 
+.debtor-info-card{
+  justify-content: baseline;
+  padding: 16px;
+  margin: 16px 0px;
+  background: $light-gray;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
 .cards{
   margin-top: 40px;
 }

@@ -27,7 +27,7 @@
 
         <p class="my-4">Assigned by <strong><%= @npl.user.name %></strong></p>
 
-        <%= link_to "Request Additional Information", npl_additional_info_path(@npl) %>
+        <%= link_to "REQUEST ADDITIONAL INFO", npl_additional_info_path(@npl), class: "btn btn-npl btn-block mb-4" %>
 
         <% if current_user != @npl.user %>
 

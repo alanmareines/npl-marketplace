@@ -3,7 +3,7 @@ class NeowayApi
   require 'json'
 
   def initialize(npl)
-    @cpf = '01533393141'
+    @cpf = npl.debtor_cpf_cnpj
   end
 
   def fetch_token
