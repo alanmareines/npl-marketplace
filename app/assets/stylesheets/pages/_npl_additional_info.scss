@@ -56,6 +56,11 @@
       width:80%;
       text-align:center;
       border-radius:4px;
+      td{
+        &:first-child{
+          font-weight: 600;
+        }
+      }
     }
     .no-legal{
       color: $npl-darkgreen;
@@ -81,6 +86,9 @@
 
   .rural-area{
     color:$npl-darkgreen;
+  }
+  .rural-table{
+    text-align: center;
   }
 }
 .filler-debtor-info{

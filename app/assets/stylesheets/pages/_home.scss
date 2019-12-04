@@ -5,14 +5,14 @@
   background-color: white;
   padding: 70px 0;
   border-top: 7px solid $green;
+  border-bottom: 7px solid $green;
   h3{
-  color:$green;
-  font-weight:600;
+    color:$green;
   }
 }
 
 .yield-description {
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://res.cloudinary.com/alanmareines/image/upload/v1575118049/assets_npl/copan_ij1mhj.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://res.cloudinary.com/alanmareines/image/upload/v1575118049/assets_npl/copan_ij1mhj.jpg');
   background-size: cover;
   padding: 50px;
   h2 {
@@ -26,5 +26,25 @@
     color: white;
     text-align: center;
     text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  }
+}
+
+.performance{
+  position:relative;
+  background-color: white;
+  padding: 3rem 0;
+  h2{
+    font-size:40px;
+    font-weight:600;
+    color:$npl-blue;
+    line-height:4rem;
+  }
+  h3{
+    color: $green;
+    font-weight:600;
+    letter-spacing: 0.3rem;
+  }
+  .card{
+    justify-content: center;
   }
 }
