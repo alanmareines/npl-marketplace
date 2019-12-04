@@ -12,17 +12,19 @@
 }
 
 .yield-description {
-  background-color: $npl-blue;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://res.cloudinary.com/alanmareines/image/upload/v1575118049/assets_npl/copan_ij1mhj.jpg');
   background-size: cover;
   padding: 50px;
   h2 {
     color: $green;
     font-weight: bold;
     text-align: center;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
   }
   p {
     font-size: 20px;
     color: white;
     text-align: center;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
   }
 }
