@@ -14,13 +14,17 @@
               <h5>Name</h5> <p><%= capitalize(@npl.debtor_info&.nome) %></p>
             </div>
             <div class="col">
-              <h5>Liveness</h5> <p><%= @npl.debtor_info.falecido ? "Deceased" : "Live" if @npl.debtor_info.falecido %></p>
+              <h5>Liveness</h5> <% unless @npl.debtor_info.falecido.nil? %>
+              <p><%= @npl.debtor_info.falecido ? "Deceased" : "Live" %></p>
+              <% else %>
+              -
+              <% end %>
             </div>
           </div>
 
           <div class="row justify-content-around">
             <div class="col">
-              <h5>CPF</h5> <p><%= not_nil(@npl.debtor_info&.cpf) %></p>
+              <h5>CPF</h5> <p><%= CPF.new(not_nil(@npl.debtor_info&.cpf)).formatted %></p>
             </div>
             <div class="col">
               <h5>CPF Status</h5> <p><%= capitalize(@npl.debtor_info&.situacaoCpf) %></p>
@@ -37,7 +41,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4 d-flex flex-column justify-content-between">
           <h5>Address</h5>
           <% if @npl.debtor_info&.endereco.nil? %>
             -
@@ -51,52 +55,64 @@
           <h5>Mothers Name</h5> <p><%= capitalize(@npl.debtor_info&.nomeMae) %></p>
           
         </div>
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4 d-flex flex-column justify-content-between">
 
           <h5>Telephone No.</h5>
-          <% @npl.debtor_info&.telefones&.take(3)&.each do |phone| %>
-            <p><%= not_nil(phone&.numero&.insert(2,' - ')) %></p>
+          <% if @npl.debtor_info.telefones %>
+            <% @npl.debtor_info&.telefones&.take(3)&.each do |phone| %>
+              <p><%= not_nil(phone&.numero&.insert(2,' - ')) %></p>
+            <% end %>
+          <% else %>
+            -
           <% end %>
+          
 
           <h5>Gender</h5>
-          <p><%= not_nil(@npl.debtor_info&.sexo == "MASCULINO" ? "Male" : "Female") %></p>
+          <% if @npl.debtor_info.sexo %>
+            <p><%= not_nil(@npl.debtor_info&.sexo == "MASCULINO" ? "Male" : "Female") %></p>
+          <% else %>
+            -
+          <% end %>
         </div>
       </div>
-
-      <h4>WORK HISTORY</h4>
-      <div class="work-history debtor-info-card row">
-        <div class="current_work col-xs-12 col-md-6">
-          <h5 class="text-center">Current Experience</h5>
-          <ul>
-            <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.razaoSocial) %></li>
-            <li><span class="company-info">Location :</span>
-              <% if @npl.debtor_info&.enderecoEmpregoRaisNovo %>
-                <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.municipio)%>/<%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.uf) %>
-              <% else %>
-                -
-              <% end %>
-            </li>
-            <li><span class="company-info">Industry :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.ramoAtividade) %></li>
-            <li><span class="company-info">Company Registry (CNPJ) :</span> <%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.cnpj) %></li>
-            <li><span class="company-info">Description :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.descricaoCnae) %></li>
-            <li><span class="company-info">Employed For :</span> 
-              <% if @npl.debtor_info&.historicoFuncional&.first %>
-                <%= not_nil(@npl.debtor_info&.historicoFuncional&.first&.numeroMesesEmpresa) %> Months</li>
-              <% else %>
-                -
-              <% end %>
-          </ul>
+      
+      <% unless @npl.debtor_info&.enderecoEmpregoRaisNovo.nil? && @npl.debtor_info&.historicoFuncional.nil?%>
+        <h4>WORK HISTORY</h4>
+        <div class="work-history debtor-info-card row">
+          <div class="current_work col-xs-12 col-md-6">
+            <h5 class="text-center">Current Experience</h5>
+            <ul>
+              <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.razaoSocial) %></li>
+              <li><span class="company-info">Location :</span>
+                <% if @npl.debtor_info&.enderecoEmpregoRaisNovo %>
+                  <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.municipio)%>/<%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.uf) %>
+                <% else %>
+                  -
+                <% end %>
+              </li>
+              <li><span class="company-info">Industry :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.ramoAtividade) %></li>
+              <li><span class="company-info">Company Registry (CNPJ) :</span> <%= CNPJ.new(not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.cnpj)).formatted %></li>
+              <li><span class="company-info">Description :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.descricaoCnae) %></li>
+              <li><span class="company-info">Employed For :</span> 
+                <% if @npl.debtor_info&.historicoFuncional&.first %>
+                  <%= not_nil(@npl.debtor_info&.historicoFuncional&.first&.numeroMesesEmpresa) %> Months</li>
+                <% else %>
+                  -
+                <% end %>
+            </ul>
+          </div>
+          <div class="past_work col-xs-12 col-md-6">
+            <h5 class="text-center">Last Past Experience</h5>
+            <ul>
+              <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.historicoFuncional&.second&.razaoSocial) %></li>
+              <li><span class="company-info">Company Registry (CNPJ) : <%= CNPJ.new(not_nil(@npl.debtor_info&.historicoFuncional&.second&.cnpj)).formatted %></span></li>
+              <li><span class="company-info">Admission Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataAdmissao&.to_date&.strftime("%d/%m/%Y")) %></li>
+              <li><span class="company-info">Termination Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataDesligamento&.to_date&.strftime("%d/%m/%Y")) %></li>
+            </ul>
+          </div>
         </div>
-        <div class="past_work col-xs-12 col-md-6">
-          <h5 class="text-center">Last Past Experience</h5>
-          <ul>
-            <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.historicoFuncional&.second&.razaoSocial) %></li>
-            <li><span class="company-info">Company Registry (CNPJ) : <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.cnpj) %></span></li>
-            <li><span class="company-info">Admission Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataAdmissao&.to_date&.strftime("%d/%m/%Y")) %></li>
-            <li><span class="company-info">Termination Date :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.second&.dataDesligamento&.to_date&.strftime("%d/%m/%Y")) %></li>
-          </ul>
-        </div>
-      </div>
+      <% end %>
+      
 
       <h4>LEGAL INFORMATION</h4>
       <div class="legal debtor-info-card row">
@@ -141,8 +157,7 @@
       <% end %>
       </div>
       
-      <% if @npl.debtor_info&.cafir&.areaTotal == 0 || @npl.debtor_info&.cafir.nil? %>
-      <% else %>
+      <% unless @npl.debtor_info&.cafir&.areaTotal == 0 || @npl.debtor_info&.cafir.nil? %>
         <h4>RURAL PROPERTIES</h4>
         <div class="rural debtor-info-card">
           <h5 class="text-center">Total Properties Area - <span class="rural-area"><%= @npl.debtor_info&.cafir&.areaTotal %></span></h5>
@@ -167,8 +182,7 @@
         </div>
       <% end %>
 
-      <% if @npl.debtor_info&.imoveis.nil? %>
-      <% else %>
+      <% unless @npl.debtor_info&.imoveis.nil? %>
         <h4>REAL ESTATE</h4>
         <div class="real-estate debtor-info-card d-flex justify-content-between flex-wrap">
           <% @npl.debtor_info&.imoveis&.each_with_index do |element, index| %>
@@ -185,8 +199,7 @@
         </div>
       <% end %>
 
-      <% if @npl.debtor_info&.participacaoSocietariaRF.nil? %>
-      <% else %>
+      <% unless @npl.debtor_info&.participacaoSocietariaRF.nil? %>
         <h4>EQUITY INTEREST</h4>
         <div class="real-estate debtor-info-card d-flex justify-content-between flex-wrap">
           <% @npl.debtor_info&.participacaoSocietariaRF&.each_with_index do |element, index| %>
@@ -195,7 +208,7 @@
             <h5>Name</h5>
             <p><%= capitalize(element&.razaoSocial) %></p>
             <h5>CNPJ</h5>
-            <p><%= not_nil(element&.cnpj) %></p>
+            <p><%= CNPJ.new(not_nil(element&.cnpj)).formatted %></p>
             <h5>Share Capital</h5>
             <p><%= capitalize(number_to_currency(element&.capitalSocialEmpresa&.to_i, unit:"R$", separator: ",", delimiter: ".")) %>
           </div>

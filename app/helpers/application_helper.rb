@@ -13,7 +13,13 @@ module ApplicationHelper
     if string.nil?
       "-"
     else
-      string.split.map { |word| word.length > 2 ? word.capitalize : word.downcase }.join(" ")
+      result = string.split.map do |word| unless word == "SA"
+        word.length > 2 ? word.capitalize : word.downcase
+      else
+        word
+      end
+    end
+      result.join(" ")
     end
   end
 
