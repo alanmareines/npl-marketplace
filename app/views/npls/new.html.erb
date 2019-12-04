@@ -8,6 +8,7 @@
     <%= f.input :npl_type, label: 'Stressed Asset Type', collection: Npl.npl_type_names  %>
     <%= f.input :book_value, label: 'Book Value (BRL)' %>
     <%= f.input :debtor, label: 'Debtor Name' %>
+    <%= f.input :debtor_cpf_cnpj, label: 'Debtor CPF or CNPJ' %>
     <%= f.input :maturity_date, order: [:day, :month, :year]%>
     <%= f.input :min_value, label: 'Minimum Bid Value' %>
     <%= f.input :collateral_description, collection: Npl.collateral_names %>

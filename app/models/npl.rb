@@ -1,4 +1,5 @@
 class Npl < ApplicationRecord
+  require 'ostruct'
   belongs_to :user
   has_many :bids, dependent: :destroy
   mount_uploader :document, DocumentUploader
@@ -9,6 +10,7 @@ class Npl < ApplicationRecord
   validates :min_value, presence: true
   validates :name, presence: true
   validates :npl_type, presence: true
+  validates :debtor_cpf_cnpj, presence: true
 
   def self.collateral_names
     [
@@ -58,4 +60,7 @@ class Npl < ApplicationRecord
     ]
   end
 
+  def debtor_info
+    JSON.parse(debtor_additional_info, object_class: OpenStruct)
+  end
 end

@@ -1,18 +1,55 @@
  <div class="npl-show-mab">
  <div class="container">
-  <div class="npl-show-content d-flex justify-content-bewtween">
+  <div class="npl-show-content d-flex justify-content-between">
     <%= link_to icon('fas', 'arrow-left'), npls_path, class: "arrow-back mr-3" %>
     <div class="flex-grow-1 d-flex justify-content-around mr-auto">
       <div class="npl-show-2">
 
         <h3><%= @npl.name %></h3>
-        <p> <strong>Asset Type - </strong><%= @npl.npl_type %></p>
-        <p> <strong>Book Value - </strong><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></p>
-        <p> <strong>Debtor - </strong><%= @npl.debtor %></p>
-        <p> <strong>Maturity Date - </strong><%= @npl.maturity_date.strftime("%d/%m/%Y") %></p>
-        <p> <strong>Collateral Description </strong>- <%= @npl.collateral_description %></p>
-        <p> <strong>Minimum Value </strong> - <%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></p>
-        <p> <strong>Auction Date - </strong><%= @npl.auction_date.strftime("%d/%m/%Y") %></p>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th scope="row">Asset Type</th>
+              <td><%= @npl.npl_type %></td>
+            </tr>
+            <tr>
+              <th scope="row">Book Value</th>
+              <td><%= number_to_currency(@npl.book_value, unit:"R$", separator: ",", delimiter: ".")%></td>
+            </tr>
+            <tr>
+              <th scope="row">Debtor</th>
+              <td><%= @npl.debtor %></td>
+            </tr>
+            <tr>
+              <th scope="row">Debtor CPF or CNPJ</th>
+              <td>
+                <% if @npl.debtor_cpf_cnpj.size > 11 %>
+                  <%= CNPJ.new(@npl.debtor_cpf_cnpj.to_s).formatted %>
+                <% else %>
+                  <%= CPF.new(@npl.debtor_cpf_cnpj.to_s).formatted %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Maturity Date</th>
+              <td><%= @npl.maturity_date.strftime("%d/%m/%Y") %></td>
+            </tr>
+            <tr>
+              <th scope="row">Collateral Description</th>
+              <td><%= @npl.collateral_description %></td>
+            </tr>
+            <tr>
+              <th scope="row">Minimum Value</th>
+              <td><%=  number_to_currency(@npl.min_value, unit:"R$", separator: ",", delimiter: ".")%></td>
+            </tr>
+            <tr>
+              <th scope="row">Auction Date</th>
+              <td><%= @npl.auction_date.strftime("%d/%m/%Y") %></td>
+            </tr>
+          </tbody>
+        </table>
+
         <br>
         <p><strong>Documents</strong></p>
 
@@ -26,6 +63,8 @@
 
         <p class="my-4">Assigned by <strong><%= @npl.user.name %></strong></p>
 
+        <%= link_to "REQUEST ADDITIONAL INFO", npl_additional_info_path(@npl), class: "btn btn-npl btn-block mb-4" %>
+
         <% if current_user != @npl.user %>
 
           <div id="new-bid-form">
@@ -36,7 +75,7 @@
           </div>
 
         <% elsif @npl.due_diligence %>
-        
+
           <% if @dd.finished %>
             <%= link_to "CHECK DUE-DILIGENCE REPORT", npl_due_diligence_finish_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
           <% else %>

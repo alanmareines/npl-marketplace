@@ -57,10 +57,10 @@ class DueDiligencesController < ApplicationController
     unless current_user.lawyer? || current_user == @npl.user
       redirect_to page_error_path
     end
-    @bid_winner = Bid.where(npl: 55, winner: true).first
+    @bid_winner = Bid.where(npl: @npl, winner: true).first
     @bids = @npl.bids
     @messages = @dd.messages
-    @lawyer = @messages.select { |message| message.user != @npl.user }.first.user
+    @lawyer = @messages&.select { |message| message.user != @npl.user }&.first&.user
     respond_to do |format|
       format.html
       format.pdf do

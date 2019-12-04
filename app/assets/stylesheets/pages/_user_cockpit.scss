@@ -27,6 +27,8 @@
 
 // EACH QUARTER
   .cockpit-cards{
+    margin-left: 1px;
+    margin-right: 1px;
     .cockpit-card{
       padding: 16px;
       border-radius: 4px;
@@ -37,12 +39,26 @@
         text-align: center;
         margin-bottom: 1.5rem;
       }
+
     }
   }
 }
 
 // QUARTER 1 - PERSONAL INFO
+.user-info{
+  margin-left: 1rem;
+}
 #cockpit-form{
+  .name-info{
+    font-size: 26px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .cpf_cnpj-info{
+    font-size: 14px;
+    margin-bottom: 50px;
+    justify-content: center;
+  }
   .form-group{
   font-size: 14px;
   display: flex;
@@ -61,18 +77,18 @@
   overflow: auto;
   white-space: nowrap;
 }
-.npl-card-selling{
+.npl-card-selling-sold{
   height:100%;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 3px;
   padding:8px;
-  background-color: rgba(57, 74, 109, 0.3);
+  background-color: rgb(211, 211, 211);
   h3{
     font-size: 1.3rem;
     text-align: center;
     margin-bottom: 20px;
     a{
-      color: $npl-blue;
+      color: #4f5352;
       font-weight: 700;
     }
   }
@@ -85,9 +101,37 @@
     list-style: none;
     margin-bottom: 1rem;
     line-height: 1rem;
+    color: #4f5352;
   }
 }
 
+.npl-card-selling-avaliable{
+ height:100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  padding:8px;
+  background-color: rgb(211, 211, 211);
+  h3{
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    a{
+      color: #4f5352;
+      font-weight: 700;
+    }
+  }
+  ul{
+    margin:0;
+    padding:0;
+  }
+  li{
+    font-size: 0.8rem;
+    list-style: none;
+    margin-bottom: 1rem;
+    line-height: 1rem;
+    color: #4f5352;
+  }
+}
 // QUARTER 4 - BIDS
 
 .npl-bidding{
@@ -128,4 +172,22 @@
     margin-left: 1px;
     margin-right: 1px;
   }
+}
+
+
+.badge-primary {
+  color: #fff;
+  border-radius: 20px;
+  background-color: #337ab7 !important;
+  border-color: #337ab7 !important;
+  text-color: white;
+  font-size: 1.6rem;
+}
+
+.badge-danger {
+  border-radius: 20px;
+  font-size: 1.6rem;
+  position: center;
+  text-align: center;
+  align: center;
 }

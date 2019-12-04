@@ -40,41 +40,48 @@
 
     </div>
     <!-- cards -->
-    <div class="cockpit-cards py-3">
-
+    <div class="cockpit-cards">
 
       <!-- user-info -->
-      <div class="row m-0">
-        <div class="col-xs-12 col-sm-3">
-          <div class="cockpit-card user-info">
-            <h2>PERSONAL INFORMATION</h2>
-            <%= simple_form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
-            <%= f.error_notification %>
-            <div class="form-inputs" id="cockpit-form">
-              <%= f.input :name, autofocus: true, required: false %>
-              <%= f.input :cpf_cnpj, label: "CPF/CNPJ", required: false %>
-              <%= f.input :phone, required: false%>
-              <%= f.input :email, required: false %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Update info", class: "btn btn-npl btn-block" %>
-            </div>
+
+    <div class="row m-0 mt-3">
+      <div class="cockpit-card user-info col-xs-12 col-sm-3 mx-3">
+        <h2>PERSONAL INFORMATION</h2>
+          <div class="inputs" id="cockpit-form">
+          <spam class="name-info"> <strong> <%= @user.name %> </strong> </spam> <br>
+          <spam class="cpf_cnpj-info"> <strong> CPF/CNPJ: </strong>
+            <% if @user.cpf_cnpj.size <= 11 %>
+              <%= CNPJ.new(@user.cpf_cnpj.to_s).formatted %>
+            <% else %>
+              <%= CPF.new(@user.cpf_cnpj.to_s).formatted %>
             <% end %>
-          </div>
+            <br>
+            <br>
+          <%= simple_form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs" id="cockpit-form">
+            <%= f.input :phone, required: false%>
+            <%= f.input :email, required: false %>
         </div>
+        <br>
+      </div>
+      <div class="form-actions">
+          <%= f.button :submit, "Update info", class: "btn btn-npl btn-block" %>
+          <% end %>
+      </div>
+    </div>
+      <!-- Bids won -->
+      <div class="flex-grow-1 mx-3">
+        <div class="cockpit-card bids-won">
+          <h2>YOUR EXPOSURE DATA</h2>
+        <div id="traffic-chart" class="op-chart"></div>
+         <%= render "shared/chart", user: @user, npls: @npls %>
 
-        <!-- Bids won -->
-        <div class="col-xs-12 col-sm-9">
-          <div class="cockpit-card bids-won">
-            <h2>YOUR EXPOSURE DATA</h2>
-          <div id="traffic-chart" class="op-chart"></div>
-           <%= render "shared/chart", user: @user, npls: @npls %>
-
-         </div>
        </div>
+    </div>
 
 
-     </div>
+  </div>
 
      <!-- selling NPLs -->
      <div class="row m-0 mt-3">
@@ -83,15 +90,31 @@
           <h2>YOUR NPL OFFERS</h2>
           <div class="npl-selling d-flex">
             <% @user.npls.each do |npl| %>
-              <div class="npl-card-selling mx-2 p-3">
-                <h3><%= link_to npl.name, npl_path(npl) %></h3>
-                <ul class="card-text">
-                  <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
-                  <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
-                  <li><strong>Minimum Value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></li>
-                  <li><strong>Collateral:&nbsp;&nbsp;</strong><%= npl.collateral_description %></li>
-                </ul>
-              </div>
+            <!-- if npl sold -->
+              <% if npl.auctioned? == true %>
+                <div class="npl-card-selling-sold mx-2 p-3">
+                  <h3><%= link_to npl.name, npl_path(npl) %></h3>
+                  <ul class="card-text">
+                    <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+                    <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                    <li><strong>Minimum Value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                    <li><strong>Collateral:&nbsp;&nbsp;</strong><%= npl.collateral_description %></li>
+                  </ul>
+                  <span class="badge badge-primary">Sold</span>
+                </div>
+            <!-- else npl sold -->
+              <% else %>
+                <div class="npl-card-selling-avaliable mx-2 p-3">
+                  <h3><%= link_to npl.name, npl_path(npl) %></h3>
+                  <ul class="card-text">
+                    <li><strong>Asset Type:&nbsp;&nbsp;</strong> <%= npl.npl_type %></li>
+                    <li><strong>Book value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.book_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                    <li><strong>Minimum Value:&nbsp;&nbsp;</strong><%= number_to_currency(npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></li>
+                    <li><strong>Collateral:&nbsp;&nbsp;</strong><%= npl.collateral_description %></li>
+                  </ul>
+                  <span class="badge badge-danger">Avaliable</span>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

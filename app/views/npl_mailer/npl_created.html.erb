@@ -1,7 +1,10 @@
 <style>
   h1, h2, h3, p {
 font-family: sans-serif;
-  }
+}
+table {
+  text-align: left;
+}
 </style>
 
 
@@ -10,16 +13,46 @@ font-family: sans-serif;
 
 <p>You are receiveing this e-mail because the following NPL has been created on your behalf:</p>
 
-<ul>
-  <li>NPL Name: <%= @npl.name %></li>
-  <li>Debtor: <%= @npl.debtor %></li>
-  <li>Type:<%= @npl.npl_type %> </li>
-  <li>Book Value: <%= @npl.book_value %></li>
-  <li>Collateral: <%= @npl.collateral_description %>  </li>
-  <li>Maturity Date: <%= @npl.maturity_date %></li>
-  <li>Minimun Value: <%= @npl.min_value %></li>
-  <li>Auction Date: <%= @npl.auction_date %> </li>
-</ul>
+<hr>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>NPL Name:</th>
+      <td><%= @npl.name %></td>
+    </tr>
+    <tr>
+      <th>Debtor:</th>
+      <td><%= @npl.debtor %></td>
+    </tr>
+    <tr>
+      <th>Type:</th>
+      <td><%= @npl.npl_type %></td>
+    </tr>
+    <tr>
+      <th>Book Value:</th>
+      <td>R$ <%= @npl.book_value %></td>
+    </tr>
+    <tr>
+      <th>Collateral:</th>
+      <td><%= @npl.collateral_description %></td>
+    </tr>
+    <tr>
+      <th>Maturity Date:</th>
+      <td><%= @npl.maturity_date %></td>
+    </tr>
+    <tr>
+      <th>Minimun Value:</th>
+      <td>R$ <%= @npl.min_value %></td>
+    </tr>
+    <tr>
+      <th>Auction Date:</th>
+      <td><%= @npl.auction_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
 
 <p><strong>Please, note that you have the option to contract a due diligence for this NPL. If you do so, the potential investors will save time, money and benefit from your initiative. This will make your NPL more attractive to investors in our marketplace.</strong></p>
 
@@ -30,3 +63,5 @@ font-family: sans-serif;
 
 <p>Kind regards,</p>
 <p>The Yield team</p>
+
+
