@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <%= wicked_pdf_stylesheet_link_tag "pdf" %>
-    <%= wicked_pdf_javascript_include_tag "number_pages" %>
     <title>YIELD PLATFORM - Due Diligence Offical Legal Opinion</title>
   </head>
-  <body onload='number_pages'>
+  <body>
     <%= yield %>
   </body>
 </html>
