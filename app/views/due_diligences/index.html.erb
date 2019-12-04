@@ -13,7 +13,7 @@
         <ul class="card-text">
           <li class="d-flex justify-content-between align-items-center"><strong>Assignment Date:&nbsp;&nbsp;</strong> <span class="dd-date"><%= dd.created_at.strftime("%d/%m/%Y") %>&nbsp;&nbsp;<i class="far fa-calendar-alt"></i></span></li>
           <li class="d-flex justify-content-between align-items-center"><strong>Assigned by:&nbsp;&nbsp;</strong> <span class="dd-date"><%= dd.npl.user.name.upcase %>&nbsp;&nbsp;</span></li>
-          <li class="d-flex justify-content-between align-items-baseline"><strong>Credit Contract:&nbsp;&nbsp;</strong>
+          <li class="d-flex justify-content-between align-items-baseline"><strong class="flex-grow-1">Credit Contract:&nbsp;&nbsp;</strong>
             <% if dd.contract_document.present? %>
               <p><em>Posted</em> &nbsp;&nbsp;&nbsp; <i class="fas fa-check"></i></p>
             <% else %>
@@ -24,7 +24,7 @@
             <% if dd.collateral_document.present? %>
               <p><em>Posted</em> &nbsp;&nbsp;&nbsp; <i class="fas fa-check"></i></p>
             <% else %>
-              <p><em>Awaiting</em></p> &nbsp;&nbsp; <i class="far fa-clock"></i>
+              <p><em>Awaiting</em></p> &nbsp;&nbsp;&nbsp; <i class="far fa-clock"></i>
             <% end %>
           </li>
           <li class="d-flex justify-content-around align-items-baseline"><strong class="flex-grow-1">Other Documents:&nbsp;&nbsp;</strong>

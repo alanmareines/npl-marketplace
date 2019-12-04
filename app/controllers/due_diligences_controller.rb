@@ -42,8 +42,10 @@ class DueDiligencesController < ApplicationController
     if current_user == @npl.user
       @dd.update(dd_params)
       redirect_to npl_due_diligence_path(@npl, @dd)
-    elsif @dd.update(dd_full_params)
-      if @dd.finished
+    elsif
+      @dd.user = current_user
+      @dd.update!(dd_full_params)
+      if @dd.finished        
         redirect_to npl_due_diligence_finish_path(@npl, @dd)
       else
         redirect_to edit_npl_due_diligence_path(@npl, @dd), notice: "Progress Saved!"
@@ -60,7 +62,7 @@ class DueDiligencesController < ApplicationController
     @bid_winner = Bid.where(npl: @npl, winner: true).first
     @bids = @npl.bids
     @messages = @dd.messages
-    @lawyer = @messages&.select { |message| message.user != @npl.user }&.first&.user
+    @lawyer = @dd.user
     respond_to do |format|
       format.html
       format.pdf do
@@ -89,7 +91,9 @@ class DueDiligencesController < ApplicationController
   end
 
   def dd_full_params
-    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid, :maturity_date_valid, :collateral_description_valid, :guarantor_valid, :npl, :finished)
+    params.require(:due_diligence).permit(:book_value_valid, :npl_type_valid, :debtor_valid,
+                                          :maturity_date_valid, :collateral_description_valid,
+                                          :guarantor_valid, :npl, :finished, :legal_opinion)
   end
 
   def lawyer?

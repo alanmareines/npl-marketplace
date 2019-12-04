@@ -1,6 +1,6 @@
 <div class="messages", id="messages">
   <div class="msg_history">
-    <% @messages.each do |message| %>
+    <% messages.each do |message| %>
       <%= render 'messages/message', message: message %>
     <% end %>
   </div>

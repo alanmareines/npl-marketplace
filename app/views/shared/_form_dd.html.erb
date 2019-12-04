@@ -8,7 +8,7 @@
     <%= f.input :book_value_valid, as: :boolean, label: "Book Value Validation" %>
     <%= f.input :legal_opinion %>
     <div class="hidden">
-        <%= f.input :finished, as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.input :finished, as: :boolean, checked_value: true, unchecked_value: false, default: false %>
     </div>
     <button type="submit" name="commit" class="btn btn-block btn-npl">
       <i class="fas fa-save"></i> &nbsp;SAVE

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_30_200416) do
+ActiveRecord::Schema.define(version: 2019_12_04_022737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2019_11_30_200416) do
     t.datetime "updated_at", null: false
     t.index ["npl_id"], name: "index_bids_on_npl_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
-  end
-
-  create_table "collaterals", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "due_diligences", force: :cascade do |t|
@@ -48,7 +42,9 @@ ActiveRecord::Schema.define(version: 2019_11_30_200416) do
     t.boolean "finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["npl_id"], name: "index_due_diligences_on_npl_id"
+    t.index ["user_id"], name: "index_due_diligences_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -104,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_11_30_200416) do
   add_foreign_key "bids", "npls"
   add_foreign_key "bids", "users"
   add_foreign_key "due_diligences", "npls"
+  add_foreign_key "due_diligences", "users"
   add_foreign_key "messages", "due_diligences"
   add_foreign_key "messages", "users"
   add_foreign_key "npls", "users"
