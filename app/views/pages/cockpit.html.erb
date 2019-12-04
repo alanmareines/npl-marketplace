@@ -51,9 +51,9 @@
           <spam class="name-info"> <strong> <%= @user.name %> </strong> </spam> <br>
           <spam class="cpf_cnpj-info"> <strong> CPF/CNPJ: </strong>
             <% if @user.cpf_cnpj.size <= 11 %>
-              <%= CNPJ.new(@user.cpf_cnpj.to_s).formatted %>
-            <% else %>
               <%= CPF.new(@user.cpf_cnpj.to_s).formatted %>
+            <% else %>
+              <%= CNPJ.new(@user.cpf_cnpj.to_s).formatted %>
             <% end %>
             <br>
             <br>
