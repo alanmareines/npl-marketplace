@@ -124,6 +124,30 @@
       <% end %>
       </div>
       
+      <% if @npl.debtor_info&.cafir.nil? %>
+      <% else %>
+        <h4>RURAL PROPERTIES</h4>
+        <h5 class="text-center">Total Properties Area - <span class="rural-area"><%= @npl.debtor_info&.cafir&.areaTotal %></span></h5>
+        <div class="rural-table">
+          <table>
+            <tr>
+              <th>Property Number</th>
+              <th>Property Name</th>
+              <th>City/State</th>
+              <th>Property Area</th>
+            </tr>
+          <% @npl.debtor_info&.cafir&.imoveis&.each_with_index do |element, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= capitalize(element&.municipio) %>/<%= not_nil(element&.uf) %></td>
+              <td><%= capitalize(element&.nome) %></td>
+              <td><%= not_nil(element&.area) %></td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+      <% end %>
+
       <% if @npl.debtor_info&.imoveis.nil? %>
       <% else %>
         <h4>REAL ESTATE</h4>
