@@ -14,7 +14,7 @@
               <h5>Name</h5> <p><%= capitalize(@npl.debtor_info&.nome) %></p>
             </div>
             <div class="col">
-              <h5>Liveness</h5> <p><%= @npl.debtor_info.falecido ? "Deceased" : "Live" %></p>
+              <h5>Liveness</h5> <p><%= @npl.debtor_info.falecido ? "Deceased" : "Live" if @npl.debtor_info.falecido %></p>
             </div>
           </div>
 
@@ -38,7 +38,13 @@
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
-          <h5>Address</h5> <p><%= capitalize(@npl.debtor_info&.endereco&.logradouro) %>, <%= not_nil(@npl.debtor_info&.endereco&.numero) %>, <%= not_nil(@npl.debtor_info&.endereco&.complemento) %> - <%= capitalize(@npl.debtor_info&.endereco&.bairro) %> - <%= capitalize(@npl.debtor_info&.endereco&.municipio) %>/<%= not_nil(@npl.debtor_info&.endereco&.uf) %></p>
+          <h5>Address</h5>
+          <% if @npl.debtor_info&.endereco.nil? %>
+            -
+          <% else %>
+          <p><%= capitalize(@npl.debtor_info&.endereco&.logradouro) %>, <%= not_nil(@npl.debtor_info&.endereco&.numero) %>, <%= not_nil(@npl.debtor_info&.endereco&.complemento) %> - <%= capitalize(@npl.debtor_info&.endereco&.bairro) %> - <%= capitalize(@npl.debtor_info&.endereco&.municipio) %>/<%= not_nil(@npl.debtor_info&.endereco&.uf) %></p>
+          <% end %>
+          
           
           <h5>Income Estimate</h5> <p><%= capitalize(@npl.debtor_info&.incomePrediction&.incomeInterval) %></p>
           
@@ -63,11 +69,22 @@
           <h5 class="text-center">Current Experience</h5>
           <ul>
             <li><span class="company-info">Company Name :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.razaoSocial) %></li>
-            <li><span class="company-info">Location :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.municipio)%>/<%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.uf) %></li>
+            <li><span class="company-info">Location :</span>
+              <% if @npl.debtor_info&.enderecoEmpregoRaisNovo %>
+                <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.municipio)%>/<%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.uf) %>
+              <% else %>
+                -
+              <% end %>
+            </li>
             <li><span class="company-info">Industry :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.ramoAtividade) %></li>
             <li><span class="company-info">Company Registry (CNPJ) :</span> <%= not_nil(@npl.debtor_info&.enderecoEmpregoRaisNovo&.cnpj) %></li>
             <li><span class="company-info">Description :</span> <%= capitalize(@npl.debtor_info&.enderecoEmpregoRaisNovo&.descricaoCnae) %></li>
-            <li><span class="company-info">Employed For :</span> <%= not_nil(@npl.debtor_info&.historicoFuncional&.first&.numeroMesesEmpresa) %> Months</li>
+            <li><span class="company-info">Employed For :</span> 
+              <% if @npl.debtor_info&.historicoFuncional&.first %>
+                <%= not_nil(@npl.debtor_info&.historicoFuncional&.first&.numeroMesesEmpresa) %> Months</li>
+              <% else %>
+                -
+              <% end %>
           </ul>
         </div>
         <div class="past_work col-xs-12 col-md-6">
@@ -124,27 +141,29 @@
       <% end %>
       </div>
       
-      <% if @npl.debtor_info&.cafir.nil? %>
+      <% if @npl.debtor_info&.cafir&.areaTotal == 0 || @npl.debtor_info&.cafir.nil? %>
       <% else %>
         <h4>RURAL PROPERTIES</h4>
-        <h5 class="text-center">Total Properties Area - <span class="rural-area"><%= @npl.debtor_info&.cafir&.areaTotal %></span></h5>
-        <div class="rural-table">
-          <table>
-            <tr>
-              <th>Property Number</th>
-              <th>Property Name</th>
-              <th>City/State</th>
-              <th>Property Area</th>
-            </tr>
-          <% @npl.debtor_info&.cafir&.imoveis&.each_with_index do |element, index| %>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td><%= capitalize(element&.municipio) %>/<%= not_nil(element&.uf) %></td>
-              <td><%= capitalize(element&.nome) %></td>
-              <td><%= not_nil(element&.area) %></td>
-            </tr>
-          <% end %>
-          </table>
+        <div class="rural debtor-info-card">
+          <h5 class="text-center">Total Properties Area - <span class="rural-area"><%= @npl.debtor_info&.cafir&.areaTotal %></span></h5>
+          <div class="rural-table">
+            <table>
+              <tr>
+                <th>Property Number</th>
+                <th>Property Name</th>
+                <th>City/State</th>
+                <th>Property Area</th>
+              </tr>
+            <% @npl.debtor_info&.cafir&.imoveis&.each_with_index do |element, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= capitalize(element&.municipio) %>/<%= not_nil(element&.uf) %></td>
+                <td><%= capitalize(element&.nome) %></td>
+                <td><%= not_nil(element&.area) %></td>
+              </tr>
+            <% end %>
+            </table>
+          </div>
         </div>
       <% end %>
 
@@ -193,6 +212,7 @@
               <th>Current Work</th>
               <th>Working History</th>
               <th>Relatives</th>
+              <th>Rural Properties</th>
               <th>Real Estate</th>
               <th>Equity Interest</th>
             </tr>
@@ -201,6 +221,7 @@
               <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.enderecoEmpregoRaisNovo&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
               <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.historicoFuncional&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
               <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.pessoas&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
+              <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.cafir&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></em></td>
               <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.imoveis&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
               <td><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.participacaoSocietaria&.processingTimestamp&.to_date&.strftime("%d/%m/%Y")) %></td>
             </tr>
@@ -209,6 +230,7 @@
               <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.enderecoEmpregoRaisNovo&.source&.first) %></em></td>
               <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.historicoFuncional&.source&.first) %></em></td>
               <td><em><%= capitalize(@npl.debtor_info&._metadata&.pessoas&._metadata&.pessoas&.source&.first) %></em></td>
+              <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.cafir&.sources&.first) %></em></td>
               <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.imoveis&.source&.first) %></em></td>
               <td><em><%= not_nil(@npl.debtor_info&._metadata&.pessoas&._metadata&.participacaoSocietaria&.source&.first) %></em></td>
             </tr>
@@ -216,6 +238,7 @@
         </div>
       </div>
     </div>
+    <span class="filler-debtor-info"></span>
   </div>
 </div>
 
