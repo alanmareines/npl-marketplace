@@ -127,7 +127,7 @@
       <% if @npl.debtor_info&.imoveis.nil? %>
       <% else %>
         <h4>REAL ESTATE</h4>
-        <div class="real-estate debtor-info-card d-flex justify-content-between">
+        <div class="real-estate debtor-info-card d-flex justify-content-between flex-wrap">
           <% @npl.debtor_info&.imoveis&.each_with_index do |element, index| %>
           <div class="card building">
             <h5 class="text-center card-title">Real Estate #<%= index + 1 %></h5>
@@ -145,7 +145,7 @@
       <% if @npl.debtor_info&.participacaoSocietariaRF.nil? %>
       <% else %>
         <h4>EQUITY INTEREST</h4>
-        <div class="real-estate debtor-info-card d-flex justify-content-between">
+        <div class="real-estate debtor-info-card d-flex justify-content-between flex-wrap">
           <% @npl.debtor_info&.participacaoSocietariaRF&.each_with_index do |element, index| %>
           <div class="card building">
             <h5 class="text-center card-title">Company #<%= index + 1 %></h5>
