@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @bids_winner_sum = 0
     user_bids_npls = Npl.where(user: current_user, auctioned: true)
     user_bids_npls.each do |npl|
-      @bids_winner_sum += npl.bids.order(value: :desc).first.value
+      @bids_winner_sum += npl.bids.where(winner: true).first.value
     end
   end
 
