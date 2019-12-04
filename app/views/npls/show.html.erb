@@ -74,7 +74,7 @@
             <% end %>
           </div>
 
-        <% elsif @npl.due_diligence %>
+        <% elsif @npl.due_diligence =! @dd.nil? %>
 
           <% if @dd.finished %>
             <%= link_to "CHECK DUE-DILIGENCE REPORT", npl_due_diligence_finish_path(@npl, @dd), class: "btn btn-npl btn-block dd-btn my-1" %>
