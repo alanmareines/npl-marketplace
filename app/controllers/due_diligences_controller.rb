@@ -85,7 +85,7 @@ class DueDiligencesController < ApplicationController
   end
 
   def dd_params
-    params.require(:due_diligence).permit(:contract_document, :collateral_document, :other_document, :npl)
+    params.require(:due_diligence).permit(:contract_document, :collateral_document, :other_document, :npl) if params[:due_diligence]
   end
 
   def dd_full_params

@@ -1,0 +1,13 @@
+Searching 21187 files for "number_pages"
+
+/Users/alanmareines/code/alanmareines/npl-marketplace/app/views/layouts/pdf.html.erb:
+    4      <meta charset="UTF-8">
+    5      <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+    6:     <%= wicked_pdf_javascript_include_tag "number_pages" %>
+    7      <title>YIELD PLATFORM - Due Diligence Offical Legal Opinion</title>
+    8    </head>
+    9:   <body>
+   10      <%= yield %>
+   11    </body>
+
+2 matches in 1 file
