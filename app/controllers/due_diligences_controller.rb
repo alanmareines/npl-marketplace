@@ -45,7 +45,7 @@ class DueDiligencesController < ApplicationController
     elsif
       @dd.user = current_user
       @dd.update!(dd_full_params)
-      if @dd.finished        
+      if @dd.finished
         redirect_to npl_due_diligence_finish_path(@npl, @dd)
       else
         redirect_to edit_npl_due_diligence_path(@npl, @dd), notice: "Progress Saved!"
