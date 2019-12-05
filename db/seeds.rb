@@ -4,7 +4,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# DEFGaracter.create(name: 'Luke', movie: movies.first)
 
 puts 'Cleaning seed...'
 puts 'Deleting Messages...'
@@ -15,7 +15,7 @@ puts 'Deleting Npls...'
 Npl.destroy_all
 puts 'Deleting Bids...'
 Bid.destroy_all
-puts 'Deleting Users...'
+puts 'Deleting Users..V'
 User.destroy_all
 puts 'seed cleaned!'
 
@@ -24,20 +24,19 @@ alan = User.create!(email: 'alanmareines@gmail.com', password: '123123', cpf_cnp
 marco = User.create!(email: 'macpjesus@gmail.com', password: '123123', cpf_cnpj: 12345678900, name: 'Marco', phone: 99999999, admin: 'true' )
 felipe = User.create!(email: 'felipegirocha@gmail.com', password: '123123', cpf_cnpj: 12345678900, name: 'Felipe', phone: 99999999, admin: 'true')
 
-bradesco = User.create!(email: 'bradesco@bradesco.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Bradesco', phone: 99999999)
-itau = User.create!(email: 'itau@itau.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Itau', phone: 99999999)
-santander = User.create!(email: 'santander@santander.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Santander', phone: 99999999)
-abc = User.create!(email: 'abc@abc.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'ABC', phone: 99999999)
-fibra = User.create!(email: 'fibra@fibra.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Fibra', phone: 99999999)
-votorantim = User.create!(email: 'votorantim@votorantim.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Votorantim', phone: 99999999)
-pine = User.create!(email: 'pine@pine.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'pine', phone: 99999999)
+usadesco = User.create!(email: 'usadesco@usadesco.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Usadesco', phone: 99999999)
+ita2 = User.create!(email: 'ita2@ita2.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Ita2', phone: 99999999)
+santoandre = User.create!(email: 'santoandre@santoandre.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Santoandre', phone: 99999999)
+defg = User.create!(email: 'defg@defg.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'DEFG', phone: 99999999)
+vibra = User.create!(email: 'vibra@vibra.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Vibra', phone: 99999999)
+votoranclaro = User.create!(email: 'votoranclaro@votoranclaro.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Votoranclaro', phone: 99999999)
+pinheiro = User.create!(email: 'pinheiro@pinheiro.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Pinheiro', phone: 99999999)
 
-recovery = User.create!(email: 'recovery@recovery.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Recovery', phone: 99999999)
-ipanema = User.create!(email: 'ipanema@ipanema.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Ipanema', phone: 99999999)
-rcb = User.create!(email: 'rcb@rcb.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'RCB', phone: 99999999)
-mgc = User.create!(email: 'mgc@mgc.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'MGC', phone: 99999999)
-pna = User.create!(email: 'pna@pna.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'PNA', phone: 99999999, lawyer: true)
-pga = User.create!(email: 'pga@pga.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'PGA', phone: 99999999, lawyer: true)
+recover = User.create!(email: 'recover@recover.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Recover', phone: 99999999)
+arpoador = User.create!(email: 'arpoador@arpoador.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'Arpoador', phone: 99999999)
+rcbd = User.create!(email: 'rcbd@rcbd.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'RCBD', phone: 99999999)
+mgb = User.create!(email: 'mgb@mgb.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'MGB', phone: 99999999)
+pnb = User.create!(email: 'pnb@pnb.com.br', password: '123123', cpf_cnpj: 12345678000100, name: 'PNB', phone: 99999999, lawyer: true)
 
 
 puts 'finished seed (User)!'
@@ -45,117 +44,117 @@ puts 'finished seed (User)!'
 puts 'starting seed (NPL)...'
 npl_attributes1 = {
     book_value: 100000,
-    debtor: 'Odebrecht',
+    debtor: 'ODB',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 12, 20),
     collateral_description: 'Clean',
     min_value: 15000,
     name: 'CCB ODB 1',
     npl_type: 'CCB',
-    user: bradesco,
+    user: usadesco,
     auction_date: Date.new(2019, 12, 20)
   }
   npl_attributes2 = {
     book_value: 90000,
-    debtor: 'Odebrecht',
+    debtor: 'ODB',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2018, 11, 30),
     collateral_description: 'Debenture',
     min_value: 13000,
     name: 'CCB ODB 2',
     npl_type: 'CCB',
-    user: itau,
+    user: ita2,
     auction_date: Date.new(2019, 12, 20)
   }
 
 npl_attributes3 = {
     book_value: 400000,
-    debtor: 'Terra Forte',
+    debtor: 'Strong Land',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 150000,
-    name: 'CCB Terra Forte 1',
+    name: 'CCB Strong Land',
     npl_type: 'CCB',
-    user: fibra,
+    user: vibra,
     auction_date: Date.new(2019, 12, 20)
   }
 
 npl_attributes4 = {
     book_value: 800000,
-    debtor: 'Bom Jesus',
+    debtor: 'Good Jesus',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Imovel Rural',
     min_value: 200000,
-    name: 'CCE Bom Jesus 1',
+    name: 'CCE Good Jesus',
     npl_type: 'CCE',
-    user: abc,
+    user: defg,
     auction_date: Date.new(2019, 12, 20)
   }
 
 npl_attributes5 = {
     book_value: 900000,
-    debtor: 'Santa Terezinha',
+    debtor: 'Usina Santa Luzia',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 250000,
-    name: 'PPE Santa Terezinha 1',
+    name: 'PPE Usina Santa Luzia',
     npl_type: 'PPE',
-    user: votorantim,
+    user: votoranclaro,
     auction_date: Date.new(2019, 12, 20)
   }
 
 npl_attributes6 = {
     book_value: 950000,
-    debtor: 'Clealco',
+    debtor: 'Queiralco',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de equipamentos',
     min_value: 200000,
-    name: 'Repasse BNDES Clealco 1',
+    name: 'Repasse BNDES Queiralco',
     npl_type: 'Repasse BNDES',
-    user: bradesco,
+    user: usadesco,
     auction_date: Date.new(2019, 12, 20)
   }
 
 npl_attributes7 = {
     book_value: 300000,
-    debtor: 'Renuka',
+    debtor: 'Renunca',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'penhor de cana',
     min_value: 30000,
-    name: 'CDCA Renuka 1',
+    name: 'CDCA Renunca 1',
     npl_type: 'CDCA',
-    user: santander,
+    user: santoandre,
     auction_date: Date.today + 102
   }
 
 npl_attributes8 = {
     book_value: 350000,
-    debtor: 'Queiroz Galvao',
+    debtor: 'QG',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'AF de acoes',
     min_value: 220000,
-    name: 'Debenture Queiroz Galvao 1',
+    name: 'Debenture QG',
     npl_type: 'Debenture',
-    user: votorantim,
+    user: votoranclaro,
     auction_date: Date.today + 23
   }
 
 npl_attributes9 = {
     book_value: 820000,
-    debtor: 'Galvao Engenharia',
+    debtor: 'Gaviao Engenharia',
     debtor_cpf_cnpj: '99999999999',
     maturity_date: Date.new(2019, 3, 15),
     collateral_description: 'Fianca da holding',
     min_value: 180000,
-    name: 'Debenture Galvao Engenharia 1',
+    name: 'Debenture Gaviao Engenharia 1',
     npl_type: 'Debenture',
-    user: abc,
+    user: defg,
     auction_date: Date.today + 63
   }
 
@@ -210,121 +209,121 @@ puts 'finished seed (NPL)!'
 puts 'starting seed (Bids)...'
 bid1 = Bid.new
 bid1.npl = npl1
-bid1.user = recovery
+bid1.user = recover
 bid1.value = 20000
 bid1.save!
 
 bid2 = Bid.new
 bid2.npl = npl1
-bid2.user = ipanema
+bid2.user = arpoador
 bid2.value = 19000
 bid2.save!
 
 bid3 = Bid.new
 bid3.npl = npl2
-bid3.user = ipanema
+bid3.user = arpoador
 bid3.value = 14500
 bid3.save!
 
 bid4 = Bid.new
 bid4.npl = npl2
-bid4.user = mgc
+bid4.user = mgb
 bid4.value = 16999
 bid4.save!
 
 bid5 = Bid.new
 bid5.npl = npl3
-bid5.user = rcb
+bid5.user = rcbd
 bid5.value = 150000
 bid5.save!
 
 bid6 = Bid.new
 bid6.npl = npl3
-bid6.user = mgc
+bid6.user = mgb
 bid6.value = 160000
 bid6.save!
 
 bid7 = Bid.new
 bid7.npl = npl3
-bid7.user = recovery
+bid7.user = recover
 bid7.value = 250000
 bid7.save!
 
 bid8 = Bid.new
 bid8.npl = npl3
-bid8.user = ipanema
+bid8.user = arpoador
 bid8.value = 200000
 bid8.save!
 
 bid9 = Bid.new
 bid9.npl = npl3
-bid9.user = abc
+bid9.user = defg
 bid9.value = 180000
 bid9.save!
 
 bid10 = Bid.new
 bid10.npl = npl3
-bid10.user = pine
+bid10.user = pinheiro
 bid10.value = 1000000
 bid10.save!
 
 bid11 = Bid.new
 bid11.npl = npl4
-bid11.user = recovery
+bid11.user = recover
 bid11.value = 300000
 bid11.save!
 
 bid12 = Bid.new
 bid12.npl = npl5
-bid12.user = mgc
+bid12.user =  mgb
 bid12.value = 280000
 bid12.save!
 
 bid13 = Bid.new
 bid13.npl = npl6
-bid13.user = ipanema
+bid13.user = arpoador
 bid13.value = 220000
 bid13.save!
 
 bid14 = Bid.new
 bid14.npl = npl7
-bid14.user = recovery
+bid14.user = recover
 bid14.value = 33000
 bid14.save!
 
 bid15 = Bid.new
 bid15.npl = npl8
-bid15.user = rcb
+bid15.user = rcbd
 bid15.value = 240000
 bid15.save!
 
 bid16 = Bid.new
 bid16.npl = npl8
-bid16.user = mgc
+bid16.user =  mgb
 bid16.value = 240000
 bid16.save!
 
 bid17 = Bid.new
 bid17.npl = npl9
-bid17.user = recovery
+bid17.user = recover
 bid17.value = 240000
 bid17.save!
 
 bid18 = Bid.new
 bid18.npl = npl9
-bid18.user = ipanema
+bid18.user = arpoador
 bid18.value = 250000
 bid18.save!
 
 bid19 = Bid.new
 bid19.npl = npl5
-bid19.user = recovery
+bid19.user = recover
 bid19.value = 280000
 bid19.save!
 
 bid20 = Bid.new
 bid20.npl = npl6
-bid20.user = mgc
+bid20.user =  mgb
 bid20.value = 220000
 bid20.save!
 
