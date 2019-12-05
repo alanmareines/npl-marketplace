@@ -65,20 +65,24 @@
   <div class="container">
     <div class="cards d-flex justify-content-around">
       <div class="card text-center">
-         <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </h2>
-         <p>NPLs sold</p>
+        <i class="fas fa-chart-line"></i>
+        <h2> <%= number_to_currency(@npls_sold_sum / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </h2>
+        <p>NPLs sold</p>
       </div>
       <div class="card text-center">
-         <h2> <%= @npls_sold %></h2>
-         <p> Succesful Transactions</p>
+        <i class="fas fa-trophy"></i>
+        <h2> <%= @npls_sold %></h2>
+        <p> Succesful Transactions</p>
       </div>
       <div class="card text-center">
-         <h2> <%= @npls_available %></h2>
-         <p> Current Available NPLs</p>
+        <i class="fas fa-crosshairs"></i>
+        <h2> <%= @npls_available %></h2>
+        <p> Current Available NPLs</p>
       </div>
       <div class="card text-center">
-         <h2> <%= @users_registered %> </h2>
-         <p> Number of registered users</p>
+        <i class="fas fa-users"></i>
+        <h2> <%= @users_registered %> </h2>
+        <p> Number of registered users</p>
       </div>
     </div>
   </div>
