@@ -63,7 +63,7 @@
 
         <p class="my-4">Assigned by <strong><%= @npl.user.name %></strong></p>
 
-        <%= link_to "REQUEST ADDITIONAL INFO", npl_additional_info_path(@npl), class: "btn btn-npl btn-block mb-4" %>
+        <%= link_to "REQUEST ADDITIONAL INFO", npl_additional_info_path(@npl), class: "btn btn-npl btn-block mb-4", id: "debtor-info"%>
 
         <% if current_user != @npl.user %>
 
@@ -83,7 +83,7 @@
           <% end %>
 
         <% else %>
-          <%= link_to "Subscribe to Due-Diligence Module", new_npl_due_diligence_path(@npl), class: "btn btn-npl btn-block dd-btn my-1" %>
+          <%= link_to "SUBSCRIBE DUE DILIGENCE MODULE", new_npl_due_diligence_path(@npl), class: "btn btn-npl btn-block dd-btn my-1" %>
         <% end %>
 
       </div>

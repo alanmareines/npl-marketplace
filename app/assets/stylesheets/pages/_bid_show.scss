@@ -11,3 +11,13 @@
   color: $green;
   }
 }
+
+#debtor-info{
+  color: $npl-blue;
+  background-color: #f8c445;
+  opacity: 0.6;
+  &:hover{
+    opacity: 1;
+    border-color: #f8c445;
+  }
+}
