@@ -1,7 +1,10 @@
 <style>
   h1, h2, h3, p {
 font-family: sans-serif;
-  }
+}
+table {
+  text-align: left;
+}
 </style>
 
 
@@ -9,13 +12,31 @@ font-family: sans-serif;
 
 <p>You are receiving this e-mail to confirm that your auction following NPL was a success:</p>
 
-<ul>
-  <li>NPL Name: <%= @winner_bid.npl.name %></li>
-  <li>NPL Buyer: <%= @winner_bid.user.name %></li>
-  <li>Settlement price: <%= number_to_currency(@winner_bid.value, unit:"R$", separator: ",", delimiter: ".") %></li>
-  <br>
-  <li>Gain above minimun price: <%= number_to_currency(@winner_bid.value - @winner_bid.npl.min_value, unit:"R$", separator: ",", delimiter: ".") %> or <%= (((@winner_bid.value / @winner_bid.npl.min_value) - 1) * 100).round(1) %>% </li>
-</ul>
+<hr>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>NPL Name:</th>
+      <td><%= @winner_bid.npl.name %></td>
+    </tr>
+    <tr>
+      <th>NPL Buyer:</th>
+      <td><%= @winner_bid.user.name %></td>
+    </tr>
+    <tr>
+      <th>Settlement price:</th>
+      <td><%= number_to_currency(@winner_bid.value, unit:"R$", separator: ",", delimiter: ".") %></td>
+    </tr>
+    <tr>
+      <th>Gain above minimun price:</th>
+      <td><%= number_to_currency(@winner_bid.value - @winner_bid.npl.min_value, unit:"R$", separator: ",", delimiter: ".") %> or <%= (((@winner_bid.value / @winner_bid.npl.min_value) - 1) * 100).round(1) %>%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
 
 <p><strong>You will receive an upcoming contact regarding the assigment contract and with the instructions for the payment.</strong></p>
 
