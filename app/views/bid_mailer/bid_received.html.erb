@@ -1,7 +1,10 @@
 <style>
   h1, h2, h3, p {
 font-family: sans-serif;
-  }
+}
+table {
+  text-align: left;
+}
 </style>
 
 
@@ -9,14 +12,34 @@ font-family: sans-serif;
 
 <p>You are receiving this e-mail because the following Bid was submited on your NPL:</p>
 
-<ul>
-  <li>NPL Name: <%= @bid.npl.name %></li>
-  <li>Minimun Value: <%= number_to_currency(@bid.npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></li>
-  <li>Auction Date: <%= @bid.npl.auction_date %> </li>
-  <br>
-  <li>Bidder: <%= @bid.user.name %></li>
-  <li>Bid: <%= number_to_currency(@bid.value, unit:"R$", separator: ",", delimiter: ".") %></li>
-</ul>
+<hr>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>NPL Name:</th>
+      <td><%= @bid.npl.name %></td>
+    </tr>
+    <tr>
+      <th>Minimun Value:</th>
+      <td><%= number_to_currency(@bid.npl.min_value, unit:"R$", separator: ",", delimiter: ".") %></td>
+    </tr>
+    <tr>
+      <th>Auction Date:</th>
+      <td><%= @bid.npl.auction_date %></td>
+    </tr>
+    <tr>
+      <th>Bidder:</th>
+      <td><%= @bid.user.name %></td>
+    </tr>
+    <tr>
+      <th>Bid:</th>
+      <td><%= number_to_currency(@bid.value, unit:"R$", separator: ",", delimiter: ".") %></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
 
 
 <%= link_to "Get back to our website", root_url  %>
