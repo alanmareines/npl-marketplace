@@ -1,7 +1,10 @@
 <style>
   h1, h2, h3, p {
 font-family: sans-serif;
-  }
+}
+table {
+  text-align: left;
+}
 </style>
 
 
@@ -9,11 +12,26 @@ font-family: sans-serif;
 
 <p>You are receiving this e-mail to confirm that you are the winner of the auction on the following NPL:</p>
 
-<ul>
-  <li>NPL Name: <%= @winner_bid.npl.name %></li>
-  <li>NPL Seller: <%= @winner_bid.npl.user.name %></li>
-  <li>Settlement price: <%= number_to_currency(@winner_bid.value, unit:"R$", separator: ",", delimiter: ".") %> </li>
-</ul>
+<hr>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>NPL Name:</th>
+      <td><%= @winner_bid.npl.name %></td>
+    </tr>
+    <tr>
+      <th>NPL Seller:</th>
+      <td><%= @winner_bid.npl.user.name %></td>
+    </tr>
+    <tr>
+      <th>Settlement price:</th>
+      <td><%= number_to_currency(@winner_bid.value, unit:"R$", separator: ",", delimiter: ".") %></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
 
 <p><strong>You will receive an upcoming contact regarding the assigment contract and with the instructions for the payment.</strong></p>
 
