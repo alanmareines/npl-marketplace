@@ -10,28 +10,28 @@
 
   <div class="row py-3">
     <!-- /.dashboard-stat -->
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
       <a class="dashboard-stat bg-primary" href="#">
         <span class="counter"><%= number_to_currency(@user.npls.where(auctioned: true).sum(:book_value) / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </span>
         <span class="name">NPLs Sold</span>
       </a>
     </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
       <a class="dashboard-stat bg-danger" href="#">
           <span class="counter"><%= number_to_currency(@user.npls.where(auctioned: false).sum(:book_value) / 1000000, unit: "R$ ",separator: ",", delimiter: ".") %> M </span>
           <span class="name">NPLs Avaliable</span>
       </a>
     </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
       <a class="dashboard-stat bg-warning" href="#">
           <span class="counter"><%= @bids_winner_sum.present? ? number_to_currency(@bids_winner_sum/1000000 , unit: "R$ ",separator: ",", delimiter: ".") : "---" %> M </span>
           <span class="name">Recovery</span>
       </a>
     </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
       <a class="dashboard-stat bg-success" href="#">
          <% npls_auctioned_book_value = @user.npls.where(auctioned: true).sum(:book_value)  %>
           <span class="counter"><%= @bids_winner_sum.present? && npls_auctioned_book_value > 0 ? ((@bids_winner_sum / npls_auctioned_book_value) * 100 ).round(1) : "---" %> % </span>
